@@ -14,7 +14,7 @@ public class AppController {
 	
 	@GetMapping("/leaders")
 	public String showLeaders() {
-		return "LEAD";
+		return "leaders";
 	}
 	// add request mapping for system admins
 	@GetMapping("/systems")
