@@ -29,7 +29,7 @@ public class CMAppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/").hasRole("USER")
+		.antMatchers("/").access("hasRole('USER')")
 		.antMatchers("/leaders/**").hasRole("LEAD")
 		.antMatchers("/systems/**").hasRole("ADMIN")		
 		.anyRequest().authenticated()
