@@ -1,4 +1,4 @@
-package com.cmautomation.spring.security.config;
+package com.cmautomation.spring.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -6,7 +6,7 @@ public class MySpringDispatcherServletInitializer extends AbstractAnnotationConf
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
+		//return new Class[] {CMAppSecurityConfig.class };
 		return null;
 	}
 

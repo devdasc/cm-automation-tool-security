@@ -1,4 +1,4 @@
-package com.cmautomation.spring.security.config;
+package com.cmautomation.spring.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

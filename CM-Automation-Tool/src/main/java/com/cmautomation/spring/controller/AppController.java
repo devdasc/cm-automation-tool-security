@@ -1,4 +1,4 @@
-package com.cmautomation.spring.security.controller;
+package com.cmautomation.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AppController {
 	@GetMapping("/")
 	public String showHome() {
-		return "home";
+		return "home";// this is the jsp file that will be rendered
 	}
 	
 	// add request mapping for leaders
 	
 	@GetMapping("/leaders")
 	public String showLeaders() {
-		return "leaders";
+		return "leaders"; // the jsp file that will be rendered
 	}
-	// add request mapping for system admins
-	@GetMapping("/systems/**")
-	public String showSystems() {
-		return "systems";
-	}
+//	// add request mapping for system admins
+//	@GetMapping("/admin/**")
+//	public String showSystems() {
+//		return "systems";
+//	}
 }

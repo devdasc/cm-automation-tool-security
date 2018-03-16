@@ -1,4 +1,4 @@
-package com.cmautomation.spring.security.controller;
+package com.cmautomation.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

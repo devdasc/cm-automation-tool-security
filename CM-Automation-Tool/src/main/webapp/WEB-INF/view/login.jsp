@@ -78,6 +78,7 @@
 							<input type="password" name="password" placeholder="password" class="form-control" >
 						</div>
 
+
 						<!-- Login/Submit Button -->
 						<div style="margin-top: 10px" class="form-group">						
 							<div class="col-sm-6 controls">

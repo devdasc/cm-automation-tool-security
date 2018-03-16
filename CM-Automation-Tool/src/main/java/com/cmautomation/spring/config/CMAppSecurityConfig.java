@@ -1,4 +1,4 @@
-package com.cmautomation.spring.security.config;
+package com.cmautomation.spring.config;
 
 import javax.sql.DataSource;
 
@@ -21,29 +21,33 @@ public class CMAppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		
 		//use jdbc authentication
 		auth.jdbcAuthentication().dataSource(securityDataSource);
 	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+		
 		.antMatchers("/").access("hasRole('USER')")
-		.antMatchers("/leaders/**").hasRole("LEAD")
-		.antMatchers("/systems/**").hasRole("ADMIN")		
-		.anyRequest().authenticated()
+		.antMatchers("/cma/**").hasRole("CMA")
+		.antMatchers("/admin/**").hasAnyRole("ADMIN","CMA")
+		.antMatchers("/qa/**").hasRole("QA")
+		.antMatchers("/tsa/**").hasRole("TSA")
+		//.anyRequest().authenticated()
+		
+		
+		/*.antMatchers("/application/showForm*").hasAnyRole("ADMIN")
+		.antMatchers("/application/save*").hasAnyRole("ADMIN")
+		.antMatchers("/application/delete").hasRole("ADMIN")
+		.antMatchers("/application/**").hasRole("USER")
+		.antMatchers("/resources/**").permitAll()
+		*/
 		.and()
 			.formLogin()
 			.loginPage("/showLoginPage")
-			.loginProcessingUrl("/authenticateTheUser")
-			.permitAll()
-			.and()
-				.logout()
-				.permitAll()
-				.and()
-					.exceptionHandling()
-					.accessDeniedPage("/access-denied");
+			.loginProcessingUrl("/authenticateTheUser").permitAll()
+			.and().logout().permitAll()
+			.and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
 
 }

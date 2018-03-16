@@ -23,17 +23,17 @@
 		<security:authentication property="principal.authorities" />
 	</p>
 	<hr>
-	<security:authorize access="hasRole('LEAD')">
+	 
+	<security:authorize access="hasRole('CMA')">
 		<!-- Add link to point to Leaders..this is for the managers	 -->
 		<p>
-			<a href="${pageContext.request.contextPath}/leaders">Leadership
-				Meetings</a> (only for Managers)
+			<a href="${pageContext.request.contextPath}/cma">CMA</a> (only for CMA)
 		</p>
 	</security:authorize>
 	<security:authorize access="hasRole('ADMIN')">
 		<!-- Add link to the Admins..this is for the Admin people -->
 		<p>
-			<a href="${pageContext.request.contextPath}/systems">IT systems
+			<a href="${pageContext.request.contextPath}/admin/app/list">IT systems
 				Meetings</a> (only for admin people)
 		</p>
 		<hr>
