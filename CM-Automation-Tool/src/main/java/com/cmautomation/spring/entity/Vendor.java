@@ -13,14 +13,20 @@ public class Vendor {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="vendor_Id")
+	@Column(name="Vendor_Id")
 	private int vendorId;
 	
-	@Column(name="vendorName")
+	@Column(name="VendorName")
 	private String vendorName;
 	
 	public Vendor() {
 		
+	}
+
+	public Vendor(int vendorId, String vendorName) {
+		
+		this.vendorId = vendorId;
+		this.vendorName = vendorName;
 	}
 
 	public int getVendorid() {

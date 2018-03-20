@@ -13,14 +13,20 @@ public class DeploymentEnvironment {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="environment_Id")
+	@Column(name="Environment_Id")
 	private int environmentId;
 	
-	@Column(name="environmentName")
+	@Column(name="EnvironmentName")
 	private String environmentName;
 	
 	public DeploymentEnvironment() {
 		
+	}
+
+	public DeploymentEnvironment(int environmentId, String environmentName) {
+		
+		this.environmentId = environmentId;
+		this.environmentName = environmentName;
 	}
 
 	public int getEnvironmentId() {
@@ -43,6 +49,7 @@ public class DeploymentEnvironment {
 	public String toString() {
 		return "DeploymentEnvironment [environmentId=" + environmentId + ", environmentName=" + environmentName + "]";
 	}
+
 	
 	
 

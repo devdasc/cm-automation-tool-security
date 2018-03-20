@@ -9,6 +9,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>CM Automation systems home page</title>
+<link type="text/css"
+		  rel="stylesheet"
+		  href="${pageContext.request.contextPath}/resources/css/style.css">
+
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="${pageContext.request.contextPath}/resources/css/add-style.css">
 </head>
 <body>
 	<h2>CM Automation systems home page</h2>
@@ -28,10 +35,9 @@
 			</p>
 			<security:authorize access="hasRole('ADMIN')">
 
-				<!-- put new button: Add Customer --------------------------->
-
+				<!--new button: Add Application ----------------------->						
 				<input type="button" value="Add Application"
-					onclick="window.location.href='showFormForAdd'; return false;"
+					onclick="window.location.href='appAddForm'; return false;"
 					class="add-button" />
 			</security:authorize>
 			<!--  add our html table here --------------------------------->
@@ -49,16 +55,16 @@
 
 				</tr>
 
-				<!-- loop over and print our customers -->
+				<!-- loop over and print applications -->
 				<c:forEach var="tempApplication" items="${applications}">
 
-					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/application/showFormForUpdate">
+					<!-- construct an "update" link with application id -->
+					<c:url var="updateLink" value="/admin/app/appUpdateForm">
 						<c:param name="applicationId" value="${tempApplication.appId}" />
 					</c:url>
 
-					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/application/delete">
+					<!-- construct an "delete" link with application id -->
+					<c:url var="deleteLink" value="/admin/app/delete">
 						<c:param name="applicationId" value="${tempApplication.appId}" />
 					</c:url>
 

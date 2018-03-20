@@ -22,4 +22,27 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return applicationDAO.getApplications();
 	}
 
+	@Override
+	@Transactional
+	public void saveApplication(Application application) {
+		
+		applicationDAO.saveApplication(application);
+		
+	}
+
+	@Override
+	@Transactional
+	public Application getApplication(int appId) {
+		
+		 return applicationDAO.getApplication(appId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteApplication(int appId) {
+		
+		applicationDAO.deleteApplication(appId);
+		
+	}
+
 }

@@ -16,9 +16,5 @@ public class AppController {
 	public String showLeaders() {
 		return "leaders"; // the jsp file that will be rendered
 	}
-//	// add request mapping for system admins
-//	@GetMapping("/admin/**")
-//	public String showSystems() {
-//		return "systems";
-//	}
+
 }

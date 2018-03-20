@@ -31,5 +31,34 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 		// return the results
 		return applications;
 	}
+	//saves a new entry into database
+	@Override
+	public void saveApplication(Application application) {
+		// get the current hibernate session
+		Session currentSession=sessionFactory.getCurrentSession();
+		
+		currentSession.saveOrUpdate(application);
+		
+	}
+	// gets the application from database and pre-populate the form
+	@Override
+	public Application getApplication(int appId) {
+		// get the current hibernate session
+		Session currentSession=sessionFactory.getCurrentSession();
+		
+		Application theApplication=currentSession.get(Application.class, appId);
+		
+		return theApplication;
+	}
+	//deletes an application from database
+	@Override
+	public void deleteApplication(int appId) {
+		// get the current hibernate session
+		Session currentSession=sessionFactory.getCurrentSession();
+		//delete query
+		Query deleteQuery=currentSession.createQuery("delete from Application where Application_Id=:appId");
+		deleteQuery.setParameter("appId", appId);
+		deleteQuery.executeUpdate();
+	}
 
 }

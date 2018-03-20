@@ -8,20 +8,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="application")
+@Table(name="applications")
 public class Application {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="application_Id")
+	@Column(name="Application_Id")
 	private int appId;
 	
-	@Column(name="applicationName")
+	@Column(name="ApplicationName")
 	private String appName;
 	
 	public Application() {
 		
 	}
+	
+	public Application(int appId, String appName) {
+		
+		this.appId = appId;
+		this.appName = appName;
+	}
+
 
 	public int getAppId() {
 		return appId;
