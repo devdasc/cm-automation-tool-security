@@ -1,19 +1,24 @@
 package com.cmautomation.spring.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 
@@ -29,8 +34,8 @@ public class DeploymentPlan {
 	@Column(name="Title")
 	private String title;
 	
-	@OneToOne(cascade= {CascadeType.DETACH,
-			CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="Application_Id")
 	private Application application;
 	
@@ -45,15 +50,19 @@ public class DeploymentPlan {
 	public DeploymentPlan() {
 		
 	}
+	
 
-	public DeploymentPlan(String title, Application application, Date planDate, String comment) {
+	public DeploymentPlan(int deploymentId, String title, Application application, Date planDate, String comment) {
 		
-		//this.deploymentId = deploymentId;
+		this.deploymentId = deploymentId;
 		this.title = title;
 		this.application = application;
 		this.planDate = planDate;
 		this.comment = comment;
 	}
+
+
+
 
 	public int getDeploymentId() {
 		return deploymentId;
@@ -71,14 +80,7 @@ public class DeploymentPlan {
 		this.title = title;
 	}
 
-	public Application getApplication() {
-		return application;
-	}
-
-	public void setApplication(Application application) {
-		this.application = application;
-	}
-
+	
 	public Date getPlanDate() {
 		return planDate;
 	}
@@ -95,11 +97,24 @@ public class DeploymentPlan {
 		this.comment = comment;
 	}
 
+
+	public Application getApplication() {
+		return application;
+	}
+
+
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+
+
 	@Override
 	public String toString() {
-		return "DeploymentPlan [deploymentId=" + deploymentId + ", title=" + title + ", application=" + application
-				+ ", planDate=" + planDate + ", comment=" + comment + "]";
+		return "DeploymentPlan [deploymentId=" + deploymentId + ", title=" + title + ", planDate=" + planDate
+				+ ", comment=" + comment + "]";
 	}
+
+	
 	
 	
 

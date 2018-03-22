@@ -57,8 +57,11 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 		Session currentSession=sessionFactory.getCurrentSession();
 		//delete query
 		Query deleteQuery=currentSession.createQuery("delete from Application where Application_Id=:appId");
+		//Query deleteQuery2=currentSession.createQuery("delete from DeploymentPlan where Application_Id=:appId");
 		deleteQuery.setParameter("appId", appId);
+		//deleteQuery2.setParameter("appId", appId);
 		deleteQuery.executeUpdate();
+		//deleteQuery2.executeUpdate();
 	}
 
 }

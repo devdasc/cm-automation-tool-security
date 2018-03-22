@@ -24,17 +24,16 @@
 	</p>
 	<hr>
 	 
-	<security:authorize access="hasRole('CMA')">
+	<security:authorize access="hasAnyRole('CMA','QA','TSA')">
 		<!-- Add link to point to Leaders..this is for the managers	 -->
 		<p>
-			<a href="${pageContext.request.contextPath}/cma">CMA</a> (only for CMA)
+			<a href="${pageContext.request.contextPath}/cma/defect/list">Defect Fix Detail</a>
 		</p>
 	</security:authorize>
 	<security:authorize access="hasRole('ADMIN')">
 		<!-- Add link to the Admins..this is for the Admin people -->
 		<p>
-			<a href="${pageContext.request.contextPath}/admin/app/list">IT systems
-				Meetings</a> (only for admin people)
+			<a href="${pageContext.request.contextPath}/admin/app/list">Applications</a>
 		</p>
 		<hr>
 	</security:authorize>
