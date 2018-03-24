@@ -21,51 +21,51 @@ public class DefectFixDetail {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Defect_Id")
-	private int defect_id;
+	@Column(name="defect_Id")
+	private int defect_Id;
 	
-	@Column(name="Title")
+	@Column(name="title")
 	private String title;
 	
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinColumn(name="Application_Id")
+	@JoinColumn(name="application_Id")
 	private Application application;
 	
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinColumn(name="Vendor_Id")
+	@JoinColumn(name="vendor_Id")
 	private Vendor vendor;
 	
-	@Column(name="DefectCreationDate")
+	@Column(name="defectCreationDate")
 	@Temporal(TemporalType.DATE)
-	private Date defectCreationdate;
+	private Date defectCreationDate;
 	
-	@Column(name="Description")
+	@Column(name="description")
 	@Lob
 	private String description;
 	
-	@Column(name="DependentDefect_Id")
+	@Column(name="dependentDefect_Id")
 	private int dependentDefect_Id;
 	
-	@Column(name="Status")
+	@Column(name="status")
 	private int status;
 	
-	@Column(name="FixRecieveDate")
+	@Column(name="fixRecieveDate")
 	@Temporal(TemporalType.DATE)
-	private Date fixReceivedate;
+	private Date fixRecieveDate;
 	
-	@Column(name="ImpactedComponent")
+	@Column(name="impactedComponent")
 	private String impactedComponent;
 	
 	@Column(name="deploymentPackageLocation")
 	private String deploymentPackageLocation;/*--*/
 	
-	@Column(name="IsTestCaseprovided")
-	private int isTestcaseprovided;
+	@Column(name="isTestCaseprovided")
+	private int isTestCaseprovided;
 	
-	@Column(name="IsDeploymentInstructionProvided")
+	@Column(name="isDeploymentInstructionProvided")
 	private int isDeploymentInstructionProvided;
 	
-	@Column(name="ReviewDate")
+	@Column(name="reviewDate")
 	@Temporal(TemporalType.DATE)
 	private Date reviewDate;
 	
@@ -73,35 +73,33 @@ public class DefectFixDetail {
 		
 	}
 	
-
-	public DefectFixDetail(int defect_id, String title, Application application, Vendor vendor, Date defectCreationdate,
-			String description, int dependentDefect_Id, int status, Date fixReceivedate, String impactedComponent,
-			String deploymentPackageLocation, int isTestcaseprovided, int isDeploymentInstructionProvided,
+	public DefectFixDetail(int defect_Id, String title, Application application, Vendor vendor, Date defectCreationDate,
+			String description, int dependentDefect_Id, int status, Date fixRecieveDate, String impactedComponent,
+			String deploymentPackageLocation, int isTestCaseprovided, int isDeploymentInstructionProvided,
 			Date reviewDate) {
 		
-		this.defect_id = defect_id;
+		this.defect_Id = defect_Id;
 		this.title = title;
 		this.application = application;
 		this.vendor = vendor;
-		this.defectCreationdate = defectCreationdate;
+		this.defectCreationDate = defectCreationDate;
 		this.description = description;
 		this.dependentDefect_Id = dependentDefect_Id;
 		this.status = status;
-		this.fixReceivedate = fixReceivedate;
+		this.fixRecieveDate = fixRecieveDate;
 		this.impactedComponent = impactedComponent;
 		this.deploymentPackageLocation = deploymentPackageLocation;
-		this.isTestcaseprovided = isTestcaseprovided;
+		this.isTestCaseprovided = isTestCaseprovided;
 		this.isDeploymentInstructionProvided = isDeploymentInstructionProvided;
 		this.reviewDate = reviewDate;
 	}
 
-
-	public int getDefect_id() {
-		return defect_id;
+	public int getDefect_Id() {
+		return defect_Id;
 	}
 
-	public void setDefect_id(int defect_id) {
-		this.defect_id = defect_id;
+	public void setDefect_Id(int defect_Id) {
+		this.defect_Id = defect_Id;
 	}
 
 	public String getTitle() {
@@ -128,12 +126,12 @@ public class DefectFixDetail {
 		this.vendor = vendor;
 	}
 
-	public Date getDefectCreationdate() {
-		return defectCreationdate;
+	public Date getDefectCreationDate() {
+		return defectCreationDate;
 	}
 
-	public void setDefectCreationdate(Date defectCreationdate) {
-		this.defectCreationdate = defectCreationdate;
+	public void setDefectCreationDate(Date defectCreationDate) {
+		this.defectCreationDate = defectCreationDate;
 	}
 
 	public String getDescription() {
@@ -160,12 +158,12 @@ public class DefectFixDetail {
 		this.status = status;
 	}
 
-	public Date getFixReceivedate() {
-		return fixReceivedate;
+	public Date getFixRecieveDate() {
+		return fixRecieveDate;
 	}
 
-	public void setFixReceivedate(Date fixReceivedate) {
-		this.fixReceivedate = fixReceivedate;
+	public void setFixRecieveDate(Date fixRecieveDate) {
+		this.fixRecieveDate = fixRecieveDate;
 	}
 
 	public String getImpactedComponent() {
@@ -184,12 +182,12 @@ public class DefectFixDetail {
 		this.deploymentPackageLocation = deploymentPackageLocation;
 	}
 
-	public int getIsTestcaseprovided() {
-		return isTestcaseprovided;
+	public int getIsTestCaseprovided() {
+		return isTestCaseprovided;
 	}
 
-	public void setIsTestcaseprovided(int isTestcaseprovided) {
-		this.isTestcaseprovided = isTestcaseprovided;
+	public void setIsTestCaseprovided(int isTestCaseprovided) {
+		this.isTestCaseprovided = isTestCaseprovided;
 	}
 
 	public int getIsDeploymentInstructionProvided() {
@@ -208,14 +206,13 @@ public class DefectFixDetail {
 		this.reviewDate = reviewDate;
 	}
 
-
 	@Override
 	public String toString() {
-		return "DefectFixDetail [defect_id=" + defect_id + ", title=" + title + ", application=" + application
-				+ ", vendor=" + vendor + ", defectCreationdate=" + defectCreationdate + ", description=" + description
-				+ ", dependentDefect_Id=" + dependentDefect_Id + ", status=" + status + ", fixReceivedate="
-				+ fixReceivedate + ", impactedComponent=" + impactedComponent + ", deploymentPackageLocation="
-				+ deploymentPackageLocation + ", isTestcaseprovided=" + isTestcaseprovided
+		return "DefectFixDetail [defect_Id=" + defect_Id + ", title=" + title + ", application=" + application
+				+ ", vendor=" + vendor + ", defectCreationDate=" + defectCreationDate + ", description=" + description
+				+ ", dependentDefect_Id=" + dependentDefect_Id + ", status=" + status + ", fixRecieveDate="
+				+ fixRecieveDate + ", impactedComponent=" + impactedComponent + ", deploymentPackageLocation="
+				+ deploymentPackageLocation + ", isTestCaseprovided=" + isTestCaseprovided
 				+ ", isDeploymentInstructionProvided=" + isDeploymentInstructionProvided + ", reviewDate=" + reviewDate
 				+ "]";
 	}

@@ -28,23 +28,23 @@ public class DeploymentPlan {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Deployment_Id")
-	private int deploymentId;
+	@Column(name="deployment_Id")
+	private int deployment_Id;
 	
-	@Column(name="Title")
+	@Column(name="title")
 	private String title;
 	
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="Application_Id")
+	@JoinColumn(name="application_Id")
 	private Application application;
 	
-	@Column(name="PlanDate")
+	@Column(name="planDate")
 	@Temporal(TemporalType.DATE)
 	private Date planDate;
 	
 	@Lob
-	@Column(name="Comment")
+	@Column(name="comment")
 	private String comment;
 	
 	public DeploymentPlan() {
@@ -54,7 +54,7 @@ public class DeploymentPlan {
 
 	public DeploymentPlan(int deploymentId, String title, Application application, Date planDate, String comment) {
 		
-		this.deploymentId = deploymentId;
+		this.deployment_Id = deploymentId;
 		this.title = title;
 		this.application = application;
 		this.planDate = planDate;
@@ -65,11 +65,11 @@ public class DeploymentPlan {
 
 
 	public int getDeploymentId() {
-		return deploymentId;
+		return deployment_Id;
 	}
 
 	public void setDeploymentId(int deploymentId) {
-		this.deploymentId = deploymentId;
+		this.deployment_Id = deploymentId;
 	}
 
 	public String getTitle() {
@@ -110,7 +110,7 @@ public class DeploymentPlan {
 
 	@Override
 	public String toString() {
-		return "DeploymentPlan [deploymentId=" + deploymentId + ", title=" + title + ", planDate=" + planDate
+		return "DeploymentPlan [deployment_Id=" + deployment_Id + ", title=" + title + ", planDate=" + planDate
 				+ ", comment=" + comment + "]";
 	}
 

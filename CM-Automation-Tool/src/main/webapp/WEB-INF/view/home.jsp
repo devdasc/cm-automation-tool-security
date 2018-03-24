@@ -28,7 +28,29 @@
 		<!-- Add link to point to Leaders..this is for the managers	 -->
 		<p>
 			<a href="${pageContext.request.contextPath}/cma/defect/list">Defect Fix Detail</a>
+			<br><br>
+			<a href="${pageContext.request.contextPath}/cma/deployment/plan">Deployment Plan</a>
+			<br><br>
+			<a href="${pageContext.request.contextPath}/cma/deployment/list">Deployment List</a>
+			<br><br>		
 		</p>
+	</security:authorize>
+	<security:authorize access="hasRole('TSA')">
+		<!-- Add link to the Admins..this is for the Admin people -->
+		<p>			
+			<a href="${pageContext.request.contextPath}/tsa/checkList/list">Deployment CheckList</a>
+			<br><br>
+		</p>
+		<hr>
+	</security:authorize>
+	<security:authorize access="hasRole('QA')">
+		<!-- Add link to the Admins..this is for the Admin people -->
+		<p>
+			<br><br>
+			<a href="${pageContext.request.contextPath}/qa/checkList/list">QA CheckList</a>
+			<br><br>
+		</p>
+		<hr>
 	</security:authorize>
 	<security:authorize access="hasRole('ADMIN')">
 		<!-- Add link to the Admins..this is for the Admin people -->

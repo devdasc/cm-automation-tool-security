@@ -8,4 +8,8 @@ public interface DefectFixDetailDAO {
 
 	List<DefectFixDetail> getDefectList();
 
+	public void saveDefectFixDetail(DefectFixDetail theDefectFixDetail);
+
+	public DefectFixDetail getDefectFixDetail(int defect_Id);
+
 }

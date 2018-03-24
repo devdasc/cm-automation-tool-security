@@ -8,17 +8,36 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cmautomation.spring.dao.DefectFixDetailDAO;
 import com.cmautomation.spring.entity.DefectFixDetail;
+
 @Service
 public class DefectFixDetailServiceImpl implements DefectFixDetailService {
 
 	@Autowired
 	private DefectFixDetailDAO defectFixDetailDAO;
 	
+	// to get the list of defects
 	@Override
 	@Transactional
 	public List<DefectFixDetail> getDefectList() {
 		
 		return defectFixDetailDAO.getDefectList();
+	}
+
+	// save a new entry
+	@Override
+	@Transactional
+	public void saveDefectFixDetail(DefectFixDetail theDefectFixDetail) {
+		
+		defectFixDetailDAO.saveDefectFixDetail(theDefectFixDetail);
+		
+	}
+
+	// get the defect fix detail back to the form for update
+	@Override
+	@Transactional
+	public DefectFixDetail getDefectFixDetail(int defect_Id) {
+		
+		return defectFixDetailDAO.getDefectFixDetail(defect_Id);
 	}
 
 }

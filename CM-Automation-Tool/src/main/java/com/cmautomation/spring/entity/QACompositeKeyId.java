@@ -9,36 +9,36 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class QACompositeKeyId implements Serializable{
 	
-	@Column(name="Deployment_Id")
-	private int deployment_id;
+	@Column(name="deployment_Id")
+	private int deployment_Id;
 	
-	@Column(name="Environment_Id")
-	private int environment_id;
+	@Column(name="environment_Id")
+	private int environment_Id;
 	
 	public QACompositeKeyId() {
 		
 	}
 
 	public int getDeployment_id() {
-		return deployment_id;
+		return deployment_Id;
 	}
 
 	public void setDeployment_id(int deployment_id) {
-		this.deployment_id = deployment_id;
+		this.deployment_Id = deployment_id;
 	}
 
 	public int getEnvironment_id() {
-		return environment_id;
+		return environment_Id;
 	}
 
 	public void setEnvironment_id(int environment_id) {
-		this.environment_id = environment_id;
+		this.environment_Id = environment_id;
 	}
 
 	public QACompositeKeyId(int deployment_id, int environment_id) {
 		super();
-		this.deployment_id = deployment_id;
-		this.environment_id = environment_id;
+		this.deployment_Id = deployment_id;
+		this.environment_Id = environment_id;
 	}
 	@Override
     public boolean equals(Object o) {

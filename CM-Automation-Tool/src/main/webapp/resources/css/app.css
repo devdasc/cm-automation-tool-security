@@ -1,0 +1,25 @@
+.left
+{
+    
+    float:left;
+    height: 535px;
+    width: 15%;
+    border-right: 1px solid;
+}
+
+.centre
+{
+    margin-top:3%;
+    float: right;
+    margin-right: 15%;
+}
+
+
+
+.left_Defect_Fix
+{
+    float:left;
+    height: 900px;
+    width: 15%;
+    border-right: 1px solid;
+}

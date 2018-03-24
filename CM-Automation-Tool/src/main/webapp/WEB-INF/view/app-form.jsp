@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Add Applicationr</title>
+	<title>Add Application</title>
 
 	<link type="text/css"
 		  rel="stylesheet"
@@ -26,17 +26,17 @@
 		<form:form action="saveApplication" modelAttribute="application" method="POST">
 
 			<!-- need to associate this data with application id -->
-			<form:hidden path="appId" />
+			<form:hidden path="application_Id" />
 					
 			<table>
 				<tbody>
 					<tr>
 						<td><label>Application ID:</label></td>
-						<td><form:input path="appId" /></td>
+						<td><form:input path="application_Id" /></td>
 					</tr>
 					<tr>
 						<td><label>Application Name:</label></td>
-						<td><form:input path="appName" /></td>
+						<td><form:input path="applicationName" /></td>
 					</tr>
 					<tr>
 						<td><label></label></td>

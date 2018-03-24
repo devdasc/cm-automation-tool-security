@@ -15,6 +15,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Autowired
 	private ApplicationDAO applicationDAO;
 	
+	// get the list of applications
 	@Override
 	@Transactional
 	public List<Application> getApplications() {
@@ -22,6 +23,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return applicationDAO.getApplications();
 	}
 
+	// saves the new application record to the database
 	@Override
 	@Transactional
 	public void saveApplication(Application application) {
@@ -30,6 +32,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		
 	}
 
+	//get back the application back to the app-form page for update
 	@Override
 	@Transactional
 	public Application getApplication(int appId) {
@@ -37,6 +40,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		 return applicationDAO.getApplication(appId);
 	}
 
+	// delete the application
 	@Override
 	@Transactional
 	public void deleteApplication(int appId) {

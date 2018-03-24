@@ -19,10 +19,10 @@ public class Vendor {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Vendor_Id")
-	private int vendorId;
+	@Column(name="vendor_Id")
+	private int vendor_Id;
 	
-	@Column(name="VendorName")
+	@Column(name="vendorName")
 	private String vendorName;
 	
 
@@ -33,13 +33,14 @@ public class Vendor {
 		
 	}
 
-	
-	public Vendor(int vendorId, String vendorName, List<DefectFixDetail> defectFixDetail) {
+
+	public Vendor(int vendor_Id, String vendorName, List<DefectFixDetail> defectFixDetail) {
 		
-		this.vendorId = vendorId;
+		this.vendor_Id = vendor_Id;
 		this.vendorName = vendorName;
 		this.defectFixDetail = defectFixDetail;
 	}
+
 
 	public void addDefectFixDetail(DefectFixDetail theDefectFixDetail) {
 		if(defectFixDetail==null) {
@@ -47,22 +48,25 @@ public class Vendor {
 			}
 		defectFixDetail.add(theDefectFixDetail);
 	}
-		
-	public int getVendorId() {
-		return vendorId;
+	public int getVendor_Id() {
+		return vendor_Id;
 	}
 
-	public void setVendorId(int vendorId) {
-		this.vendorId = vendorId;
+
+	public void setVendor_Id(int vendor_Id) {
+		this.vendor_Id = vendor_Id;
 	}
+
 
 	public String getVendorName() {
 		return vendorName;
 	}
 
+
 	public void setVendorName(String vendorName) {
 		this.vendorName = vendorName;
 	}
+
 
 	public List<DefectFixDetail> getDefectFixDetail() {
 		return defectFixDetail;
@@ -74,7 +78,7 @@ public class Vendor {
 
 	@Override
 	public String toString() {
-		return "Vendor [vendorid=" + vendorId + ", vendorName=" + vendorName + "]";
+		return "Vendor [vendorid=" + vendor_Id + ", vendorName=" + vendorName + "]";
 	}
 	
 

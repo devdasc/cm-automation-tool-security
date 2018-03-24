@@ -21,11 +21,11 @@ public class Application {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Application_Id")
-	private int appId;
+	@Column(name = "application_Id")
+	private int application_Id;
 
-	@Column(name = "ApplicationName")
-	private String appName;
+	@Column(name = "applicationName")
+	private String applicationName;
 	
 	// cascade=
 	// {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
@@ -52,31 +52,26 @@ public class Application {
 		defectFixDetail.add(theDefectFixDetail);
 	}
 	
-	public Application(int appId, String appName, List<DeploymentPlan> deploymentPlan,
+	public Application(int application_Id, String applicationName, List<DeploymentPlan> deploymentPlan,
 			List<DefectFixDetail> defectFixDetail) {
-		
-		this.appId = appId;
-		this.appName = appName;
+		super();
+		this.application_Id = application_Id;
+		this.applicationName = applicationName;
 		this.deploymentPlan = deploymentPlan;
 		this.defectFixDetail = defectFixDetail;
 	}
-	public int getAppId() {
-		return appId;
+	public int getApplication_Id() {
+		return application_Id;
 	}
-
-	public void setAppId(int appId) {
-		this.appId = appId;
+	public void setApplication_Id(int application_Id) {
+		this.application_Id = application_Id;
 	}
-
-	public String getAppName() {
-		return appName;
+	public String getApplicationName() {
+		return applicationName;
 	}
-
-	public void setAppName(String appName) {
-		this.appName = appName;
+	public void setApplicationName(String applicationName) {
+		this.applicationName = applicationName;
 	}
-
-
 	public List<DefectFixDetail> getDefectFixDetail() {
 		return defectFixDetail;
 	}
@@ -91,7 +86,7 @@ public class Application {
 	}
 	@Override
 	public String toString() {
-		return "Application [appId=" + appId + ", appName=" + appName + "]";
+		return "Application [application_Id=" + application_Id + ", applicationName=" + applicationName + "]";
 	}
 
 }

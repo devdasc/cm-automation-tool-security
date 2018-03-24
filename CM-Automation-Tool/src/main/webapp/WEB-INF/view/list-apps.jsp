@@ -60,17 +60,17 @@
 
 					<!-- construct an "update" link with application id -->
 					<c:url var="updateLink" value="/admin/app/appUpdateForm">
-						<c:param name="applicationId" value="${tempApplication.appId}" />
+						<c:param name="applicationId" value="${tempApplication.application_Id}" />
 					</c:url>
 
 					<!-- construct an "delete" link with application id -->
 					<c:url var="deleteLink" value="/admin/app/delete">
-						<c:param name="applicationId" value="${tempApplication.appId}" />
+						<c:param name="applicationId" value="${tempApplication.application_Id}" />
 					</c:url>
 
 					<tr>
-						<td>${tempApplication.appId}</td>
-						<td>${tempApplication.appName}</td>
+						<td>${tempApplication.application_Id}</td>
+						<td>${tempApplication.applicationName}</td>
 
 						<security:authorize access="hasRole('ADMIN')">
 

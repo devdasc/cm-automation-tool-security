@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 //	private DeploymentEnvironment deploymentEnvironment;
 //	*/
 //	
-//	@Column(name="TestDate")
+//	@Column(name="testDate")
 //	@Temporal(TemporalType.DATE)
 //	private Date testDate;
 //	
@@ -30,10 +30,10 @@ import javax.persistence.TemporalType;
 //	private int testStatus;
 //	
 //	@Lob
-//	@Column(name="Comment")
+//	@Column(name="comment")
 //	private String comment;
 //	
-//	@Column(name="TestedBy")
+//	@Column(name="testedBy")
 //	private int testedBy;
 //	
 //	
