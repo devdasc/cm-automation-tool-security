@@ -22,38 +22,19 @@
 
 </head>
 <body>
-	<h2>Defect Fix Detail Form</h2>
-	<hr>
-	<p>
-		User:
-		<security:authentication property="principal.username" />
-		, Role(s):
-		<security:authentication property="principal.authorities" />
-	</p>
+<jsp:include page="/WEB-INF/view/header.jsp" />
+	<h2>Defect Fix Detail</h2>
 
-	<p></p>
-	<security:authorize access="hasRole('CMA')">
-
-		<!--new button: Add Application ----------------------->
-		<input type="button" value="Add Defect"
-			onclick="window.location.href='defectAddForm'; return false;"
-			class="add-button" />
-	</security:authorize>
 	<!-- form---------------------------------------------------->
 	<div class="container">
 		<div class="row">
 			<div class=" col-md-12  table table-bordered">
-				<div class="left_Defect_Fix">
-					<a href="${pageContext.request.contextPath}/">Home</a>
-					<h3>Menu</h3>
-				</div>
+			
 				<div class="centre">
 					<form:form method="POST" action="saveDefectFixDetail" modelAttribute="theDefectFixDetail">
 						<!-- associate this data with Defect id -->
 						<form:hidden path="defect_Id" />
 						<div class="col-md-12">
-							Defect Id :
-							<form:input path="defect_Id" />
 							Title :
 							<form:input path="title" placeholder="Defect Title" />
 						</div>
@@ -64,6 +45,7 @@
 								<form:option value="1">APP1</form:option>
 								<form:option value="2">APP2</form:option>
 							</form:select>
+							
 							Vendor :
 							<form:select path="vendor.vendor_Id">
 								<form:option value="1">IBM</form:option>
@@ -132,14 +114,7 @@
 								path="description" />
 						</div>
 						<br>
-						<!-- <div class="col-md-12">
-						Relevant Document : <input type="file" name="Relevant Document"
-							id="cm_automation_Defect_Relevant_Document"
-							accept="file_extension|.doc/*|.pdf/*|.txt/*"> <br />
-
-						<button class="btn btn-primary btn-sm">Upload</button>
-
-					</div> -->
+					
 						<div class="col-md-offset-3">
 							<input type="submit" value="Save" />
 
@@ -147,8 +122,7 @@
 					</form:form>
 				</div>
 				<!-- centre -->
-			</div>
-			<!-- col-md-12  table table-bordered -->
+		
 		</div>
 		<!-- row -->
 	</div>

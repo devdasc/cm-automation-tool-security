@@ -9,30 +9,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>CM Automation systems home page</title>
-<link type="text/css"
-		  rel="stylesheet"
-		  href="${pageContext.request.contextPath}/resources/css/style.css">
 
-	<link type="text/css"
-		  rel="stylesheet"
-		  href="${pageContext.request.contextPath}/resources/css/add-style.css">
+		  <link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/app.css">
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 	<h2>CM Automation systems home page</h2>
-	<hr>
-	<p>Hi This is the Systems home page</p>
-	<hr>
-	<a href="${pageContext.request.contextPath}/">Back to home page</a>
+	
 	<!-- table to show application list -->
 	<div id="container">
 
 		<div id="content">
-			<p>
-				User:
-				<security:authentication property="principal.username" />
-				, Role(s):
-				<security:authentication property="principal.authorities" />
-			</p>
+			
 			<security:authorize access="hasRole('ADMIN')">
 
 				<!--new button: Add Application ----------------------->						
@@ -41,7 +36,8 @@
 					class="add-button" />
 			</security:authorize>
 			<!--  add our html table here --------------------------------->
-			<table>
+				<div class="col-md-12">
+					<table class="table table-bordered table-striped table-hover">
 				<tr>
 					<th>Application Id</th>
 					<th>Application Name</th>
@@ -102,6 +98,8 @@
 		<input type="submit" value="Logout" class="add-button" />
 	
 	</form:form>
+	</div>
+	
 
 </body>
 </html>

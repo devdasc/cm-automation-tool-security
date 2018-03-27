@@ -12,8 +12,10 @@
 	<link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/add-style.css">
+		  
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 	<div id="wrapper">
 		<div id="header">
 			<h2>Application</h2>
@@ -33,10 +35,11 @@
 					<tr>
 						<td><label>Application ID:</label></td>
 						<td><form:input path="application_Id" /></td>
-					</tr>
+					</tr> 
 					<tr>
 						<td><label>Application Name:</label></td>
-						<td><form:input path="applicationName" /></td>
+						<td><form:input path="applicationName" required="true"/></td>
+						
 					</tr>
 					<tr>
 						<td><label></label></td>

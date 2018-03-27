@@ -19,6 +19,7 @@ public class DefectFixDetailDAOImpl implements DefectFixDetailDAO {
 
 	@Override
 	public List<DefectFixDetail> getDefectList() {
+		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 
@@ -49,6 +50,23 @@ public class DefectFixDetailDAOImpl implements DefectFixDetailDAO {
 		DefectFixDetail theDefectFixDetail=currentSession.get(DefectFixDetail.class,defect_Id );
 				
 		return theDefectFixDetail;
+	}
+
+	//delete
+	@Override
+	public void deleteDefectFixDetail(int defectId) {
+		
+		// get the current hibernate session
+		Session currentSession=sessionFactory.getCurrentSession();
+		//delete query
+		Query deleteQuery=currentSession.createQuery("delete from DefectFixDetail where defect_Id=:defectId");
+		
+		deleteQuery.setParameter("defectId", defectId);
+		
+		deleteQuery.executeUpdate();
+		
+	
+		
 	}
 	
 

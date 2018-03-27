@@ -7,10 +7,11 @@
 <title>CM Automation leaders home page</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 <h2>CM Automation leaders home page</h2>
 <hr>
 <p>Hello from CM Automation Leadership page</p>
 <hr>
-<a href="${pageContext.request.contextPath}/">Back to home page</a>
+
 </body>
 </html>

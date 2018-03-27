@@ -10,13 +10,9 @@
 <title>Deployment CheckList</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 	<h2>Deployment Checklist Page</h2>
-	<p>
-		User:
-		<security:authentication property="principal.username" />
-		, Role(s):
-		<security:authentication property="principal.authorities" />
-	</p>
+	
 	<!-- Add a logout button -->
 	<form:form action="${pageContext.request.contextPath}/logout" 
 			   method="POST">
@@ -24,6 +20,6 @@
 		<input type="submit" value="Logout" class="add-button" />
 	
 	</form:form>
-	<p><a href="${pageContext.request.contextPath}/">Home</a></p>
+
 </body>
 </html>

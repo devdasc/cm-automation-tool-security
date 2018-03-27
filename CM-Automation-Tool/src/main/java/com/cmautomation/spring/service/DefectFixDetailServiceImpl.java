@@ -35,9 +35,17 @@ public class DefectFixDetailServiceImpl implements DefectFixDetailService {
 	// get the defect fix detail back to the form for update
 	@Override
 	@Transactional
-	public DefectFixDetail getDefectFixDetail(int defect_Id) {
+	public DefectFixDetail getDefectFixDetail(int defectId) {
 		
-		return defectFixDetailDAO.getDefectFixDetail(defect_Id);
+		return defectFixDetailDAO.getDefectFixDetail(defectId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteDefectFixDetail(int defectId) {
+		
+		defectFixDetailDAO.deleteDefectFixDetail(defectId);
+		
 	}
 
 }

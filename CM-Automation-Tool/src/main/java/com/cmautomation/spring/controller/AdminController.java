@@ -2,9 +2,12 @@ package com.cmautomation.spring.controller;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +40,7 @@ public class AdminController {
 	public String showAppAddForm(Model theAppModel) {
 		
 		Application application=new Application();
+		
 		theAppModel.addAttribute("application",application);
 		
 		return "app-form";
@@ -47,8 +51,9 @@ public class AdminController {
 	public String saveApplication(@ModelAttribute("application") Application application) {
 		
 		applicationService.saveApplication(application);
-		
-		return "redirect:/admin/app/list";
+
+			return "redirect:/admin/app/list";
+	
 	}
 	//this method updates the application
 	@GetMapping("/app/appUpdateForm")
