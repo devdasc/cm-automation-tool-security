@@ -7,8 +7,9 @@
 <title>Access Denied</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 <h2>Access Denied - You are not authorised to access to this resource</h2>
 <hr>
-<a href="${pageContext.request.contextPath }/">Back to home page</a>
+
 </body>
 </html>

@@ -11,56 +11,9 @@
 <title>CM Automation Home page</title>
 </head>
 <body>
-	<h2>CM Automation Home page</h2>
-	<hr>
+<jsp:include page="/WEB-INF/view/header.jsp" />
 	<h3>Welcome to CM Automation Web App</h3>
-	<hr>
-	<!-- Display user and roles -->
-	<p>
-		User :
-		<security:authentication property="principal.username" /><br> 
-		
-		<security:authentication property="principal.authorities" />
-	</p>
-	<hr>
-	 
-	<security:authorize access="hasAnyRole('CMA','QA','TSA')">
-		<!-- Add link to point to Leaders..this is for the managers	 -->
-		<p>
-			<a href="${pageContext.request.contextPath}/cma/defect/list">Defect Fix Detail</a>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/cma/deployment/plan">Deployment Plan</a>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/cma/deployment/list">Deployment List</a>
-			<br><br>		
-		</p>
-	</security:authorize>
-	<security:authorize access="hasRole('TSA')">
-		<!-- Add link to the Admins..this is for the Admin people -->
-		<p>			
-			<a href="${pageContext.request.contextPath}/tsa/checkList/list">Deployment CheckList</a>
-			<br><br>
-		</p>
-		<hr>
-	</security:authorize>
-	<security:authorize access="hasRole('QA')">
-		<!-- Add link to the Admins..this is for the Admin people -->
-		<p>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/qa/checkList/list">QA CheckList</a>
-			<br><br>
-		</p>
-		<hr>
-	</security:authorize>
-	<security:authorize access="hasRole('ADMIN')">
-		<!-- Add link to the Admins..this is for the Admin people -->
-		<p>
-			<a href="${pageContext.request.contextPath}/admin/app/list">Applications</a>
-		</p>
-		<hr>
-	</security:authorize>
-
-	<!-- Adding a logout form -->
+	
 	<form:form action="${pageContext.request.contextPath}/logout"
 		method="POST">
 		<input type="submit" value="Logout" />

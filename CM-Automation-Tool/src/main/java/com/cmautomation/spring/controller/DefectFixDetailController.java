@@ -22,8 +22,8 @@ public class DefectFixDetailController {
 	private DefectFixDetailService defectFixDetailService;
 	
 	//render defect list
-	@GetMapping("/defect/list")
-	private String listDefectFixDetail(Model theDefectFixDetailModel) {
+	@GetMapping("/defect/list")//works fine
+	private String getDefectFixList(Model theDefectFixDetailModel) {
 		
 		List<DefectFixDetail> theDefectFixDetail=defectFixDetailService.getDefectList();
 		
@@ -32,7 +32,7 @@ public class DefectFixDetailController {
 		return "list-defectFixDetail";
 	}
 	//render the defectAddForm
-	@GetMapping("/defect/defectAddForm")
+	@GetMapping("/defect/defectAddForm")//works fine
 	public String showDefectAddForm(Model theDefectFixDetailModel) {
 		
 		DefectFixDetail theDefectFixDetail=new DefectFixDetail();
@@ -42,22 +42,37 @@ public class DefectFixDetailController {
 		return "defect-form";
 	}
 	// saves a new record in the defect fix table
-	@PostMapping("/defect/saveDefectFixDetail")
-	public String saveDefectFixDetail(@ModelAttribute("theDefectFixDetail") DefectFixDetail theDefectFixDetail) {
+	@PostMapping("/defect/saveDefectFixDetail")//works fine
+	public String saveDefectFixDetail(@ModelAttribute("theDefectFixDetail") DefectFixDetail defectFixDetail) {
 		
-		defectFixDetailService.saveDefectFixDetail(theDefectFixDetail);
+		defectFixDetailService.saveDefectFixDetail(defectFixDetail);
 		
 		return "redirect:/cma/defect/list";
 	}
 	//update defect
 	@GetMapping("/defect/defectUpdateForm")
-	public String defectUpdateForm(@RequestParam("defect_Id") int defect_Id, Model theDefectFixDetailModel) {
+	public String defectUpdateForm(@RequestParam("defectId") int defect_Id, Model theDefectFixDetailModel) {
+		try {
+			DefectFixDetail theDefectFixDetail=defectFixDetailService.getDefectFixDetail(defect_Id);
+			
+			theDefectFixDetailModel.addAttribute("theDefectFixDetail",theDefectFixDetail);
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
 		
-		DefectFixDetail theDefectFixDetail=defectFixDetailService.getDefectFixDetail(defect_Id);
-		
-		theDefectFixDetailModel.addAttribute("theDefectFixDetail",theDefectFixDetail);
 		
 		return "defect-form";
 	}
+	//delete defect fix detail
+	@GetMapping("/defect/delete")//works fine
+	public String deleteDefectForm(@RequestParam("defectId") int defect_Id) {
+		
+		defectFixDetailService.deleteDefectFixDetail(defect_Id);
+		
+		return "redirect:/cma/defect/list";
+		
+	}
+	
 
 }

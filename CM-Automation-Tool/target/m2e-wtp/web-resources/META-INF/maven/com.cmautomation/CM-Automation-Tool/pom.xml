@@ -97,7 +97,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-
+		
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>

@@ -25,18 +25,14 @@
 
 </head>
 <body>
-	<h2>CM Automation Defect Fix Detail Page</h2>
-	<hr>
-	<p>
-		User:
-		<security:authentication property="principal.username" />
-		, Role(s):
-		<security:authentication property="principal.authorities" />
-	</p>
+
+<jsp:include page="/WEB-INF/view/header.jsp" />
+
+
 
 	<!-- table to show Defect list -->
 	<div class="container">
-	<a href="${pageContext.request.contextPath}/">Home</a>
+	
 		<div class=" col-md-12 table table-bordered">
 			<!-- <div class="left">
 				<h3 style="margin-top: 10px;">Menu</h3>
@@ -55,7 +51,8 @@
 							<%-- Only show "Action" column for CMA --%>
 							<security:authorize access="hasRole('CMA')">
 
-								<th class="text-center">Action</th>
+								<th class="text-center">Update</th>
+								<th class="text-center">Delete</th>
 
 							</security:authorize>
 
@@ -66,12 +63,12 @@
 
 							<!-- construct an "update" link with application id -->
 							<c:url var="updateLink" value="/cma/defect/defectUpdateForm">
-								<c:param name="defect_Id" value="${tempDefectList.defect_Id}" />
+								<c:param name="defectId" value="${tempDefectList.defect_Id}" />
 							</c:url>
 
 							<!-- construct an "delete" link with application id -->
 							<c:url var="deleteLink" value="/cma/defect/delete">
-								<c:param name="defect_Id" value="${tempDefectList.defect_Id}" />
+								<c:param name="defectId" value="${tempDefectList.defect_Id}" />
 							</c:url>
 
 							<tr>
@@ -85,7 +82,11 @@
 									<td><security:authorize access="hasRole('CMA')">
 											<!-- display the update link -->
 											<a href="${updateLink}">Update</a>
-										</security:authorize> <security:authorize access="hasRole('CMA')">
+										</security:authorize> 
+										
+										</td>
+										<td>
+										<security:authorize access="hasRole('CMA')">
 											<a href="${deleteLink}"
 												onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 										</security:authorize></td>
@@ -108,19 +109,10 @@
 			</div>
 			<!-- container -->
 			<p></p>
-			<security:authorize access="hasRole('CMA')">
-
-				<!--new button: Add Application ----------------------->
-				<input type="button" value="Add Defect"
-					onclick="window.location.href='defectAddForm'; return false;"
-					class="add-button" />
-			</security:authorize>
+			
 			<p></p>
-			<form:form action="${pageContext.request.contextPath}/logout"
-				method="POST">
-
+			<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 				<input type="submit" value="Logout" class="add-button" />
-
 			</form:form>
 
 			<!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->

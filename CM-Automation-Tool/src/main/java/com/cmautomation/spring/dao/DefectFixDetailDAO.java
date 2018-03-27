@@ -10,6 +10,8 @@ public interface DefectFixDetailDAO {
 
 	public void saveDefectFixDetail(DefectFixDetail theDefectFixDetail);
 
-	public DefectFixDetail getDefectFixDetail(int defect_Id);
+	public DefectFixDetail getDefectFixDetail(int defectId);
+
+	public void deleteDefectFixDetail(int defectId);
 
 }

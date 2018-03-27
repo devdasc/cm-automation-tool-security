@@ -10,9 +10,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 @Entity
@@ -24,18 +27,22 @@ public class Application {
 	@Column(name = "application_Id")
 	private int application_Id;
 
+
 	@Column(name = "applicationName")
 	private String applicationName;
 	
 	// cascade=
 	// {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
 	//@JoinColumn(name="Application_Id")
-	@OneToMany(mappedBy="application",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="application",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<DeploymentPlan> deploymentPlan;
 	
 	@OneToMany(mappedBy="application",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<DefectFixDetail> defectFixDetail;
 	
+		
 	public Application() {
 
 	}

@@ -1,24 +1,27 @@
 package com.cmautomation.spring.entity;
 
-import java.util.ArrayList;
+
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -33,43 +36,79 @@ public class DeploymentPlan {
 	
 	@Column(name="title")
 	private String title;
-	
-	
-	@ManyToOne(cascade=CascadeType.ALL)
+		
+	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name="application_Id")
 	private Application application;
 	
 	@Column(name="planDate")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date planDate;
+	
+	@Column(name="dev_DeploymentDate")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date dev_DeploymentDate;
+	
+	@Column(name="sdf_DeploymentDate")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date sdf_DeploymentDate;
+	
+	@Column(name="ist1_DeploymentDate")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date ist1_DeploymentDate;
+	
+	@Column(name="ist2_DeploymentDate")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date ist2_DeploymentDate;
+	
+	@Column(name="prod_DeploymentDate")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date prod_DeploymentDate;
+	
 	
 	@Lob
 	@Column(name="comment")
 	private String comment;
 	
+	@ManyToMany(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinTable(name="deployement_defectlist",
+			   joinColumns=@JoinColumn(name="deployement_Id"),
+			   inverseJoinColumns=@JoinColumn(name="defect_Id"))
+	private List<DefectFixDetail> listDefectFixDetail;
+	
 	public DeploymentPlan() {
 		
 	}
 	
-
-	public DeploymentPlan(int deploymentId, String title, Application application, Date planDate, String comment) {
+	public DeploymentPlan(int deployment_Id, String title, Application application, Date planDate,
+			Date dev_DeploymentDate, Date sdf_DeploymentDate, Date ist1_DeploymentDate, Date ist2_DeploymentDate,
+			Date prod_DeploymentDate, String comment) {
 		
-		this.deployment_Id = deploymentId;
+		this.deployment_Id = deployment_Id;
 		this.title = title;
 		this.application = application;
 		this.planDate = planDate;
+		this.dev_DeploymentDate = dev_DeploymentDate;
+		this.sdf_DeploymentDate = sdf_DeploymentDate;
+		this.ist1_DeploymentDate = ist1_DeploymentDate;
+		this.ist2_DeploymentDate = ist2_DeploymentDate;
+		this.prod_DeploymentDate = prod_DeploymentDate;
 		this.comment = comment;
 	}
 
-
-
-
-	public int getDeploymentId() {
+	public int getDeployment_Id() {
 		return deployment_Id;
 	}
 
-	public void setDeploymentId(int deploymentId) {
-		this.deployment_Id = deploymentId;
+	public void setDeployment_Id(int deployment_Id) {
+		this.deployment_Id = deployment_Id;
 	}
 
 	public String getTitle() {
@@ -80,13 +119,60 @@ public class DeploymentPlan {
 		this.title = title;
 	}
 
-	
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+
 	public Date getPlanDate() {
 		return planDate;
 	}
 
 	public void setPlanDate(Date planDate) {
 		this.planDate = planDate;
+	}
+
+	public Date getDev_DeploymentDate() {
+		return dev_DeploymentDate;
+	}
+
+	public void setDev_DeploymentDate(Date dev_DeploymentDate) {
+		this.dev_DeploymentDate = dev_DeploymentDate;
+	}
+
+	public Date getSdf_DeploymentDate() {
+		return sdf_DeploymentDate;
+	}
+
+	public void setSdf_DeploymentDate(Date sdf_DeploymentDate) {
+		this.sdf_DeploymentDate = sdf_DeploymentDate;
+	}
+
+	public Date getIst1_DeploymentDate() {
+		return ist1_DeploymentDate;
+	}
+
+	public void setIst1_DeploymentDate(Date ist1_DeploymentDate) {
+		this.ist1_DeploymentDate = ist1_DeploymentDate;
+	}
+
+	public Date getIst2_DeploymentDate() {
+		return ist2_DeploymentDate;
+	}
+
+	public void setIst2_DeploymentDate(Date ist2_DeploymentDate) {
+		this.ist2_DeploymentDate = ist2_DeploymentDate;
+	}
+
+	public Date getProd_DeploymentDate() {
+		return prod_DeploymentDate;
+	}
+
+	public void setProd_DeploymentDate(Date prod_DeploymentDate) {
+		this.prod_DeploymentDate = prod_DeploymentDate;
 	}
 
 	public String getComment() {
@@ -96,26 +182,20 @@ public class DeploymentPlan {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
-
-	public Application getApplication() {
-		return application;
+	
+	public List<DefectFixDetail> getListDefectFixDetail() {
+		return listDefectFixDetail;
 	}
 
-
-	public void setApplication(Application application) {
-		this.application = application;
+	public void setListDefectFixDetail(List<DefectFixDetail> listDefectFixDetail) {
+		this.listDefectFixDetail = listDefectFixDetail;
 	}
-
 
 	@Override
 	public String toString() {
-		return "DeploymentPlan [deployment_Id=" + deployment_Id + ", title=" + title + ", planDate=" + planDate
-				+ ", comment=" + comment + "]";
+		return "DeploymentPlan [deployment_Id=" + deployment_Id + ", title=" + title + ", application=" + application
+				+ ", planDate=" + planDate + ", dev_DeploymentDate=" + dev_DeploymentDate + ", sdf_DeploymentDate="
+				+ sdf_DeploymentDate + ", ist1_DeploymentDate=" + ist1_DeploymentDate + ", ist2_DeploymentDate="
+				+ ist2_DeploymentDate + ", prod_DeploymentDate=" + prod_DeploymentDate + ", comment=" + comment + "]";
 	}
-
-	
-	
-	
-
 }
