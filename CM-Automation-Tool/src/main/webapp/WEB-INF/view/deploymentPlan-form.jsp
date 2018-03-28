@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -22,91 +23,97 @@
 
 
 <body>
-<jsp:include page="/WEB-INF/view/header.jsp" />
+	<jsp:include page="/WEB-INF/view/header.jsp" />
 	<h2>Deployment Plan Page</h2>
-	
-	
+
+
 	<!-- Add a logout button -->
-	
-		<div class="container">
-			<div class="row">
-				<div class=" col-md-12  table table-bordered">
+
+	<div class="container">
+		<div class="row">
+			<div class=" col-md-12  table table-bordered">
 				<div class="centre">
-					<form:form method="POST" action="saveDeploymentPlan" modelAttribute="deploymentPlanDetail">					
+					<form:form method="POST" action="saveDeploymentPlan"
+						modelAttribute="deploymentPlanDetail">
 						<form:hidden path="deployment_Id" />
-						
-						<div class="col-md-12">		
+
+						<div class="col-md-12">
 							Deployment Title :
-							<form:input path="title" placeholder="Deployment Title" />
+							<form:input path="title" placeholder="Deployment Title" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Application :
 							<form:select path="application.application_Id">
-								<option value="1">APP1</option>
-								<option value="2">APP2</option>
-								<option value="3">APP3</option>
+								<c:forEach var="tempApplication" items="${applications}">
+									<form:option value="${tempApplication.application_Id}">${tempApplication.applicationName}
+                					</form:option>
+								</c:forEach>
+							</form:select>
+						</div>
+						<br />
+						<div class="col-md-12">
+							Defect to Deploy :
+							<form:select path="listDefectFixDetail" multiple="true">
+								<c:forEach var="tempDefects" items="${listDefects}">
+									<form:option value="${tempDefects.defect_Id}">${tempDefects.defect_Id}</form:option>
+								</c:forEach>
 							</form:select>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Plan Date :
-							<form:input path="planDate" placeholder="yyyy/mm/dd" />
+							<form:input path="planDate" placeholder="yyyy/mm/dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Dev Deployment Date :
-							<form:input path="dev_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="dev_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							SDF Deployment Date :
-							<form:input path="sdf_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="sdf_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST1 Deployment Date :
-							<form:input path="ist1_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="ist1_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST2 Deployment Date :
-							<form:input path="ist2_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="ist2_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							PROD Deployment Date :
-							<form:input path="prod_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="prod_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Comment :
-							<form:textarea path="comment" class="form-control" rows="4" cols="50"/>
+							<form:textarea path="comment" class="form-control" rows="4"
+								cols="50" required="true"/>
 						</div>
-						<div class="col-md-12">
-							Defect to Deploy :
-							<select path="defect_Id"   id="defect_Id">
-								<option value="1">Defect 1</option>
-								<option value="2">Defect 2</option>
-							</select>
-						</div>
+
 						<br />
 						<div class="col-md-offset-3">
 							<input type="submit" value="Save" />
 
 						</div>
-				</form:form>
+					</form:form>
 				</div>
 			</div>
 		</div>
 		<div>
-			<form:form action="${pageContext.request.contextPath}/logout" 
-				   method="POST">
-			<input type="submit" value="Logout" class="add-button" />
-		
+			<form:form action="${pageContext.request.contextPath}/logout"
+				method="POST">
+				<input type="submit" value="Logout" class="add-button" />
+
 			</form:form>
-		</div>	   
-	</div>   
-	
+		</div>
+	</div>
+
 </body>
 </html>

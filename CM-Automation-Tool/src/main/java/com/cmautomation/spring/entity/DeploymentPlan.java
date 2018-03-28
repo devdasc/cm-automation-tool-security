@@ -1,6 +1,7 @@
 package com.cmautomation.spring.entity;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class DeploymentPlan {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="deployment_Id")
-	private int deployment_Id;
+	private Integer deployment_Id;
 	
 	@Column(name="title")
 	private String title;
@@ -71,7 +72,6 @@ public class DeploymentPlan {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date prod_DeploymentDate;
 	
-	
 	@Lob
 	@Column(name="comment")
 	private String comment;
@@ -83,14 +83,15 @@ public class DeploymentPlan {
 			   inverseJoinColumns=@JoinColumn(name="defect_Id"))
 	private List<DefectFixDetail> listDefectFixDetail;
 	
+	
 	public DeploymentPlan() {
 		
 	}
 	
-	public DeploymentPlan(int deployment_Id, String title, Application application, Date planDate,
+	public DeploymentPlan(Integer deployment_Id, String title, Application application, Date planDate,
 			Date dev_DeploymentDate, Date sdf_DeploymentDate, Date ist1_DeploymentDate, Date ist2_DeploymentDate,
-			Date prod_DeploymentDate, String comment) {
-		
+			Date prod_DeploymentDate, String comment, List<DefectFixDetail> listDefectFixDetail) {
+		super();
 		this.deployment_Id = deployment_Id;
 		this.title = title;
 		this.application = application;
@@ -101,15 +102,37 @@ public class DeploymentPlan {
 		this.ist2_DeploymentDate = ist2_DeploymentDate;
 		this.prod_DeploymentDate = prod_DeploymentDate;
 		this.comment = comment;
+		this.listDefectFixDetail = listDefectFixDetail;
 	}
 
-	public int getDeployment_Id() {
+
+	//convenience method to add defect fix detail
+	public void addDefectFixDetail(DefectFixDetail defectFixDetail) {
+		if(listDefectFixDetail==null) {
+			listDefectFixDetail=new ArrayList();
+		}
+		listDefectFixDetail.add(defectFixDetail);
+	}
+
+	public List<DefectFixDetail> getListDefectFixDetail() {
+		return listDefectFixDetail;
+	}
+
+
+
+	public void setListDefectFixDetail(List<DefectFixDetail> listDefectFixDetail) {
+		this.listDefectFixDetail = listDefectFixDetail;
+	}
+	
+	public Integer getDeployment_Id() {
 		return deployment_Id;
 	}
 
-	public void setDeployment_Id(int deployment_Id) {
+
+	public void setDeployment_Id(Integer deployment_Id) {
 		this.deployment_Id = deployment_Id;
 	}
+
 
 	public String getTitle() {
 		return title;
@@ -183,13 +206,6 @@ public class DeploymentPlan {
 		this.comment = comment;
 	}
 	
-	public List<DefectFixDetail> getListDefectFixDetail() {
-		return listDefectFixDetail;
-	}
-
-	public void setListDefectFixDetail(List<DefectFixDetail> listDefectFixDetail) {
-		this.listDefectFixDetail = listDefectFixDetail;
-	}
 
 	@Override
 	public String toString() {

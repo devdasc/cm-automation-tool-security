@@ -25,4 +25,11 @@ public class DeploymentPlanServiceImpl implements DeploymentPlanService {
 		
 	}
 
+	@Override
+	@Transactional
+	public void saveDeploymentPlan(DeploymentPlan theDeploymentPlan) {
+		
+		deploymentPlanDAO.saveDeploymentPlan(theDeploymentPlan);
+	}
+
 }

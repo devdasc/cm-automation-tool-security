@@ -8,4 +8,6 @@ public interface DeploymentPlanService {
 
 	public List<DeploymentPlan> getDeploymentPlanList();
 
+	public void saveDeploymentPlan(DeploymentPlan theDeploymentPlan);
+
 }

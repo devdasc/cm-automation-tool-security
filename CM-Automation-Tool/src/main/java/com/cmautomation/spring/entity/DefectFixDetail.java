@@ -32,7 +32,7 @@ public class DefectFixDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="defect_Id")
-	private int defect_Id;
+	private Integer defect_Id;
 	
 	@Column(name="title")
 	private String title;
@@ -93,16 +93,15 @@ public class DefectFixDetail {
 		
 	}
 	
-	public int getDefect_Id() {
+	
+	public Integer getDefect_Id() {
 		return defect_Id;
 	}
 
 
-
-	public void setDefect_Id(int defect_Id) {
+	public void setDefect_Id(Integer defect_Id) {
 		this.defect_Id = defect_Id;
 	}
-
 
 
 	public String getTitle() {
@@ -275,10 +274,11 @@ public class DefectFixDetail {
 		this.listDeploymentPlan = listDeploymentPlan;
 	}
 
-	public DefectFixDetail(int defect_Id, String title, Application application, Vendor vendor, Date defectCreationDate,
-			String description, Integer dependentDefect_Id, int status, Date fixRecieveDate, String impactedComponent,
-			String deploymentPackageLocation, int isTestCaseprovided, int isDeploymentInstructionProvided,
-			Date reviewDate) {
+	
+	public DefectFixDetail(Integer defect_Id, String title, Application application, Vendor vendor,
+			Date defectCreationDate, String description, Integer dependentDefect_Id, int status, Date fixRecieveDate,
+			String impactedComponent, String deploymentPackageLocation, int isTestCaseprovided,
+			int isDeploymentInstructionProvided, Date reviewDate, List<DeploymentPlan> listDeploymentPlan) {
 		super();
 		this.defect_Id = defect_Id;
 		this.title = title;
@@ -294,7 +294,9 @@ public class DefectFixDetail {
 		this.isTestCaseprovided = isTestCaseprovided;
 		this.isDeploymentInstructionProvided = isDeploymentInstructionProvided;
 		this.reviewDate = reviewDate;
+		this.listDeploymentPlan = listDeploymentPlan;
 	}
+
 
 	@Override
 	public String toString() {

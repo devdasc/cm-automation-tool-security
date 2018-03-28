@@ -30,7 +30,8 @@
 				<th>Deployment Id</th>
 				<th>Deployment Title</th>
 				<th>Application Name</th>
-				
+				<th>Defects</th>
+
 				<%-- Only show "Action" column for managers or admin --%>
 				<security:authorize access="hasRole('CMA')">
 					<th>Update</th>
@@ -41,26 +42,35 @@
 			<c:forEach var="tempDeploymentPlan" items="${theDeploymentPlanList}">
 
 				<!-- construct an "update" link with application id -->
-				<c:url var="updateLink" value="/cma/deployment/deploymentPlanUpdateForm">
-					<c:param name="deploymentId" value="${tempDeploymentPlan.deployment_Id}" />
+				<c:url var="updateLink"
+					value="/cma/deployment/deploymentPlanUpdateForm">
+					<c:param name="deploymentId"
+						value="${tempDeploymentPlan.deployment_Id}" />
 				</c:url>
 
 				<!-- construct an "delete" link with application id -->
 				<c:url var="deleteLink" value="/cma/deployment/delete">
-					<c:param name="deploymentId" value="${tempDeploymentPlan.deployment_Id}" />
+					<c:param name="deploymentId"
+						value="${tempDeploymentPlan.deployment_Id}" />
 				</c:url>
 
 				<tr>
 					<td>${tempDeploymentPlan.deployment_Id}</td>
 					<td>${tempDeploymentPlan.title}</td>
 					<td>${tempDeploymentPlan.application.applicationName}</td>
-				
-				<security:authorize access="hasRole('CMA')">
+					<td>
+					<c:forEach var="tempDefects" items="${tempDeploymentPlan.listDefectFixDetail}">
+						<a>${tempDefects.title}</a>
+					</c:forEach>
+					</td>
+
+					<security:authorize access="hasRole('CMA')">
 
 						<td><security:authorize access="hasRole('CMA')">
 								<!-- display the update link -->
 								<a href="${updateLink}">Update</a>
-							</security:authorize> <security:authorize access="hasRole('CMA')">
+							</security:authorize></td>
+						<td><security:authorize access="hasRole('CMA')">
 								<a href="${deleteLink}"
 									onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 							</security:authorize></td>

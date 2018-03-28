@@ -31,4 +31,13 @@ public class DeploymentPlanDAOImpl implements DeploymentPlanDAO {
 		return deploymentPlanList;
 	}
 
+	@Override
+	public void saveDeploymentPlan(DeploymentPlan theDeploymentPlan) {
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.saveOrUpdate(theDeploymentPlan);
+	}
+
 }

@@ -8,4 +8,6 @@ public interface DeploymentPlanDAO {
 
 	List<DeploymentPlan> getDeploymentPlanList();
 
+	public void saveDeploymentPlan(DeploymentPlan theDeploymentPlan);
+
 }
