@@ -32,6 +32,8 @@ public class AdminController {
 
 		// add the applications to the model
 		theAppModel.addAttribute("applications", theApplications);
+		
+		theAppModel.addAttribute("title", "listApplication");
 
 		return "list-apps";// this is the jsp file to be rendered
 	}
@@ -42,6 +44,7 @@ public class AdminController {
 		Application application=new Application();
 		
 		theAppModel.addAttribute("application",application);
+		theAppModel.addAttribute("title", "applicationForm");
 		
 		return "app-form";
 	}
@@ -64,6 +67,8 @@ public class AdminController {
 		
 		//set application as a model to pre-populate the update form
 		theAppModel.addAttribute("application", application);
+		
+		theAppModel.addAttribute("title", "applicationForm");
 		
 		return "app-form";
 	}

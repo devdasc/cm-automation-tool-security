@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cmautomation.spring.entity.Application;
 import com.cmautomation.spring.entity.DefectFixDetail;
+import com.cmautomation.spring.entity.Vendor;
+import com.cmautomation.spring.service.ApplicationService;
 import com.cmautomation.spring.service.DefectFixDetailService;
+import com.cmautomation.spring.service.VendorService;
 
 @Controller
 @RequestMapping("/cma")
@@ -21,6 +25,12 @@ public class DefectFixDetailController {
 	@Autowired
 	private DefectFixDetailService defectFixDetailService;
 	
+	@Autowired
+	private ApplicationService applicationService;
+	@Autowired
+	private VendorService vendorService;
+	
+	
 	//render defect list
 	@GetMapping("/defect/list")//works fine
 	private String getDefectFixList(Model theDefectFixDetailModel) {
@@ -28,6 +38,7 @@ public class DefectFixDetailController {
 		List<DefectFixDetail> theDefectFixDetail=defectFixDetailService.getDefectList();
 		
 		theDefectFixDetailModel.addAttribute("theDefectFixList",theDefectFixDetail);
+		theDefectFixDetailModel.addAttribute("title","listDefectFixDetail");
 		
 		return "list-defectFixDetail";
 	}
@@ -37,7 +48,18 @@ public class DefectFixDetailController {
 		
 		DefectFixDetail theDefectFixDetail=new DefectFixDetail();
 		
+		//Get Application List for input
+		
+		List<Application> applications =applicationService.getApplications();
+				
+				//Get Vendor List for input
+				
+		List<Vendor> vendors =vendorService.getVendors();
+		
 		theDefectFixDetailModel.addAttribute("theDefectFixDetail",theDefectFixDetail);
+		theDefectFixDetailModel.addAttribute("applications",applications);
+		theDefectFixDetailModel.addAttribute("vendors",vendors);
+		theDefectFixDetailModel.addAttribute("title","defectForm");
 		
 		return "defect-form";
 	}
@@ -54,8 +76,17 @@ public class DefectFixDetailController {
 	public String defectUpdateForm(@RequestParam("defectId") int defect_Id, Model theDefectFixDetailModel) {
 		try {
 			DefectFixDetail theDefectFixDetail=defectFixDetailService.getDefectFixDetail(defect_Id);
+
+			//Get Application List for input			
+			List<Application> applications =applicationService.getApplications();
+					
+			//Get Vendor List for input				
+			List<Vendor> vendors =vendorService.getVendors();
 			
 			theDefectFixDetailModel.addAttribute("theDefectFixDetail",theDefectFixDetail);
+			theDefectFixDetailModel.addAttribute("applications",applications);
+			theDefectFixDetailModel.addAttribute("vendors",vendors);
+			theDefectFixDetailModel.addAttribute("title","defectForm");
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -80,6 +111,7 @@ public class DefectFixDetailController {
 		List<DefectFixDetail> searchDefectFixDetail=defectFixDetailService.searchDefects(theSearchName);
 		
 		theModel.addAttribute("theDefectFixList",searchDefectFixDetail);
+		theModel.addAttribute("title","listDefectFixDetail");
 		
 		return "list-defectFixDetail";
 		
