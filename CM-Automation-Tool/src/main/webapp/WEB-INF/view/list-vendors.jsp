@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>CM Automation systems home page</title>
+<title>"${title}"</title>
 
 		  <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
@@ -21,7 +21,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
-	<h2>CM Automation systems home page</h2>
+	<h2>Vendor List</h2>
 	
 	<!-- table to show application list -->
 	<div id="container">
@@ -31,21 +31,21 @@
 			<security:authorize access="hasRole('ADMIN')">
 
 				<!--new button: Add Application ----------------------->						
-				<input type="button" value="Add Application"
-					onclick="window.location.href='appAddForm'; return false;"
+				<input type="button" value="Add vendor"
+					onclick="window.location.href='vendorAddForm'; return false;"
 					class="add-button" />
 			</security:authorize>
 			<!--  add our html table here --------------------------------->
 				<div class="col-md-12">
 					<table class="table table-bordered table-striped table-hover">
 				<tr>
-					<th>Application Id</th>
-					<th>Application Name</th>
+					<th>Vendor Id</th>
+					<th>Vendor Name</th>
 
 					<%-- Only show "Action" column for managers or admin --%>
 					<security:authorize access="hasRole('ADMIN')">
 
-						<th>Update</th>
+						<th>Edit</th>
 						<th>Delete</th>
 
 					</security:authorize>
@@ -53,44 +53,39 @@
 				</tr>
 
 				<!-- loop over and print applications -->
-				<c:forEach var="tempApplication" items="${applications}">
+				<c:forEach var="tempVendor" items="${vendors}">
 
 					<!-- construct an "update" link with application id -->
-					<c:url var="updateLink" value="/admin/app/appUpdateForm">
-						<c:param name="applicationId" value="${tempApplication.application_Id}" />
+					<c:url var="updateLink" value="/vendor/vendorUpdateForm">
+						<c:param name="vendor_id" value="${tempVendor.vendor_Id}" />
 					</c:url>
 
 					<!-- construct an "delete" link with application id -->
-					<c:url var="deleteLink" value="/admin/app/delete">
-						<c:param name="applicationId" value="${tempApplication.application_Id}" />
+					<c:url var="deleteLink" value="/vendor/vendorDeleteForm">
+						<c:param name="vendor_id" value="${tempVendor.vendor_Id}" />
 					</c:url>
 
 					<tr>
-						<td>${tempApplication.application_Id}</td>
-						<td>${tempApplication.applicationName}</td>
+						<td>${tempVendor.vendor_Id}</td>
+						<td>${tempVendor.vendorName}</td>
 
 						<security:authorize access="hasRole('ADMIN')">
 
 							<td><security:authorize access="hasRole('ADMIN')">
 									<!-- display the update link -->
 									<a href="${updateLink}">Update</a>
-								</security:authorize>
+								</security:authorize> 
 							</td>
-							<td> 
+							<td>
 								<security:authorize access="hasRole('ADMIN')">
 									<a href="${deleteLink}"
 										onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 								</security:authorize>
 							</td>
-
 						</security:authorize>
-
 					</tr>
-
 				</c:forEach>
-
 			</table>
-
 		</div><!-- content -->
 
 	</div><!-- container -->
