@@ -22,6 +22,7 @@ public class DeploymentPlanServiceImpl implements DeploymentPlanService {
 		return deploymentPlanDAO.getDeploymentPlanList();
 		
 		
+		
 	}
 
 }

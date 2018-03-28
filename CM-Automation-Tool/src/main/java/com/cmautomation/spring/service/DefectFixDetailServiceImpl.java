@@ -48,4 +48,11 @@ public class DefectFixDetailServiceImpl implements DefectFixDetailService {
 		
 	}
 
+	@Override
+	@Transactional
+	public List<DefectFixDetail> searchDefects(String theSearchName) {
+		
+		return defectFixDetailDAO.searchDefects(theSearchName);
+	}
+
 }

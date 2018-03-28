@@ -30,14 +30,14 @@ public class DeploymentPlanController {
 		return "list-deployment";
 	}
 	
-	@GetMapping("/planAddForm")
+	@GetMapping("/addForm")
 	public String showPlanAddForm(Model theDeploymentPlanModel) {
 		
 		DeploymentPlan theDeploymentPlan =new DeploymentPlan();
 		
 		theDeploymentPlanModel.addAttribute("deploymentPlanDetail",theDeploymentPlan);
 		
-		return "DeploymentPlan-form";
+		return "deploymentPlan-form";
 	}
 
 }

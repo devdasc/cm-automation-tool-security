@@ -38,7 +38,8 @@
 							Title :
 							<form:input path="title" placeholder="Defect Title" />
 						</div>
-						<br>
+						<br/>
+						
 						<div class="col-md-12">
 							Application :
 							<form:select path="application.application_Id">
@@ -106,7 +107,7 @@
 						<br>
 						<div class="col-md-12">
 							Review Date :
-							<form:input path="reviewDate" placeholder="YYYY/MM/DD" />
+							<form:input path="reviewDate"  placeholder="YYYY/MM/DD" />
 						</div>
 						<div class="col-md-12">
 							Description : <br />

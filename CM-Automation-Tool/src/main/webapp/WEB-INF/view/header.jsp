@@ -53,7 +53,7 @@
 							href="${pageContext.request.contextPath}/cma/deploymentPlan/list">Deployment
 								Schedule</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/cma/deploymentPlan/addPlan">Plan
+							href="${pageContext.request.contextPath}/cma/deploymentPlan/addForm">Plan
 								Deployment</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/tsa/checkList/list">Deployment

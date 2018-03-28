@@ -32,71 +32,70 @@
 			<div class="row">
 				<div class=" col-md-12  table table-bordered">
 				<div class="centre">
-					<form method="POST" action="saveDeploymentPlan" modelAttribute="deploymentPlanDetail">					
-						<hidden path="deployment_Id" />
+					<form:form method="POST" action="saveDeploymentPlan" modelAttribute="deploymentPlanDetail">					
+						<form:hidden path="deployment_Id" />
 						
 						<div class="col-md-12">		
 							Deployment Title :
-							<input path="title" placeholder="Deployment Title" />
+							<form:input path="title" placeholder="Deployment Title" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							Application :
-							<select path="application.application_Id">
+							<form:select path="application.application_Id">
 								<option value="1">APP1</option>
 								<option value="2">APP2</option>
 								<option value="3">APP3</option>
-							</select>
+							</form:select>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Plan Date :
-							<input path="planDate" placeholder="yyyy/mm/dd" />
+							<form:input path="planDate" placeholder="yyyy/mm/dd" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							Dev Deployment Date :
-							<input path="dev_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="dev_DeploymentDate" placeholder="yyyy/mm/dd" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							SDF Deployment Date :
-							<input path="sdf_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="sdf_DeploymentDate" placeholder="yyyy/mm/dd" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST1 Deployment Date :
-							<input path="ist1_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="ist1_DeploymentDate" placeholder="yyyy/mm/dd" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST2 Deployment Date :
-							<input path="ist2_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="ist2_DeploymentDate" placeholder="yyyy/mm/dd" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							PROD Deployment Date :
-							<input path="prod_DeploymentDate" placeholder="yyyy/mm/dd" />
+							<form:input path="prod_DeploymentDate" placeholder="yyyy/mm/dd" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							Comment :
-							<form:textarea class="form-control" rows="4" cols="50"
-								path="comment" />
+							<form:textarea path="comment" class="form-control" rows="4" cols="50"/>
 						</div>
-						<!-- <div class="col-md-12">
+						<div class="col-md-12">
 							Defect to Deploy :
 							<select path="defect_Id"   id="defect_Id">
 								<option value="1">Defect 1</option>
 								<option value="2">Defect 2</option>
 							</select>
-						</div> -->
+						</div>
 						<br />
 						<div class="col-md-offset-3">
 							<input type="submit" value="Save" />
 
 						</div>
-				</form>
+				</form:form>
 				</div>
 			</div>
 		</div>

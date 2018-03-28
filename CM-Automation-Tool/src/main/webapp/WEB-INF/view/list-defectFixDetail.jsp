@@ -37,6 +37,11 @@
 			<!-- <div class="left">
 				<h3 style="margin-top: 10px;">Menu</h3>
 			</div>-->
+			<!-- button for search -->
+			<form:form action="search" method="POST" id="search">
+				<input type="text" name="theSearchName" placeholder="search by Defect Name" />
+				<input type="submit" value="Search" class="add-button" />
+			</form:form>
 
 			<div class="row">
 

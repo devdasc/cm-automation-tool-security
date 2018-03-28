@@ -14,4 +14,6 @@ public interface DefectFixDetailDAO {
 
 	public void deleteDefectFixDetail(int defectId);
 
+	public List<DefectFixDetail> searchDefects(String theSearchName);
+
 }

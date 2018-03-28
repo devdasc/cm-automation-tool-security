@@ -73,6 +73,17 @@ public class DefectFixDetailController {
 		return "redirect:/cma/defect/list";
 		
 	}
+	//search
+	@PostMapping("/defect/search")
+	public String searchDefects(@RequestParam("theSearchName") String theSearchName, Model theModel) {
+		
+		List<DefectFixDetail> searchDefectFixDetail=defectFixDetailService.searchDefects(theSearchName);
+		
+		theModel.addAttribute("theDefectFixList",searchDefectFixDetail);
+		
+		return "list-defectFixDetail";
+		
+	}
 	
 
 }
