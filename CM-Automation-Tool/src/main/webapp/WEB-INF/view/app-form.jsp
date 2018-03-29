@@ -32,14 +32,15 @@
 					
 			<table>
 				<tbody>
-					<tr>
-						<td><label>Application ID:</label></td>
-						<td><form:input path="application_Id" /></td>
-					</tr> 
+					 
 					<tr>
 						<td><label>Application Name:</label></td>
 						<td><form:input path="applicationName" required="true"/></td>
 						
+					</tr>
+					<tr>
+						<td><label>Description:</label></td>
+						<td><form:input path="description" required="false"/></td>						
 					</tr>
 					<tr>
 						<td><label></label></td>

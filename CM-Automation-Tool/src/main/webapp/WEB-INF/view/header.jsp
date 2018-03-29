@@ -48,10 +48,11 @@
 	   	</security:authorize>
 	   	
 	   	<security:authorize access="hasRole('ADMIN')">	
-       	<li  class="${title=='listApplication' || title=='applicationForm' || title=='listVendors' || title=='vendorForm'? 'active':''}"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ManageSystemParameter<span class="caret"></span></a>
+       	<li  class="${title=='listApplication' || title=='applicationForm' || title=='listVendors' || title=='vendorForm' || title=='listDeploymentEnvironments' || title=='deploymentEnvironmentForm'? 'active':''}"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ManageSystemParameter<span class="caret"></span></a>
         	<ul class="dropdown-menu">
           		<li class="${title=='listApplication'? 'active':''}" ><a href="${pageContext.request.contextPath}/admin/app/list">Applications</a></li>
           		<li class="${title=='listVendors'? 'active':''}" ><a href="${pageContext.request.contextPath}/vendor/list">Vendors</a></li>
+          		<li class="${title=='listDeploymentEnvironments'? 'active':''}" ><a href="${pageContext.request.contextPath}/deploymentEnvironment/list">DeploymentEnvironments</a></li>
           	</ul>
       	</li>
 		</security:authorize>		

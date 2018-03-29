@@ -39,8 +39,8 @@
 				<div class="col-md-12">
 					<table class="table table-bordered table-striped table-hover">
 				<tr>
-					<th>Vendor Id</th>
 					<th>Vendor Name</th>
+					<th>Description</th>
 
 					<%-- Only show "Action" column for managers or admin --%>
 					<security:authorize access="hasRole('ADMIN')">
@@ -66,8 +66,8 @@
 					</c:url>
 
 					<tr>
-						<td>${tempVendor.vendor_Id}</td>
 						<td>${tempVendor.vendorName}</td>
+						<td>${tempVendor.description}</td>
 
 						<security:authorize access="hasRole('ADMIN')">
 

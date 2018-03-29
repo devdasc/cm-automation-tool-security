@@ -31,13 +31,14 @@
 					
 			<table>
 				<tbody>
-					<tr>
-						<td><label>Vendor ID:</label></td>
-						<td><form:input path="vendor_Id" readonly="true" /></td>
-					</tr>
+					
 					<tr>
 						<td><label>Vendor Name:</label></td>
 						<td><form:input path="vendorName" /></td>
+					</tr>
+					<tr>
+						<td><label>Description:</label></td>
+						<td><form:input path="description" required="false"/></td>						
 					</tr>
 					<tr>
 						<td><label></label></td>

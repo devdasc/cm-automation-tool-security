@@ -24,6 +24,9 @@ public class Vendor {
 	@Column(name="vendorName")
 	private String vendorName;
 	
+	@Column(name = "description")
+	private String description;
+	
 
 	@OneToMany(mappedBy="vendor",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<DefectFixDetail> defectFixDetail;
@@ -65,6 +68,13 @@ public class Vendor {
 	public void setVendorName(String vendorName) {
 		this.vendorName = vendorName;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 
 	public List<DefectFixDetail> getDefectFixDetail() {
@@ -77,7 +87,7 @@ public class Vendor {
 
 	@Override
 	public String toString() {
-		return "Vendor [vendorid=" + vendor_Id + ", vendorName=" + vendorName + "]";
+		return "Vendor [vendorid=" + vendor_Id + ", vendorName=" + vendorName + ", Description "+description+"]";
 	}
 	
 

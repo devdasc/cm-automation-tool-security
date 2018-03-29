@@ -39,8 +39,9 @@
 				<div class="col-md-12">
 					<table class="table table-bordered table-striped table-hover">
 				<tr>
-					<th>Application Id</th>
+					
 					<th>Application Name</th>
+					<th>Description</th>
 
 					<%-- Only show "Action" column for managers or admin --%>
 					<security:authorize access="hasRole('ADMIN')">
@@ -66,8 +67,8 @@
 					</c:url>
 
 					<tr>
-						<td>${tempApplication.application_Id}</td>
 						<td>${tempApplication.applicationName}</td>
+						<td>${tempApplication.description}</td>
 
 						<security:authorize access="hasRole('ADMIN')">
 

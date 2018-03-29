@@ -26,9 +26,11 @@ public class Application {
 	@Column(name = "application_Id")
 	private int application_Id;
 
-
 	@Column(name = "applicationName")
-	private String applicationName;
+	private String applicationName;	
+	
+	@Column(name = "description")
+	private String description;
 	
 	// cascade=
 	// {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
@@ -78,6 +80,13 @@ public class Application {
 	public void setApplicationName(String applicationName) {
 		this.applicationName = applicationName;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public List<DefectFixDetail> getDefectFixDetail() {
 		return defectFixDetail;
 	}
@@ -90,9 +99,10 @@ public class Application {
 	public void setDeploymentPlan(List<DeploymentPlan> deploymentPlan) {
 		this.deploymentPlan = deploymentPlan;
 	}
+	
 	@Override
 	public String toString() {
-		return "Application [application_Id=" + application_Id + ", applicationName=" + applicationName + "]";
+		return "Application [application_Id=" + application_Id + ", applicationName=" + applicationName + ", Description "+description+"]";
 	}
 
 }
