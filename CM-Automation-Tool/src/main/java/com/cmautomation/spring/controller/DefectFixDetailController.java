@@ -50,10 +50,12 @@ public class DefectFixDetailController {
 		
 		//Get Application List for input
 		
+		//Get Application List for input		
 		List<Application> applications =applicationService.getApplications();
 				
 				//Get Vendor List for input
 				
+		//Get Vendor List for input		
 		List<Vendor> vendors =vendorService.getVendors();
 		
 		theDefectFixDetailModel.addAttribute("theDefectFixDetail",theDefectFixDetail);

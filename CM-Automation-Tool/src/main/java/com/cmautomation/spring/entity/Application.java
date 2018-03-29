@@ -47,12 +47,14 @@ public class Application {
 	public Application() {
 
 	}
+	//convenience method
 	public void addDeploymentPlan(DeploymentPlan theDeploymentPlan) {
 		if(deploymentPlan==null) {
 			deploymentPlan=new ArrayList<>();
 			}
 		deploymentPlan.add(theDeploymentPlan);
 	}
+	//convenience method
 	public void addDefectFixDetail(DefectFixDetail theDefectFixDetail) {
 		if(defectFixDetail==null) {
 			defectFixDetail=new ArrayList<>();

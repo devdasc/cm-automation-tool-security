@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Add Vendor</title>
+	<title>Add Environment</title>
 
 	<link type="text/css"
 		  rel="stylesheet"
@@ -12,33 +12,34 @@
 	<link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/add-style.css">
+		  
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
 	<div id="wrapper">
 		<div id="header">
-			<h2>Vendor</h2>
+			<h2>Environment</h2>
 		</div>
 	</div>
 
 	<div id="container">
-		<h3>Vendor</h3>
+		<h3>Deployment Environments</h3>
 	
-		<form:form action="saveVendor" modelAttribute="vendor" method="POST">
+		<form:form action="saveEnvironment" modelAttribute="environments" method="POST">
 
 			<!-- need to associate this data with application id -->
-			<form:hidden path="vendor_Id" />
+			<form:hidden path="environment_Id" />
 					
 			<table>
 				<tbody>
-					
 					<tr>
-						<td><label>Vendor Name:</label></td>
-						<td><form:input path="vendorName" /></td>
-					</tr>
+						<td><label>Environment ID:</label></td>
+						<td><form:input path="environment_Id" readonly="true"/></td>
+					</tr> 
 					<tr>
-						<td><label>Description:</label></td>
-						<td><form:input path="description" required="false"/></td>						
+						<td><label>Environment Name:</label></td>
+						<td><form:input path="environmentName" required="true"/></td>
+						
 					</tr>
 					<tr>
 						<td><label></label></td>
@@ -51,9 +52,10 @@
 		<div style="clear; both;"></div>
 		
 		<p>
-			<a href="${pageContext.request.contextPath}/vendor/list">Back to List</a>
+			<a href="${pageContext.request.contextPath}/environment/list">Back to List</a>
 		</p>
 	
 	</div>
+
 </body>
 </html>

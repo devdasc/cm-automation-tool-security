@@ -81,7 +81,7 @@ public class DefectFixDetail {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date reviewDate;
-	
+	/*
 	@ManyToMany(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="deployement_defectlist",
@@ -89,6 +89,7 @@ public class DefectFixDetail {
 			   inverseJoinColumns=@JoinColumn(name="deployement_Id"))
 	private List<DeploymentPlan> listDeploymentPlan;
 	
+	*/
 	public DefectFixDetail() {
 		
 	}
@@ -257,7 +258,7 @@ public class DefectFixDetail {
 	public void setReviewDate(Date reviewDate) {
 		this.reviewDate = reviewDate;
 	}
-	//convenience method
+	/*//convenience method
 	public void addDeploymentPlan(DeploymentPlan theDeploymentPlan) {
 		if(listDeploymentPlan==null) {
 			listDeploymentPlan=new ArrayList();
@@ -273,29 +274,9 @@ public class DefectFixDetail {
 	public void setListDeploymentPlan(List<DeploymentPlan> listDeploymentPlan) {
 		this.listDeploymentPlan = listDeploymentPlan;
 	}
-
+*/
 	
-	public DefectFixDetail(Integer defect_Id, String title, Application application, Vendor vendor,
-			Date defectCreationDate, String description, Integer dependentDefect_Id, int status, Date fixRecieveDate,
-			String impactedComponent, String deploymentPackageLocation, int isTestCaseprovided,
-			int isDeploymentInstructionProvided, Date reviewDate, List<DeploymentPlan> listDeploymentPlan) {
-		super();
-		this.defect_Id = defect_Id;
-		this.title = title;
-		this.application = application;
-		this.vendor = vendor;
-		this.defectCreationDate = defectCreationDate;
-		this.description = description;
-		this.dependentDefect_Id = dependentDefect_Id;
-		this.status = status;
-		this.fixRecieveDate = fixRecieveDate;
-		this.impactedComponent = impactedComponent;
-		this.deploymentPackageLocation = deploymentPackageLocation;
-		this.isTestCaseprovided = isTestCaseprovided;
-		this.isDeploymentInstructionProvided = isDeploymentInstructionProvided;
-		this.reviewDate = reviewDate;
-		this.listDeploymentPlan = listDeploymentPlan;
-	}
+	
 
 
 	@Override
