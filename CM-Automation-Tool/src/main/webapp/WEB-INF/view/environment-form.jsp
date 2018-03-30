@@ -32,13 +32,18 @@
 					
 			<table>
 				<tbody>
-					<tr>
+					<!--<tr>
 						<td><label>Environment ID:</label></td>
 						<td><form:input path="environment_Id" readonly="true"/></td>
-					</tr> 
+					</tr>--> 
 					<tr>
 						<td><label>Environment Name:</label></td>
 						<td><form:input path="environmentName" required="true"/></td>
+						
+					</tr>
+					<tr>
+						<td><label>Description:</label></td>
+						<td><form:input path="description"/></td>
 						
 					</tr>
 					<tr>

@@ -28,6 +28,7 @@ public class DeploymentEnvironmentController {
 		List<DeploymentEnvironment> deploymentEnvironment = deploymentEnvironmentService.getEnvironmentList();
 
 		theEnvModel.addAttribute("environments", deploymentEnvironment);
+		theEnvModel.addAttribute("title", "deploymentEnvironmentList");
 
 		return "list-deploymentEnvironment";
 	}
@@ -38,7 +39,7 @@ public class DeploymentEnvironmentController {
 		DeploymentEnvironment environments = new DeploymentEnvironment();
 
 		theEnvModel.addAttribute("environments", environments);
-		// theEnvModel.addAttribute("title", "applicationForm");
+		theEnvModel.addAttribute("title", "environmentForm");
 
 		return "environment-form";
 	}
@@ -60,7 +61,7 @@ public class DeploymentEnvironmentController {
 		// set application as a model to pre-populate the update form
 		theEnvModel.addAttribute("environments", environments);
 
-		//theEnvModel.addAttribute("title", "applicationForm");
+		theEnvModel.addAttribute("title", "environmentForm");
 
 		return "environment-form";
 	}

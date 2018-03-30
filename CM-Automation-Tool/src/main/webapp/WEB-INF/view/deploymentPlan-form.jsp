@@ -63,32 +63,32 @@
 						<br />
 						<div class="col-md-12">
 							Plan Date :
-							<form:input path="planDate" placeholder="yyyy/mm/dd" required="true"/>
+							<form:input type="date" path="planDate" placeholder="yyyy-mm-dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Dev Deployment Date :
-							<form:input path="dev_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
+							<form:input  type="date" path="dev_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							SDF Deployment Date :
-							<form:input path="sdf_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
+							<form:input  type="date" path="sdf_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST1 Deployment Date :
-							<form:input path="ist1_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
+							<form:input  type="date" path="ist1_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST2 Deployment Date :
-							<form:input path="ist2_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
+							<form:input  type="date" path="ist2_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">
 							PROD Deployment Date :
-							<form:input path="prod_DeploymentDate" placeholder="yyyy/mm/dd" required="true"/>
+							<form:input  type="date" path="prod_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
 						</div>
 						<br />
 						<div class="col-md-12">

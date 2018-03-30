@@ -22,6 +22,19 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/app.css">
+	
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  
+  <script>
+$(document).ready(function() {
+	$(function() {
+	$("#theSearchName").focus();
+	});
+});
+</script>
 
 </head>
 <body>
@@ -38,13 +51,13 @@
 				<h3 style="margin-top: 10px;">Menu</h3>
 			</div>-->
 			<!-- button for search -->
-			<form:form action="search" method="POST" id="search">
-				<input type="text" name="theSearchName"  placeholder="search"/>
-				<input type="submit" value="Search" class="add-button" />
-			</form:form>
-
+			<div  class=" col-md-12 table table-bordered">
+				<form:form action="search" method="POST" id="search">
+					<input type="text" name="theSearchName" id="theSearchName"  placeholder="search"/>
+					<input type="submit" value="Search" class="add-button" />
+				</form:form>
+			</div>
 			<div class="row">
-
 				<!--  add our html table here --------------------------------->
 				<div class="col-md-12">
 					<table class="table table-bordered table-striped table-hover">
@@ -60,9 +73,7 @@
 								<th class="text-center">Delete</th>
 
 							</security:authorize>
-
 						</tr>
-
 						<!-- loop over and print applications -->
 						<c:forEach var="tempDefectList" items="${theDefectFixList}">
 

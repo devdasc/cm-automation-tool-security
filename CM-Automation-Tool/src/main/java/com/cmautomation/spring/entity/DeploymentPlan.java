@@ -44,32 +44,32 @@ public class DeploymentPlan {
 	
 	@Column(name="planDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date planDate;
 	
 	@Column(name="dev_DeploymentDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dev_DeploymentDate;
 	
 	@Column(name="sdf_DeploymentDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date sdf_DeploymentDate;
 	
 	@Column(name="ist1_DeploymentDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date ist1_DeploymentDate;
 	
 	@Column(name="ist2_DeploymentDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date ist2_DeploymentDate;
 	
 	@Column(name="prod_DeploymentDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date prod_DeploymentDate;
 	
 	@Lob

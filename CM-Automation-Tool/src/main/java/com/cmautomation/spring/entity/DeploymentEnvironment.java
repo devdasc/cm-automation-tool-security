@@ -19,6 +19,10 @@ public class DeploymentEnvironment {
 	@Column(name="environmentName")
 	private String environmentName;
 	
+	
+	@Column(name = "description")
+	private String description;
+	
 	public DeploymentEnvironment() {
 		
 	}
@@ -44,10 +48,18 @@ public class DeploymentEnvironment {
 	public void setEnvironmentName(String environmentName) {
 		this.environmentName = environmentName;
 	}
+	
+
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	@Override
 	public String toString() {
-		return "DeploymentEnvironment [environment_Id=" + environment_Id + ", environmentName=" + environmentName + "]";
+		return "DeploymentEnvironment [environment_Id=" + environment_Id + ", environmentName=" + environmentName + ", description "+description+"]";
 	}
 
 
