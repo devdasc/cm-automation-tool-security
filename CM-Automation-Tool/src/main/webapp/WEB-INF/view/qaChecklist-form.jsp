@@ -23,7 +23,7 @@
 					<form:form method="POST" action="saveQACheckList"
 						modelAttribute="theQACheckListDetail">
 						<!-- associate this data with Defect id -->
-						<!--<form:hidden path="defect_Id" />-->
+						
 						<div class="col-md-12">
 							Deployment ID :
 							<form:select path="deploymentPlan.deployment_Id">

@@ -41,6 +41,7 @@
 				<tr>
 					<th>Environment Id</th>
 					<th>Environment Name</th>
+					<th>Description</th>
 
 					<%-- Only show "Action" column for managers or admin --%>
 					<security:authorize access="hasRole('ADMIN')">
@@ -68,6 +69,7 @@
 					<tr>
 						<td>${tempEnvironment.environment_Id}</td>
 						<td>${tempEnvironment.environmentName}</td>
+						<td>${tempEnvironment.description}</td>
 
 						<security:authorize access="hasRole('ADMIN')">
 
