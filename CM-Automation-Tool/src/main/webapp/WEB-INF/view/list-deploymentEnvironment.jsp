@@ -39,7 +39,7 @@
 				<div class="col-md-12">
 					<table class="table table-bordered table-striped table-hover">
 				<tr>
-					<th>Environment Id</th>
+					
 					<th>Environment Name</th>
 					<th>Description</th>
 
@@ -67,7 +67,6 @@
 					</c:url>
 
 					<tr>
-						<td>${tempEnvironment.environment_Id}</td>
 						<td>${tempEnvironment.environmentName}</td>
 						<td>${tempEnvironment.description}</td>
 

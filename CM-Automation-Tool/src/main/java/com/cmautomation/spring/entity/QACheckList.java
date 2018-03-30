@@ -45,28 +45,27 @@ public class QACheckList implements Serializable{
 	@Lob
 	@Column(name="comment")
 	private String comment;
-	/*
+	
 	@Column(name="testedBy")
-	private int testedBy;
-	*/
+	private String testedBy;
+	
 	
 	public QACheckList() {
 		
 	}
 
-
-	public QACheckList(DeploymentPlan deploymentPlan, DeploymentEnvironment deploymentEnvironment, Date testDate,
-			int testStatus, String comment, int testedBy) {
+	public QACheckList(QACompositeKeyId qaCompositeKeyId, DeploymentPlan deploymentPlan,
+			DeploymentEnvironment deploymentEnvironment, Date testDate, int testStatus, String comment,
+			String testedBy) {
 		super();
+		this.qaCompositeKeyId = qaCompositeKeyId;
 		this.deploymentPlan = deploymentPlan;
 		this.deploymentEnvironment = deploymentEnvironment;
 		this.testDate = testDate;
 		this.testStatus = testStatus;
 		this.comment = comment;
-		//this.testedBy = testedBy;
+		this.testedBy = testedBy;
 	}
-
-
 	public DeploymentPlan getDeploymentPlan() {
 		return deploymentPlan;
 	}
@@ -116,15 +115,27 @@ public class QACheckList implements Serializable{
 		this.comment = comment;
 	}
 
-/*
-	public int getTestedBy() {
+	public QACompositeKeyId getQaCompositeKeyId() {
+		return qaCompositeKeyId;
+	}
+
+	public void setQaCompositeKeyId(QACompositeKeyId qaCompositeKeyId) {
+		this.qaCompositeKeyId = qaCompositeKeyId;
+	}
+
+	public String getTestedBy() {
 		return testedBy;
 	}
-
-
-	public void setTestedBy(int testedBy) {
+	public void setTestedBy(String testedBy) {
 		this.testedBy = testedBy;
 	}
-	
-*/
+
+	@Override
+	public String toString() {
+		return "QACheckList [qaCompositeKeyId=" + qaCompositeKeyId + ", deploymentPlan=" + deploymentPlan
+				+ ", deploymentEnvironment=" + deploymentEnvironment + ", testDate=" + testDate + ", testStatus="
+				+ testStatus + ", comment=" + comment + ", testedBy=" + testedBy + "]";
+	}
+
+
 }

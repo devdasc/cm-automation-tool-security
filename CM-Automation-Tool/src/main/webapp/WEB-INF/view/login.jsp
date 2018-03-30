@@ -16,8 +16,19 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  
+  <script>
+$(document).ready(function() {
+	$(function() {
+	$("#username").focus();
+	});
+	});
+</script>
 </head>
 
 <body>
@@ -68,33 +79,25 @@
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
 							
-							<input type="text" name="username" placeholder="username" class="form-control">
+							<input type="text" name="username" id="username" placeholder="username" tabindex="1" class="form-control">
 						</div>
 
 						<!-- Password -->
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
 							
-							<input type="password" name="password" placeholder="password" class="form-control" >
+							<input type="password" name="password" placeholder="password"  tabindex="2" class="form-control" >
 						</div>
-
-
 						<!-- Login/Submit Button -->
 						<div style="margin-top: 10px" class="form-group">						
 							<div class="col-sm-6 controls">
 								<button type="submit" class="btn btn-success">Login</button>
 							</div>
 						</div>
-
 					</form:form>
-
 				</div>
-
 			</div>
-
 		</div>
-
 	</div>
-
 </body>
 </html>

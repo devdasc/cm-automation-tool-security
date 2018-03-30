@@ -47,7 +47,7 @@ public class DefectFixDetail {
 	
 	@Column(name="defectCreationDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date defectCreationDate;
 	
 	@Column(name="description")
@@ -62,7 +62,7 @@ public class DefectFixDetail {
 	
 	@Column(name="fixRecieveDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fixRecieveDate;
 	
 	@Column(name="impactedComponent")
@@ -79,7 +79,7 @@ public class DefectFixDetail {
 	
 	@Column(name="reviewDate")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy/MM/dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date reviewDate;
 	/*
 	@ManyToMany(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})

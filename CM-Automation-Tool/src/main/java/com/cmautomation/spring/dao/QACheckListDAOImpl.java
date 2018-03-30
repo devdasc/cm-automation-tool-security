@@ -8,7 +8,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 import com.cmautomation.spring.entity.QACheckList;
 
 @Repository
@@ -30,7 +29,16 @@ public class QACheckListDAOImpl implements QACheckListDAO {
 		List<QACheckList> qaCheckList = theQuery.getResultList();
 
 		return qaCheckList;
+
+	}
+
+	@Override
+	public void saveQACheckList(QACheckList qaCheckList) {
+
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
 		
+		currentSession.saveOrUpdate(qaCheckList);
 	}
 
 }

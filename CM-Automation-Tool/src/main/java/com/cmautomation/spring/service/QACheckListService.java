@@ -8,4 +8,6 @@ public interface QACheckListService {
 
 	public List<QACheckList> getQACheckList();
 
+	public void saveQACheckList(QACheckList qaCheckList);
+
 }

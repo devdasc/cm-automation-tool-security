@@ -20,15 +20,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/app.css">
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-  <script>
-$(function() {
-    $( "#datepicker" ).datepicker();
-});
-</script>
+  
+ 
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
@@ -45,7 +38,7 @@ $(function() {
 						<form:hidden path="defect_Id" />
 						<div class="col-md-12">
 							Title :
-							<form:input path="title" placeholder="Defect Title" />
+							<form:input path="title" placeholder="Defect Title"  />
 						</div>
 						<br/>
 						
@@ -66,9 +59,9 @@ $(function() {
 						<br>
 						<div class="col-md-12">
 							Defect Created On :
-							<form:input path="defectCreationDate" placeholder="YYYY/MM/DD" id="datepicker"/>
+							<form:input type="date" path="defectCreationDate" />
 							Fix Received On :
-							<form:input path="fixRecieveDate" placeholder="YYYY/MM/DD" />
+							<form:input type="date" path="fixRecieveDate"/>
 						</div>
 						<br>
 						<div class="col-md-12">
@@ -113,7 +106,7 @@ $(function() {
 						<br>
 						<div class="col-md-12">
 							Review Date :
-							<form:input path="reviewDate"  placeholder="YYYY/MM/DD" />
+							<form:input type="date" path="reviewDate" />
 						</div>
 						<div class="col-md-12">
 							Description : <br />
