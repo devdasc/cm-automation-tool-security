@@ -208,6 +208,91 @@ public class DeploymentPlan {
 	
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((application == null) ? 0 : application.hashCode());
+		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+		result = prime * result + ((deployment_Id == null) ? 0 : deployment_Id.hashCode());
+		result = prime * result + ((dev_DeploymentDate == null) ? 0 : dev_DeploymentDate.hashCode());
+		result = prime * result + ((ist1_DeploymentDate == null) ? 0 : ist1_DeploymentDate.hashCode());
+		result = prime * result + ((ist2_DeploymentDate == null) ? 0 : ist2_DeploymentDate.hashCode());
+		result = prime * result + ((listDefectFixDetail == null) ? 0 : listDefectFixDetail.hashCode());
+		result = prime * result + ((planDate == null) ? 0 : planDate.hashCode());
+		result = prime * result + ((prod_DeploymentDate == null) ? 0 : prod_DeploymentDate.hashCode());
+		result = prime * result + ((sdf_DeploymentDate == null) ? 0 : sdf_DeploymentDate.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DeploymentPlan other = (DeploymentPlan) obj;
+		if (application == null) {
+			if (other.application != null)
+				return false;
+		} else if (!application.equals(other.application))
+			return false;
+		if (comment == null) {
+			if (other.comment != null)
+				return false;
+		} else if (!comment.equals(other.comment))
+			return false;
+		if (deployment_Id == null) {
+			if (other.deployment_Id != null)
+				return false;
+		} else if (!deployment_Id.equals(other.deployment_Id))
+			return false;
+		if (dev_DeploymentDate == null) {
+			if (other.dev_DeploymentDate != null)
+				return false;
+		} else if (!dev_DeploymentDate.equals(other.dev_DeploymentDate))
+			return false;
+		if (ist1_DeploymentDate == null) {
+			if (other.ist1_DeploymentDate != null)
+				return false;
+		} else if (!ist1_DeploymentDate.equals(other.ist1_DeploymentDate))
+			return false;
+		if (ist2_DeploymentDate == null) {
+			if (other.ist2_DeploymentDate != null)
+				return false;
+		} else if (!ist2_DeploymentDate.equals(other.ist2_DeploymentDate))
+			return false;
+		if (listDefectFixDetail == null) {
+			if (other.listDefectFixDetail != null)
+				return false;
+		} else if (!listDefectFixDetail.equals(other.listDefectFixDetail))
+			return false;
+		if (planDate == null) {
+			if (other.planDate != null)
+				return false;
+		} else if (!planDate.equals(other.planDate))
+			return false;
+		if (prod_DeploymentDate == null) {
+			if (other.prod_DeploymentDate != null)
+				return false;
+		} else if (!prod_DeploymentDate.equals(other.prod_DeploymentDate))
+			return false;
+		if (sdf_DeploymentDate == null) {
+			if (other.sdf_DeploymentDate != null)
+				return false;
+		} else if (!sdf_DeploymentDate.equals(other.sdf_DeploymentDate))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "DeploymentPlan [deployment_Id=" + deployment_Id + ", title=" + title + ", application=" + application
 				+ ", planDate=" + planDate + ", dev_DeploymentDate=" + dev_DeploymentDate + ", sdf_DeploymentDate="

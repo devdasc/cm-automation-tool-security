@@ -289,6 +289,102 @@ public class DefectFixDetail {
 				+ ", isDeploymentInstructionProvided=" + isDeploymentInstructionProvided + ", reviewDate=" + reviewDate
 				+ "]";
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((application == null) ? 0 : application.hashCode());
+		result = prime * result + ((defectCreationDate == null) ? 0 : defectCreationDate.hashCode());
+		result = prime * result + ((defect_Id == null) ? 0 : defect_Id.hashCode());
+		result = prime * result + ((dependentDefect_Id == null) ? 0 : dependentDefect_Id.hashCode());
+		result = prime * result + ((deploymentPackageLocation == null) ? 0 : deploymentPackageLocation.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((fixRecieveDate == null) ? 0 : fixRecieveDate.hashCode());
+		result = prime * result + ((impactedComponent == null) ? 0 : impactedComponent.hashCode());
+		result = prime * result + isDeploymentInstructionProvided;
+		result = prime * result + isTestCaseprovided;
+		result = prime * result + ((reviewDate == null) ? 0 : reviewDate.hashCode());
+		result = prime * result + status;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((vendor == null) ? 0 : vendor.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DefectFixDetail other = (DefectFixDetail) obj;
+		if (application == null) {
+			if (other.application != null)
+				return false;
+		} else if (!application.equals(other.application))
+			return false;
+		if (defectCreationDate == null) {
+			if (other.defectCreationDate != null)
+				return false;
+		} else if (!defectCreationDate.equals(other.defectCreationDate))
+			return false;
+		if (defect_Id == null) {
+			if (other.defect_Id != null)
+				return false;
+		} else if (!defect_Id.equals(other.defect_Id))
+			return false;
+		if (dependentDefect_Id == null) {
+			if (other.dependentDefect_Id != null)
+				return false;
+		} else if (!dependentDefect_Id.equals(other.dependentDefect_Id))
+			return false;
+		if (deploymentPackageLocation == null) {
+			if (other.deploymentPackageLocation != null)
+				return false;
+		} else if (!deploymentPackageLocation.equals(other.deploymentPackageLocation))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (fixRecieveDate == null) {
+			if (other.fixRecieveDate != null)
+				return false;
+		} else if (!fixRecieveDate.equals(other.fixRecieveDate))
+			return false;
+		if (impactedComponent == null) {
+			if (other.impactedComponent != null)
+				return false;
+		} else if (!impactedComponent.equals(other.impactedComponent))
+			return false;
+		if (isDeploymentInstructionProvided != other.isDeploymentInstructionProvided)
+			return false;
+		if (isTestCaseprovided != other.isTestCaseprovided)
+			return false;
+		if (reviewDate == null) {
+			if (other.reviewDate != null)
+				return false;
+		} else if (!reviewDate.equals(other.reviewDate))
+			return false;
+		if (status != other.status)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (vendor == null) {
+			if (other.vendor != null)
+				return false;
+		} else if (!vendor.equals(other.vendor))
+			return false;
+		return true;
+	}
 	
 	
 }

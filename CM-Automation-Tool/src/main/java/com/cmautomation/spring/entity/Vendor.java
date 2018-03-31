@@ -86,6 +86,48 @@ public class Vendor {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((defectFixDetail == null) ? 0 : defectFixDetail.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((vendorName == null) ? 0 : vendorName.hashCode());
+		result = prime * result + vendor_Id;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vendor other = (Vendor) obj;
+		if (defectFixDetail == null) {
+			if (other.defectFixDetail != null)
+				return false;
+		} else if (!defectFixDetail.equals(other.defectFixDetail))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (vendorName == null) {
+			if (other.vendorName != null)
+				return false;
+		} else if (!vendorName.equals(other.vendorName))
+			return false;
+		if (vendor_Id != other.vendor_Id)
+			return false;
+		return true;
+	}
+
+
+	@Override
 	public String toString() {
 		return "Vendor [vendorid=" + vendor_Id + ", vendorName=" + vendorName + ", Description "+description+"]";
 	}

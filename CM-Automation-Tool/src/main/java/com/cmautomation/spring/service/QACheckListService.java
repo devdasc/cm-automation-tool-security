@@ -10,4 +10,10 @@ public interface QACheckListService {
 
 	public void saveQACheckList(QACheckList qaCheckList);
 
+	public QACheckList getQACheckListDetail(int qaComp_Id);
+
+	public void deleteQaCheckList(int qaComp_Id);
+
+
+
 }

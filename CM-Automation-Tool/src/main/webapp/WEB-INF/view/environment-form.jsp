@@ -32,30 +32,18 @@
 					
 			<table>
 				<tbody>
-<<<<<<< HEAD
+
 					<!-- <tr>
 						<td><label>Environment ID:</label></td>
 						<td><form:input path="environment_Id" readonly="true"/></td>
 					</tr> -->
-=======
-					<!--<tr>
-						<td><label>Environment ID:</label></td>
-						<td><form:input path="environment_Id" readonly="true"/></td>
-					</tr>--> 
->>>>>>> dafd38c33b1c1f0b3a713f8a06c1bb6d30115a33
 					<tr>
 						<td><label>Environment Name:</label></td>
-						<td><form:input path="environmentName" required="true"/></td>
-						
+						<td><form:input path="environmentName" required="true"/></td>						
 					</tr>
 					<tr>
 						<td><label>Description:</label></td>
-<<<<<<< HEAD
-						<td><form:input path="description" required="true"/></td>
-=======
-						<td><form:input path="description"/></td>
->>>>>>> dafd38c33b1c1f0b3a713f8a06c1bb6d30115a33
-						
+						<td><form:input path="description" required="true"/></td>					
 					</tr>
 					<tr>
 						<td><label></label></td>

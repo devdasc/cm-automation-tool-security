@@ -72,7 +72,7 @@ public class DefectFixDetailController {
 	//update defect
 	@GetMapping("/defect/defectUpdateForm")
 	public String defectUpdateForm(@RequestParam("defectId") int defect_Id, Model theDefectFixDetailModel) {
-		try {
+		
 			DefectFixDetail theDefectFixDetail=defectFixDetailService.getDefectFixDetail(defect_Id);
 
 			//Get Application List for input			
@@ -85,13 +85,8 @@ public class DefectFixDetailController {
 			theDefectFixDetailModel.addAttribute("applications",applications);
 			theDefectFixDetailModel.addAttribute("vendors",vendors);
 			theDefectFixDetailModel.addAttribute("title","defectForm");
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		
-		return "defect-form";
+	
+			return "defect-form";
 	}
 	//delete defect fix detail
 	@GetMapping("/defect/delete")//works fine

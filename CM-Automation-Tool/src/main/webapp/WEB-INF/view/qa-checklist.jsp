@@ -40,13 +40,15 @@
 				<c:forEach var="tempQAChecklist" items="${qaCheckList}">
 
 					<!-- construct an "update" link with application id -->
-					<c:url var="updateLink" value="/admin/app/appUpdateForm">
-						<c:param name="applicationId" value="${tempQAChecklist.deploymentPlan.deployment_Id}" />
+					<c:url var="updateLink" value="/qa/checkList/qaCheckListUpdateForm">
+						<c:param name="qaChecklistId" value="${tempQAChecklist.qachecklist_id}" />
+						
 					</c:url>
 
 					<!-- construct an "delete" link with application id -->
-					<c:url var="deleteLink" value="/admin/app/delete">
-						<c:param name="applicationId" value="${tempQAChecklist.deploymentPlan.deployment_Id}" />
+					<c:url var="deleteLink" value="/qa/checkList/delete">						
+						<c:param name="qaChecklistId" value="${tempQAChecklist.qachecklist_id}" />
+						
 					</c:url>
 
 					<tr>

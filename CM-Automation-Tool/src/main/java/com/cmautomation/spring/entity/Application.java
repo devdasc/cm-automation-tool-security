@@ -103,6 +103,50 @@ public class Application {
 	}
 	
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((applicationName == null) ? 0 : applicationName.hashCode());
+		result = prime * result + application_Id;
+		result = prime * result + ((defectFixDetail == null) ? 0 : defectFixDetail.hashCode());
+		result = prime * result + ((deploymentPlan == null) ? 0 : deploymentPlan.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Application other = (Application) obj;
+		if (applicationName == null) {
+			if (other.applicationName != null)
+				return false;
+		} else if (!applicationName.equals(other.applicationName))
+			return false;
+		if (application_Id != other.application_Id)
+			return false;
+		if (defectFixDetail == null) {
+			if (other.defectFixDetail != null)
+				return false;
+		} else if (!defectFixDetail.equals(other.defectFixDetail))
+			return false;
+		if (deploymentPlan == null) {
+			if (other.deploymentPlan != null)
+				return false;
+		} else if (!deploymentPlan.equals(other.deploymentPlan))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		return true;
+	}
+	@Override
 	public String toString() {
 		return "Application [application_Id=" + application_Id + ", applicationName=" + applicationName + ", Description "+description+"]";
 	}

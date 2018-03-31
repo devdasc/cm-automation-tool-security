@@ -23,6 +23,7 @@
 					<form:form method="POST" action="saveQACheckList"
 						modelAttribute="theQACheckListDetail">
 						<!-- associate this data with Defect id -->
+					<form:hidden path="qachecklist_id" />
 						
 						<div class="col-md-12">
 							Deployment Name:
@@ -44,7 +45,7 @@
 						<br/>
 						<div class="col-md-12">
 							Test Date :
-							<form:input path="testDate" placeholder="YYYY/MM/DD" />
+							<form:input type="date" path="testDate"  required="true"/>
 						</div>
 						<br>
 						<div class="col-md-12">
@@ -58,12 +59,12 @@
 						<div class="col-md-12">
 							Comment : <br />
 							<form:textarea class="form-control" rows="4" cols="30"
-								path="comment" />
+								path="comment" required="true"/>
 						</div>
 						<br>
 						<div class="col-md-12">
 							Tested by:
-							<input path="testedBy" type="text" value="<security:authentication property="principal.username"/>" readonly="true"/>
+							<form:input path="testedBy" type="text" />
 						</div>
 						<br>
 						<div class="col-md-offset-3">
