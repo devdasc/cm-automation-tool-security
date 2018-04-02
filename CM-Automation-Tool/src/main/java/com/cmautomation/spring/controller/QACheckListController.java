@@ -52,6 +52,7 @@ public class QACheckListController {
 	public String showQACheckListAddForm(Model theQACheckListModel) {
 
 		QACheckList theQACheckList = new QACheckList();
+		
 		List<DeploymentPlan> deploymentPlan = deploymentPlanService.getDeploymentPlanList();
 		List<DeploymentEnvironment> deploymentEnvironmentList = deploymentEnvironmentService.getEnvironmentList();
 
@@ -85,7 +86,6 @@ public class QACheckListController {
 
 		theQACheckListModel.addAttribute("theQACheckListDetail", qaCheckList);
 		theQACheckListModel.addAttribute("deploymentPlan", deploymentPlan);
-
 		theQACheckListModel.addAttribute("deploymentEnvironmentList", deploymentEnvironmentList);
 
 		return "qaChecklist-form";

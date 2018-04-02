@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -44,21 +45,25 @@ public class DeploymentCheckList {
 	@Column(name="isPackageDeployed",length=1, columnDefinition="CHAR")
 	private char isPackageDeployed;
 	
+	@Lob
 	@Column(name="deployedPackageInfo")
 	private String deployedPackageInfo;
 	
 	@Column(name="isParameterDeployed",length=1, columnDefinition="CHAR")
 	private char isParameterDeployed;
 	
+	@Lob
 	@Column(name="deployedParameterInfo")
 	private String deployedParameterInfo;
 	
 	@Column(name="isDBScriptExecuted",length=1, columnDefinition="CHAR")
 	private char isDBScriptExecuted;
 	
+	@Lob
 	@Column(name="dBScriptInfo")
 	private String dBScriptInfo;
 	
+	@Lob
 	@Column(name="otherDeploymentInfo")
 	private String otherDeploymentInfo;
 	

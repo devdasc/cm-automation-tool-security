@@ -124,9 +124,7 @@ $(document).ready(function() {
 
 			</div>
 			<!-- container -->
-			<p></p>
-			
-			<p></p>
+			<p></p><p></p>
 			<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 				<input type="submit" value="Logout" class="add-button" />
 			</form:form>
