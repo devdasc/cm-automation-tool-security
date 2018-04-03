@@ -6,20 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -81,15 +68,23 @@ public class DefectFixDetail {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date reviewDate;
-	/*
-	@ManyToMany(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	
+	/*@OneToMany(cascade={CascadeType.ALL})
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="deployement_defectlist",
 			   joinColumns=@JoinColumn(name="defect_Id"),
 			   inverseJoinColumns=@JoinColumn(name="deployement_Id"))
+	private List<DeploymentPlan> listDeploymentPlan;*/
+	
+	@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            },
+            mappedBy = "listDeploymentDefects")
 	private List<DeploymentPlan> listDeploymentPlan;
 	
-	*/
+	
 	public DefectFixDetail() {
 		
 	}
@@ -266,7 +261,7 @@ public class DefectFixDetail {
 		listDeploymentPlan.add(theDeploymentPlan);
 	}
 	
-
+*/
 	public List<DeploymentPlan> getListDeploymentPlan() {
 		return listDeploymentPlan;
 	}
@@ -274,7 +269,7 @@ public class DefectFixDetail {
 	public void setListDeploymentPlan(List<DeploymentPlan> listDeploymentPlan) {
 		this.listDeploymentPlan = listDeploymentPlan;
 	}
-*/
+
 	
 	
 

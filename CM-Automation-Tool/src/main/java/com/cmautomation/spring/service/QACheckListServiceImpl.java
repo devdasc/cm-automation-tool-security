@@ -22,4 +22,10 @@ public class QACheckListServiceImpl implements QACheckListService {
 		return qaCheckListDAO.getQACheckList();
 	}
 
+	@Override
+	public void saveQACheckList(QACheckList qaCheckList) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

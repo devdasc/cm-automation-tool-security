@@ -5,20 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -76,12 +63,28 @@ public class DeploymentPlan {
 	@Column(name="comment")
 	private String comment;
 	
-	@ManyToMany(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	/*@OneToMany(cascade={CascadeType.ALL})
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="deployement_defectlist",
 			   joinColumns=@JoinColumn(name="deployement_Id"),
 			   inverseJoinColumns=@JoinColumn(name="defect_Id"))
-	private List<DefectFixDetail> listDefectFixDetail;
+	private List<DeploymentDefectList> listDeploymentDefects;*/
+	
+	
+	@ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "deployement_defectlist",
+            joinColumns = { @JoinColumn(name = "deployement_Id") },
+            inverseJoinColumns = { @JoinColumn(name = "defect_Id") })
+    private  List<DefectFixDetail> listDeploymentDefects;
+	
+	@Transient
+	private List<String> defects=new ArrayList<>();
+	
+
 	
 	
 	public DeploymentPlan() {
@@ -90,7 +93,7 @@ public class DeploymentPlan {
 	
 	public DeploymentPlan(Integer deployment_Id, String title, Application application, Date planDate,
 			Date dev_DeploymentDate, Date sdf_DeploymentDate, Date ist1_DeploymentDate, Date ist2_DeploymentDate,
-			Date prod_DeploymentDate, String comment, List<DefectFixDetail> listDefectFixDetail) {
+			Date prod_DeploymentDate, String comment, List<DefectFixDetail> listDeploymentDefects) {
 		super();
 		this.deployment_Id = deployment_Id;
 		this.title = title;
@@ -102,26 +105,33 @@ public class DeploymentPlan {
 		this.ist2_DeploymentDate = ist2_DeploymentDate;
 		this.prod_DeploymentDate = prod_DeploymentDate;
 		this.comment = comment;
-		this.listDefectFixDetail = listDefectFixDetail;
+		this.listDeploymentDefects = listDeploymentDefects;
 	}
 
 
 	//convenience method to add defect fix detail
-	public void addDefectFixDetail(DefectFixDetail defectFixDetail) {
-		if(listDefectFixDetail==null) {
-			listDefectFixDetail=new ArrayList();
+	public void addDefectFixDetail(DefectFixDetail deploymentDefect) {
+		if(listDeploymentDefects==null) {
+			listDeploymentDefects=new ArrayList();
 		}
-		listDefectFixDetail.add(defectFixDetail);
+		listDeploymentDefects.add(deploymentDefect);
 	}
 
-	public List<DefectFixDetail> getListDefectFixDetail() {
-		return listDefectFixDetail;
+	public List<DefectFixDetail> getListDeploymentDefects() {
+		return listDeploymentDefects;
 	}
 
 
 
-	public void setListDefectFixDetail(List<DefectFixDetail> listDefectFixDetail) {
-		this.listDefectFixDetail = listDefectFixDetail;
+	public void setListDeploymentDefects(List<DefectFixDetail> listDeploymentDefects) {
+		this.listDeploymentDefects = listDeploymentDefects;
+	}
+	
+	public List<String>  getDefects() {
+		return defects;
+	}
+	public void setDefects(List<String> defects) {
+		this.defects = defects;
 	}
 	
 	public Integer getDeployment_Id() {

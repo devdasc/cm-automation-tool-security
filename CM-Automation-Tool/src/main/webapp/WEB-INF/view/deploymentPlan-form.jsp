@@ -53,12 +53,10 @@
 						</div>
 						<br />
 						<div class="col-md-12">
-							Defect to Deploy :
-							<form:select path="listDefectFixDetail" multiple="true">
-								<c:forEach var="tempDefects" items="${listDefects}">
-									<form:option value="${tempDefects.defect_Id}">${tempDefects.defect_Id}</form:option>
-								</c:forEach>
-							</form:select>
+							Defects to Deploy :
+							<form:select path="defects" required="true">
+			            		<form:options items="${listDefectFixDetail}" itemValue="defect_Id" itemLabel="title"/>
+						</form:select>						
 						</div>
 						<br />
 						<div class="col-md-12">
