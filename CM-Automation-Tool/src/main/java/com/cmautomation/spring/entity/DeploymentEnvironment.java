@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="deployment_environments")
@@ -16,10 +18,13 @@ public class DeploymentEnvironment {
 	@Column(name="environment_Id")
 	private Integer environment_Id;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="environmentName")
 	private String environmentName;
 	
-	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name = "description")
 	private String description;
 	
@@ -55,6 +60,43 @@ public class DeploymentEnvironment {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((environmentName == null) ? 0 : environmentName.hashCode());
+		result = prime * result + ((environment_Id == null) ? 0 : environment_Id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DeploymentEnvironment other = (DeploymentEnvironment) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (environmentName == null) {
+			if (other.environmentName != null)
+				return false;
+		} else if (!environmentName.equals(other.environmentName))
+			return false;
+		if (environment_Id == null) {
+			if (other.environment_Id != null)
+				return false;
+		} else if (!environment_Id.equals(other.environment_Id))
+			return false;
+		return true;
 	}
 
 	@Override

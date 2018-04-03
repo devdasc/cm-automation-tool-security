@@ -2,13 +2,16 @@ package com.cmautomation.spring.controller;
 
 import java.util.List;
 
-
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,14 @@ public class AdminController {
 
 	@Autowired
 	private ApplicationService applicationService;
+	
+	//pre-process form data and eliminates any white spaces
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		
+		StringTrimmerEditor stringTrimmerEditor=new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
 
 	// this method shows the application list
 	@GetMapping("/app/list") // this is the view name
@@ -51,12 +62,16 @@ public class AdminController {
 	
 	// this method saves the application
 	@PostMapping("/app/saveApplication")
-	public String saveApplication(@ModelAttribute("application") Application application) {
+	public String saveApplication(
+			@Valid @ModelAttribute("application") Application application,
+			BindingResult theBindingResult) {
 		
-		applicationService.saveApplication(application);
-
+		if(theBindingResult.hasErrors()) {
+			return "app-form";
+		}else {
+			applicationService.saveApplication(application);
 			return "redirect:/admin/app/list";
-	
+		}
 	}
 	//this method updates the application
 	@GetMapping("/app/appUpdateForm")
