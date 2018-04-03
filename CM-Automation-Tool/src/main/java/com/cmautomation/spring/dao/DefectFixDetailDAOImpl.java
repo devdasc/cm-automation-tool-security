@@ -87,7 +87,8 @@ public class DefectFixDetailDAOImpl implements DefectFixDetailDAO {
 		List<DefectFixDetail> listDefects = searchQuery.getResultList();
 
 		return listDefects;
-
 	}
+	
+	
 
 }

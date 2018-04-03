@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+<<<<<<< HEAD
+import javax.persistence.*;
+=======
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +25,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+>>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -94,15 +98,23 @@ public class DefectFixDetail {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date reviewDate;
-	/*
-	@ManyToMany(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	
+	/*@OneToMany(cascade={CascadeType.ALL})
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinTable(name="deployement_defectlist",
 			   joinColumns=@JoinColumn(name="defect_Id"),
 			   inverseJoinColumns=@JoinColumn(name="deployement_Id"))
+	private List<DeploymentPlan> listDeploymentPlan;*/
+	
+	@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            },
+            mappedBy = "listDeploymentDefects")
 	private List<DeploymentPlan> listDeploymentPlan;
 	
-	*/
+	
 	public DefectFixDetail() {
 		
 	}
@@ -279,7 +291,7 @@ public class DefectFixDetail {
 		listDeploymentPlan.add(theDeploymentPlan);
 	}
 	
-
+*/
 	public List<DeploymentPlan> getListDeploymentPlan() {
 		return listDeploymentPlan;
 	}
@@ -287,7 +299,7 @@ public class DefectFixDetail {
 	public void setListDeploymentPlan(List<DeploymentPlan> listDeploymentPlan) {
 		this.listDeploymentPlan = listDeploymentPlan;
 	}
-*/
+
 	
 	
 

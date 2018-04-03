@@ -20,9 +20,6 @@ public class DeploymentPlanServiceImpl implements DeploymentPlanService {
 	public List<DeploymentPlan> getDeploymentPlanList() {
 		
 		return deploymentPlanDAO.getDeploymentPlanList();
-		
-		
-		
 	}
 
 	@Override
@@ -31,5 +28,25 @@ public class DeploymentPlanServiceImpl implements DeploymentPlanService {
 		
 		deploymentPlanDAO.saveDeploymentPlan(theDeploymentPlan);
 	}
+	
+	@Override
+	@Transactional
+	public DeploymentPlan getDeploymentPlan(int deployment_Id)
+	{
+		return deploymentPlanDAO.getDeploymentPlan(deployment_Id);
+	}
 
+	@Override
+	@Transactional
+	public void deleteDeploymentPlan(int deployment_Id)
+	{
+		deploymentPlanDAO.deleteDeploymentPlan(deployment_Id);
+	}
+
+	@Override
+	@Transactional
+	public List<DeploymentPlan> searchDeploymentPlan(String theSearchName)
+	{
+		return deploymentPlanDAO.searchDeploymentPlan(theSearchName);
+	}
 }

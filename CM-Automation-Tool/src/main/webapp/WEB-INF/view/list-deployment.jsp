@@ -43,14 +43,14 @@
 
 				<!-- construct an "update" link with application id -->
 				<c:url var="updateLink"
-					value="/cma/deployment/deploymentPlanUpdateForm">
-					<c:param name="deploymentId"
+					value="/cma/deploymentPlan/deploymentPlanUpdateForm">
+					<c:param name="deployment_Id"
 						value="${tempDeploymentPlan.deployment_Id}" />
 				</c:url>
 
 				<!-- construct an "delete" link with application id -->
-				<c:url var="deleteLink" value="/cma/deployment/delete">
-					<c:param name="deploymentId"
+				<c:url var="deleteLink" value="/cma/deploymentPlan/deleteDeploymentPlan">
+					<c:param name="deployment_Id"
 						value="${tempDeploymentPlan.deployment_Id}" />
 				</c:url>
 
@@ -58,10 +58,12 @@
 					<td>${tempDeploymentPlan.deployment_Id}</td>
 					<td>${tempDeploymentPlan.title}</td>
 					<td>${tempDeploymentPlan.application.applicationName}</td>
-					<td>
-					<c:forEach var="tempDefects" items="${tempDeploymentPlan.listDefectFixDetail}">
-						<a>${tempDefects.title}</a>
+					<td><ul>
+					<c:forEach var="tempDeploymentDefects" items="${tempDeploymentPlan.listDeploymentDefects}">
+						<li>${tempDeploymentDefects.title}</li>
 					</c:forEach>
+					</ul>
+					
 					</td>
 
 					<security:authorize access="hasRole('CMA')">
