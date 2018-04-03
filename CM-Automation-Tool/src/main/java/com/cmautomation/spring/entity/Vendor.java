@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="vendor")
@@ -21,9 +23,13 @@ public class Vendor {
 	@Column(name="vendor_Id")
 	private int vendor_Id;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="vendorName")
 	private String vendorName;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name = "description")
 	private String description;
 	

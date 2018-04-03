@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -43,13 +45,12 @@ public class QACheckList implements Serializable{
 	@JoinColumn(name="deployment_Id", updatable=false)
 	private DeploymentPlan deploymentPlan;	
 	
-	
-	
+		
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.EAGER)
 	@JoinColumn(name="environment_Id", updatable=false )
 	private DeploymentEnvironment deploymentEnvironment;
 	
-	
+	@NotNull(message="required")
 	@Column(name="testDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -58,10 +59,14 @@ public class QACheckList implements Serializable{
 	@Column(name="TestStatus")
 	private int testStatus;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Lob
 	@Column(name="comment")
 	private String comment;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="testedBy")
 	private String testedBy;
 	

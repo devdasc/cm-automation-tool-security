@@ -8,7 +8,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Create QA CheckList</title>
+<style>
+.error {
+	color: red
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp" />
@@ -20,32 +25,35 @@
 			<div class=" col-md-12  table table-bordered">
 
 				<div class="centre">
+					
 					<form:form method="POST" action="saveQACheckList"
 						modelAttribute="theQACheckListDetail">
 						<!-- associate this data with Defect id -->
-					<form:hidden path="qachecklist_id" />
-						
+						<form:hidden path="qachecklist_id" />
+
 						<div class="col-md-12">
 							Deployment Name:
 							<form:select path="deploymentPlan.deployment_Id">
-							<c:forEach var="tempDeploymentPlan" items="${deploymentPlan}">
-								<form:option value="${tempDeploymentPlan.deployment_Id}">${tempDeploymentPlan.title}</form:option>
-							</c:forEach>
-							</form:select>						
-						</div>
-						<br />
-						<div class="col-md-12">							
-							Environment :
-							<form:select path="deploymentEnvironment.environment_Id">
-							<c:forEach var="tempEnvironment" items="${deploymentEnvironmentList}">
-								<form:option value="${tempEnvironment.environment_Id}">${tempEnvironment.environmentName}</form:option>
-							</c:forEach>
+								<c:forEach var="tempDeploymentPlan" items="${deploymentPlan}">
+									<form:option value="${tempDeploymentPlan.deployment_Id}">${tempDeploymentPlan.title}</form:option>
+								</c:forEach>
 							</form:select>
 						</div>
-						<br/>
+						<br />
+						<div class="col-md-12">
+							Environment :
+							<form:select path="deploymentEnvironment.environment_Id">
+								<c:forEach var="tempEnvironment"
+									items="${deploymentEnvironmentList}">
+									<form:option value="${tempEnvironment.environment_Id}">${tempEnvironment.environmentName}</form:option>
+								</c:forEach>
+							</form:select>
+						</div>
+						<br />
 						<div class="col-md-12">
 							Test Date :
-							<form:input type="date" path="testDate"  required="true"/>
+							<form:input type="date" path="testDate" required="true" />
+							<form:errors path="testDate" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-12">
@@ -55,16 +63,19 @@
 								<form:option value="2">Fail</form:option>
 							</form:select>
 						</div>
-						<br>					
+						<br>
 						<div class="col-md-12">
 							Comment : <br />
 							<form:textarea class="form-control" rows="4" cols="30"
-								path="comment" required="true"/>
+								path="comment" required="true" />
+							<form:errors path="comment" cssClass="error" />
+
 						</div>
 						<br>
 						<div class="col-md-12">
 							Tested by:
-							<form:input path="testedBy" type="text" />
+							<form:input path="testedBy" type="text" required="true" />
+							<form:errors path="testedBy" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-offset-3">

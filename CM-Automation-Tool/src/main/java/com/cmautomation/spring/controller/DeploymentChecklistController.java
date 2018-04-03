@@ -2,10 +2,16 @@ package com.cmautomation.spring.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +36,14 @@ public class DeploymentChecklistController {
 
 	@Autowired
 	private DeploymentEnvironmentService deploymentEnvironmentService;
+
+	// pre-process form data and eliminates any white spaces
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
 
 	// renders the list of deployment checklist
 	@GetMapping("/list")
@@ -61,18 +75,25 @@ public class DeploymentChecklistController {
 	// saves a new record
 	@PostMapping("/saveDeploymentCheckList")
 	public String saveDeploymentCheckListForm(
-			@ModelAttribute("theDeploymentCheckList") DeploymentCheckList theDeploymentCheckList) {
-
-		deploymentCheckListService.saveDeploymentCheckList(theDeploymentCheckList);
-
-		return "redirect:/tsa/checkList/list";
+			@Valid @ModelAttribute("theDeploymentCheckList") DeploymentCheckList theDeploymentCheckList,
+			BindingResult theBindingResult) {
+		
+		if(theBindingResult.hasErrors()) {
+			
+			return "redirect:/tsa/checkList/deployChecklistAddForm";
+			
+		}else {
+			deploymentCheckListService.saveDeploymentCheckList(theDeploymentCheckList);
+			return "redirect:/tsa/checkList/list";			
+		}	
 	}
 
 	// renders the update form with pre-populated record for upate
 	@GetMapping("/deploymentCheckListUpdateForm")
 	public String deploymentCheckListUpdateForm(@RequestParam("deployCheckListId") int dpCkeck_Id,
 			Model theDeploymentCheckListModel) {
-		DeploymentCheckList theDeploymentCheckList=deploymentCheckListService.getDeploymentCheckListDetail(dpCkeck_Id);
+		DeploymentCheckList theDeploymentCheckList = deploymentCheckListService
+				.getDeploymentCheckListDetail(dpCkeck_Id);
 
 		List<DeploymentPlan> deploymentPlan = deploymentPlanService.getDeploymentPlanList();
 		List<DeploymentEnvironment> deploymentEnvironmentList = deploymentEnvironmentService.getEnvironmentList();

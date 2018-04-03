@@ -20,6 +20,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -34,6 +36,8 @@ public class DefectFixDetail {
 	@Column(name="defect_Id")
 	private Integer defect_Id;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="title")
 	private String title;
 	
@@ -45,11 +49,14 @@ public class DefectFixDetail {
 	@JoinColumn(name="vendor_Id")
 	private Vendor vendor;
 	
+	@NotNull(message="required")
 	@Column(name="defectCreationDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date defectCreationDate;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="description")
 	@Lob
 	private String description;
@@ -60,14 +67,19 @@ public class DefectFixDetail {
 	@Column(name="status")
 	private int status;
 	
+	@NotNull(message="required")
 	@Column(name="fixRecieveDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fixRecieveDate;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="impactedComponent")
 	private String impactedComponent;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="deploymentPackageLocation")
 	private String deploymentPackageLocation;/*--*/
 	
@@ -77,6 +89,7 @@ public class DefectFixDetail {
 	@Column(name="isDeploymentInstructionProvided")
 	private int isDeploymentInstructionProvided;
 	
+	@NotNull(message="required")
 	@Column(name="reviewDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")

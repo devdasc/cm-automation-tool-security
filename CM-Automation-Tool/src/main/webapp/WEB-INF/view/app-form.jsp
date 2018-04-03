@@ -13,6 +13,8 @@
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/add-style.css">
 		  
+		  <style> .error{color:red} </style>
+		  
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
@@ -36,11 +38,13 @@
 					<tr>
 						<td><label>Application Name:</label></td>
 						<td><form:input path="applicationName" required="true"/></td>
+						<td><form:errors path="applicationName" cssClass="error" /></td>
 						
 					</tr>
 					<tr>
 						<td><label>Description:</label></td>
-						<td><form:input path="description" required="false"/></td>						
+						<td><form:input path="description" required="false"/></td>	
+						<td><form:errors path="description" cssClass="error"/></td>					
 					</tr>
 					<tr>
 						<td><label></label></td>

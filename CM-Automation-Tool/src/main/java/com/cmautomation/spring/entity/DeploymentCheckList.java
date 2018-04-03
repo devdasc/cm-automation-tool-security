@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,6 +39,7 @@ public class DeploymentCheckList {
 	@JoinColumn(name="environment_Id",updatable=false)
 	private DeploymentEnvironment deploymentEnvironment;
 	
+	@NotNull(message="required")
 	@Column(name="actualDeploymentDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -45,6 +48,8 @@ public class DeploymentCheckList {
 	@Column(name="isPackageDeployed",length=1, columnDefinition="CHAR")
 	private char isPackageDeployed;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Lob
 	@Column(name="deployedPackageInfo")
 	private String deployedPackageInfo;
@@ -52,6 +57,8 @@ public class DeploymentCheckList {
 	@Column(name="isParameterDeployed",length=1, columnDefinition="CHAR")
 	private char isParameterDeployed;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Lob
 	@Column(name="deployedParameterInfo")
 	private String deployedParameterInfo;
@@ -59,14 +66,20 @@ public class DeploymentCheckList {
 	@Column(name="isDBScriptExecuted",length=1, columnDefinition="CHAR")
 	private char isDBScriptExecuted;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Lob
 	@Column(name="dBScriptInfo")
 	private String dBScriptInfo;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Lob
 	@Column(name="otherDeploymentInfo")
 	private String otherDeploymentInfo;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="deployedBy")
 	private String deployedBy;
 	

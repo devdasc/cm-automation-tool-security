@@ -12,6 +12,7 @@
 	<link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/add-style.css">
+		  <style> .error{color:red} </style>
 		  
 </head>
 <body>
@@ -36,14 +37,20 @@
 					<!-- <tr>
 						<td><label>Environment ID:</label></td>
 						<td><form:input path="environment_Id" readonly="true"/></td>
+						
+						
 					</tr> -->
 					<tr>
 						<td><label>Environment Name:</label></td>
-						<td><form:input path="environmentName" required="true"/></td>						
+						<td><form:input path="environmentName" required="true"/></td>
+						<td><form:errors path="environmentName" cssClass="error" /></td>
+												
 					</tr>
 					<tr>
 						<td><label>Description:</label></td>
-						<td><form:input path="description" required="true"/></td>					
+						<td><form:input path="description" required="true"/></td>
+						<td><form:errors path="description" cssClass="error" /></td>
+											
 					</tr>
 					<tr>
 						<td><label></label></td>

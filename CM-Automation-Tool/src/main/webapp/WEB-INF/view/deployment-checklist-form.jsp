@@ -8,7 +8,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Create Deployment CheckList</title>
+<!-- <link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css"> -->
+
+<!--  <link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/add-style.css">-->
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/app.css">
+<style>.error {color: red }</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp" />
@@ -46,13 +60,14 @@
 						<br />
 						<div class="col-md-12">
 							Actual Deployment Date :
-							<form:input type="date" path="actualDeploymentDate"
-								required="true" />
+							<form:input type="date" path="actualDeploymentDate"	required="true" />
+							<form:errors path="actualDeploymentDate" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-12">
 							Package Deployed ? :
-							<form:select path="isPackageDeployed">								
+							<form:select path="isPackageDeployed">
+														
 								<form:option value="y">Yes</form:option>
 								<form:option value="n">No</form:option>
 							</form:select>
@@ -62,6 +77,7 @@
 							Deployed Package Info :
 							<form:textarea class="form-control" rows="4" cols="30"
 								path="deployedPackageInfo" required="true" />
+								<form:errors path="deployedPackageInfo" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-12">
@@ -76,6 +92,7 @@
 							Deployed Parameter Information :
 							<form:textarea class="form-control" rows="4" cols="30"
 								path="deployedParameterInfo" required="true" />
+								<form:errors path="deployedParameterInfo" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-12">
@@ -90,17 +107,20 @@
 							Database Script Information :
 							<form:textarea class="form-control" rows="4" cols="30"
 								path="dBScriptInfo" required="true" />
+								<form:errors path="dBScriptInfo" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-12">
 							Additional Information :
 							<form:textarea class="form-control" rows="4" cols="30"
 								path="otherDeploymentInfo" required="true" />
+								<form:errors path="otherDeploymentInfo" cssClass="error" />
 						</div>
 						<br>
 						<div class="col-md-12">
 							Deployed by :
 							<form:input type="text" path="deployedBy" required="true" />
+							<form:errors path="deployedBy" cssClass="error" />
 						</div>
 						<br>
 						<br>

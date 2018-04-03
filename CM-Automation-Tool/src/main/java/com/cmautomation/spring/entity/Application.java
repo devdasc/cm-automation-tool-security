@@ -11,7 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -26,9 +27,13 @@ public class Application {
 	@Column(name = "application_Id")
 	private int application_Id;
 
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name = "applicationName")
 	private String applicationName;	
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name = "description")
 	private String description;
 	
