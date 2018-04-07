@@ -19,6 +19,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/app.css">
+<style>
+.error {
+	color: red
+}
+</style>
 </head>
 
 
@@ -39,7 +44,9 @@
 
 						<div class="col-md-12">
 							Deployment Title :
-							<form:input path="title" placeholder="Deployment Title" required="true"/>
+							<form:input path="title" placeholder="Deployment Title"
+								required="true" />
+							<form:errors path="title" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
@@ -55,44 +62,58 @@
 						<div class="col-md-12">
 							Defects to Deploy :
 							<form:select path="defects" required="true">
-			            		<form:options items="${listDefectFixDetail}" itemValue="defect_Id" itemLabel="title"/>
-						</form:select>						
+								<form:options items="${listDefectFixDetail}"
+									itemValue="defect_Id" itemLabel="title" />
+							</form:select>
 						</div>
 						<br />
 						<div class="col-md-12">
 							Plan Date :
-							<form:input type="date" path="planDate" placeholder="yyyy-mm-dd" required="true"/>
+							<form:input type="date" path="planDate" placeholder="yyyy-mm-dd"
+								required="true" />
+							<form:errors path="planDate" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							Dev Deployment Date :
-							<form:input  type="date" path="dev_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
+							<form:input type="date" path="dev_DeploymentDate"
+								placeholder="yyyy-mm-dd" required="true" />
+							<form:errors path="dev_DeploymentDate" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							SDF Deployment Date :
-							<form:input  type="date" path="sdf_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
+							<form:input type="date" path="sdf_DeploymentDate"
+								placeholder="yyyy-mm-dd" required="true" />
+							<form:errors path="sdf_DeploymentDate" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST1 Deployment Date :
-							<form:input  type="date" path="ist1_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
+							<form:input type="date" path="ist1_DeploymentDate"
+								placeholder="yyyy-mm-dd" required="true" />
+							<form:errors path="ist1_DeploymentDate" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							IST2 Deployment Date :
-							<form:input  type="date" path="ist2_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
+							<form:input type="date" path="ist2_DeploymentDate"
+								placeholder="yyyy-mm-dd" required="true" />
+							<form:errors path="ist2_DeploymentDate" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							PROD Deployment Date :
-							<form:input  type="date" path="prod_DeploymentDate" placeholder="yyyy-mm-dd" required="true"/>
+							<form:input type="date" path="prod_DeploymentDate"
+								placeholder="yyyy-mm-dd" required="true" />
+							<form:errors path="prod_DeploymentDate" cssClass="error" />
 						</div>
 						<br />
 						<div class="col-md-12">
 							Comment :
 							<form:textarea path="comment" class="form-control" rows="4"
-								cols="50" required="true"/>
+								cols="50" required="true" />
+							<form:errors path="comment" cssClass="error" />
 						</div>
 
 						<br />

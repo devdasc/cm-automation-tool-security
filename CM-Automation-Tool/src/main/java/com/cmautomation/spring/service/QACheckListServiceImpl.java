@@ -24,13 +24,13 @@ public class QACheckListServiceImpl implements QACheckListService {
 	}
 
 	@Override
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 	public void saveQACheckList(QACheckList qaCheckList) {
 		// TODO Auto-generated method stub
 		
 	}
 
-=======
+=======*/
 	@Transactional
 	public void saveQACheckList(QACheckList qaCheckList) {
 		
@@ -53,5 +53,5 @@ public class QACheckListServiceImpl implements QACheckListService {
 
 	
 
->>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
+//>>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
 }

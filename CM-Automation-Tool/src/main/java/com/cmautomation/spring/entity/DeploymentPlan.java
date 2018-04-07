@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -22,6 +24,8 @@ public class DeploymentPlan {
 	@Column(name="deployment_Id")
 	private Integer deployment_Id;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Column(name="title")
 	private String title;
 		
@@ -29,36 +33,44 @@ public class DeploymentPlan {
 	@JoinColumn(name="application_Id")
 	private Application application;
 	
+	@NotNull(message="required")
 	@Column(name="planDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date planDate;
 	
+	@NotNull(message="required")
 	@Column(name="dev_DeploymentDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dev_DeploymentDate;
 	
+	@NotNull(message="required")
 	@Column(name="sdf_DeploymentDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date sdf_DeploymentDate;
 	
+	@NotNull(message="required")
 	@Column(name="ist1_DeploymentDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date ist1_DeploymentDate;
 	
+	@NotNull(message="required")
 	@Column(name="ist2_DeploymentDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date ist2_DeploymentDate;
 	
+	@NotNull(message="required")
 	@Column(name="prod_DeploymentDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date prod_DeploymentDate;
 	
+	@NotNull(message="required")
+	@Size(min=1,message="required")
 	@Lob
 	@Column(name="comment")
 	private String comment;
@@ -70,12 +82,8 @@ public class DeploymentPlan {
 			   inverseJoinColumns=@JoinColumn(name="defect_Id"))
 	private List<DeploymentDefectList> listDeploymentDefects;*/
 	
-	
-	@ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            })
+	@NotNull(message="required")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "deployement_defectlist",
             joinColumns = { @JoinColumn(name = "deployement_Id") },
             inverseJoinColumns = { @JoinColumn(name = "defect_Id") })
@@ -83,9 +91,6 @@ public class DeploymentPlan {
 	
 	@Transient
 	private List<String> defects=new ArrayList<>();
-	
-
-	
 	
 	public DeploymentPlan() {
 		
@@ -215,19 +220,18 @@ public class DeploymentPlan {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((application == null) ? 0 : application.hashCode());
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+		result = prime * result + ((defects == null) ? 0 : defects.hashCode());
 		result = prime * result + ((deployment_Id == null) ? 0 : deployment_Id.hashCode());
 		result = prime * result + ((dev_DeploymentDate == null) ? 0 : dev_DeploymentDate.hashCode());
 		result = prime * result + ((ist1_DeploymentDate == null) ? 0 : ist1_DeploymentDate.hashCode());
 		result = prime * result + ((ist2_DeploymentDate == null) ? 0 : ist2_DeploymentDate.hashCode());
-		result = prime * result + ((listDefectFixDetail == null) ? 0 : listDefectFixDetail.hashCode());
+		result = prime * result + ((listDeploymentDefects == null) ? 0 : listDeploymentDefects.hashCode());
 		result = prime * result + ((planDate == null) ? 0 : planDate.hashCode());
 		result = prime * result + ((prod_DeploymentDate == null) ? 0 : prod_DeploymentDate.hashCode());
 		result = prime * result + ((sdf_DeploymentDate == null) ? 0 : sdf_DeploymentDate.hashCode());
@@ -254,6 +258,11 @@ public class DeploymentPlan {
 				return false;
 		} else if (!comment.equals(other.comment))
 			return false;
+		if (defects == null) {
+			if (other.defects != null)
+				return false;
+		} else if (!defects.equals(other.defects))
+			return false;
 		if (deployment_Id == null) {
 			if (other.deployment_Id != null)
 				return false;
@@ -274,10 +283,10 @@ public class DeploymentPlan {
 				return false;
 		} else if (!ist2_DeploymentDate.equals(other.ist2_DeploymentDate))
 			return false;
-		if (listDefectFixDetail == null) {
-			if (other.listDefectFixDetail != null)
+		if (listDeploymentDefects == null) {
+			if (other.listDeploymentDefects != null)
 				return false;
-		} else if (!listDefectFixDetail.equals(other.listDefectFixDetail))
+		} else if (!listDeploymentDefects.equals(other.listDeploymentDefects))
 			return false;
 		if (planDate == null) {
 			if (other.planDate != null)

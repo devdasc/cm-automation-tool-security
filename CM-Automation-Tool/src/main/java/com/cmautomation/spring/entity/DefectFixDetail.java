@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import javax.persistence.*;
-=======
+//=======
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
->>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
+//>>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;

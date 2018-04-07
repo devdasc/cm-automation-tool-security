@@ -80,10 +80,10 @@ public class DefectFixDetailController {
 	// saves a new record in the defect fix table
 	@PostMapping("/defect/saveDefectFixDetail") // works fine
 	public String saveDefectFixDetail(@Valid @ModelAttribute("theDefectFixDetail") DefectFixDetail defectFixDetail,
-			BindingResult theBindingResult) {
+			BindingResult theBindingResult, Model model) {
 		
 		if(theBindingResult.hasErrors()) {			
-			//return "defect-form";
+			//return "defect-form";			
 			return "redirect:/cma/defect/defectAddForm";		
 		}else {
 			defectFixDetailService.saveDefectFixDetail(defectFixDetail);

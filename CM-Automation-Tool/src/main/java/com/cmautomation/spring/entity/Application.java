@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
@@ -29,6 +30,7 @@ public class Application {
 
 	@NotNull(message="required")
 	@Size(min=1,message="required")
+	@Pattern(regexp="^[a-zA-Z0-9 ]+$", message="only alphanumaric with no space")
 	@Column(name = "applicationName")
 	private String applicationName;	
 	
