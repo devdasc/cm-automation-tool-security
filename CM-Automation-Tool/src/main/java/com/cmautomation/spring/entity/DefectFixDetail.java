@@ -9,6 +9,7 @@ import java.util.List;
 //=======
 //<<<<<<< HEAD
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 //>>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
@@ -43,6 +44,7 @@ public class DefectFixDetail {
 	@Column(name="defectCreationDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	//@FutureOrPresent
 	private Date defectCreationDate;
 	
 	@NotNull(message="required")
@@ -57,7 +59,7 @@ public class DefectFixDetail {
 	@Column(name="status")
 	private int status;
 	
-	@NotNull(message="required")
+	
 	@Column(name="fixRecieveDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -79,7 +81,7 @@ public class DefectFixDetail {
 	@Column(name="isDeploymentInstructionProvided")
 	private int isDeploymentInstructionProvided;
 	
-	@NotNull(message="required")
+	
 	@Column(name="reviewDate")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")

@@ -106,12 +106,14 @@
 							<form:errors path="comment" cssClass="error" />
 						</td>
 					</tr>
+					<security:authorize access="hasRole('QA')">
 					<tr>
 						<td></td>
 						<td>
 							<input type="submit" value="Save" />
 						</td>						
 					</tr>
+					</security:authorize>
 				</tbody>
 			</table>
 					</form:form>

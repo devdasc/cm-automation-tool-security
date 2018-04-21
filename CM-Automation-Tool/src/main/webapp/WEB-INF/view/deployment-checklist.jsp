@@ -53,6 +53,12 @@
 								<th class="text-center">Delete</th>
 
 							</security:authorize>
+							
+							<security:authorize access="hasAnyRole('QA','CMA')">
+
+								<th class="text-center">ViewDetail</th>
+
+							</security:authorize>
 						</tr>
 						<!-- loop over and print applications -->
 						<c:forEach var="tempDeployList" items="${theDeploymentCheckList}">
@@ -71,7 +77,7 @@
 								<td class="text-center">${tempDeployList.deploymentPlan.title}</td>
 								<td class="text-center">${tempDeployList.deploymentEnvironment.environmentName}</td>
 								<td class="text-center">${tempDeployList.actualDeploymentDate}</td>
-								<td class="text-center">${tempDeployList.isPackageDeployed}</td>
+								<td class="text-center">${tempDeployList.viewIsPackageDeployed}</td>
 
 								<security:authorize access="hasRole('TSA')">
 
@@ -83,6 +89,13 @@
 											<a href="${deleteLink}"
 												onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 										</security:authorize></td>
+
+								</security:authorize>
+								<security:authorize access="hasAnyRole('QA','CMA')">
+
+										<td>
+											<a href="${updateLink}">View Detail</a>										
+										</td>
 
 								</security:authorize>
 

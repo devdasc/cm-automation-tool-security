@@ -36,7 +36,13 @@
 		   <ul class="dropdown-menu">
 				<!-- Add link to point to Leaders..this is for the managers	 -->
 				<li class="${title=='listDefectFixDetail'? 'active':''}" }><a href="${pageContext.request.contextPath}/cma/defect/list">Defect List</a></li>
-				<li class="${title=='defectForm'? 'active':''}" ><a href="${pageContext.request.contextPath}/cma/defect/defectAddForm">Defect Detail</a></li>
+				
+				<li class="${title=='defectForm'? 'active':''}" >
+				<security:authorize access="hasRole('CMA')">
+				<a href="${pageContext.request.contextPath}/cma/defect/defectAddForm">Defect Detail</a>
+				</security:authorize>
+				</li>
+				
 		   </ul>
 	   	</li>
 	  	</security:authorize>
@@ -44,26 +50,26 @@
 	    <security:authorize access="hasAnyRole('CMA','QA','TSA','ADMIN')">
 	   	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ManageDeployment<span class="caret"></span></a>
 	   		<ul class="dropdown-menu">
-	   			<li>
+	   			<li  class="${title=='DeploymentSchedule'? 'active':''}">
 	   			<a href="${pageContext.request.contextPath}/cma/deploymentPlan/list">Deployment Schedule</a>
 	   			</li>
-      			<li>
+      			<li class="${title=='PlanDeployment'? 'active':''}">
       			<security:authorize access="hasRole('CMA')">
       			<a href="${pageContext.request.contextPath}/cma/deploymentPlan/addForm">Plan Deployment</a>
       			</security:authorize>
       			</li>
-      			<li>
+      			<li  class="${title=='DeploymentCheckList'? 'active':''}">
       			<a href="${pageContext.request.contextPath}/tsa/checkList/list">Deployment CheckList</a>
       			</li>
-      			<li>
+      			<li  class="${title=='AddDeploymentCheckList'? 'active':''}">
       			<security:authorize access="hasRole('TSA')">
       			<a href="${pageContext.request.contextPath}/tsa/checkList/deployChecklistAddForm">Add Deployment CheckList</a>
       			</security:authorize>
       			</li>
-      			<li>
+      			<li  class="${title=='QACheckList'? 'active':''}">
       			<a href="${pageContext.request.contextPath}/qa/checkList/list">QA CheckList</a>
       			</li>
-      			<li>
+      			<li  class="${title=='AddQACheckList'? 'active':''}">
       			<security:authorize access="hasRole('QA')">  
       			<a href="${pageContext.request.contextPath}/qa/checkList/QACheckListAddForm">Add QA CheckList</a>
       			</security:authorize> 

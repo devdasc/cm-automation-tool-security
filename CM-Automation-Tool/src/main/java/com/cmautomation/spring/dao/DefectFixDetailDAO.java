@@ -7,6 +7,9 @@ import com.cmautomation.spring.entity.DefectFixDetail;
 public interface DefectFixDetailDAO {
 
 	List<DefectFixDetail> getDefectList();
+	
+	List<DefectFixDetail> getNotDeployedDefectList();
+
 
 	public void saveDefectFixDetail(DefectFixDetail theDefectFixDetail);
 

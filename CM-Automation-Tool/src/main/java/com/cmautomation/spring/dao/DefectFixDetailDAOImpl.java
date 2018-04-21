@@ -33,11 +33,29 @@ public class DefectFixDetailDAOImpl implements DefectFixDetailDAO {
 		return defectFixDetailList;
 	}
 	
+	public List<DefectFixDetail> getNotDeployedDefectList(){
+
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// create a query
+		Query<DefectFixDetail> theQuery = currentSession.getNamedSQLQuery("select df from DefectFixDetail df where df.defect_Id not in(select defect_Id from cm_automation.deployement_defectlist)");
+
+		// execute query and get result list
+		List<DefectFixDetail> defectFixDetailList = theQuery.getResultList();
+		
+		DefectFixDetail defect= defectFixDetailList.get(0);
+		
+		
+		return defectFixDetailList;
+	}
+	
 	//Assign view property for status
 	private List<DefectFixDetail> assignViewStatus(List<DefectFixDetail> defects)
 	{
 		for(int i=0; i<defects.size();i++)
 		{
+			DefectFixDetail defect= assignViewStatus(defects.get(i));
 			defects.set(i, assignViewStatus(defects.get(i)));
 		}
 		
@@ -141,6 +159,8 @@ public class DefectFixDetailDAOImpl implements DefectFixDetailDAO {
 		}
 		// execute query and get result list
 		List<DefectFixDetail> listDefects = searchQuery.getResultList();
+		
+		listDefects = assignViewStatus(listDefects);
 
 		return listDefects;
 	}

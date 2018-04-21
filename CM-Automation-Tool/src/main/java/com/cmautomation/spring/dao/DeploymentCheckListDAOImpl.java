@@ -29,9 +29,39 @@ public class DeploymentCheckListDAOImpl implements DeploymentCheckListDAO {
 
 		// execute query and get result list
 		List<DeploymentCheckList> theDeploymentCheckList = theQuery.getResultList();
+		
+		theDeploymentCheckList = assignViewStatus(theDeploymentCheckList);
 
 		return theDeploymentCheckList;
 	}
+	
+	
+	//Assign view property for status
+		private List<DeploymentCheckList> assignViewStatus(List<DeploymentCheckList> deploymentCheckLists)
+		{
+			for(int i=0; i<deploymentCheckLists.size();i++)
+			{
+				deploymentCheckLists.set(i, assignViewStatus(deploymentCheckLists.get(i)));
+			}
+			
+			return deploymentCheckLists;
+		}
+		
+		//Assign view property for status
+		private DeploymentCheckList assignViewStatus(DeploymentCheckList deploymentCheckList)
+		{
+				if(deploymentCheckList.getIsPackageDeployed()=='y')
+				{
+					deploymentCheckList.setViewIsPackageDeployed("DONE");
+				}
+				else if(deploymentCheckList.getIsPackageDeployed()=='n')
+				{
+					deploymentCheckList.setViewIsPackageDeployed("PENDING");
+				}
+			
+			return deploymentCheckList;
+		}
+	
 
 	// save
 	@Override
@@ -51,6 +81,8 @@ public class DeploymentCheckListDAOImpl implements DeploymentCheckListDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		DeploymentCheckList theDeploymentCheckList=currentSession.get(DeploymentCheckList.class, dpCkeck_Id);
+		
+		theDeploymentCheckList = assignViewStatus(theDeploymentCheckList);
 		
 		return theDeploymentCheckList;
 	}

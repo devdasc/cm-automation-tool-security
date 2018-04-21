@@ -63,7 +63,7 @@ public class DeploymentPlanController {
 		List<DeploymentPlan> theDeploymentPlan = deploymentPlanService.getDeploymentPlanList();
 
 		theDeploymentPlanModel.addAttribute("theDeploymentPlanList", theDeploymentPlan);
-		theDeploymentPlanModel.addAttribute("title", "listDeploymentPlan");
+		theDeploymentPlanModel.addAttribute("title", "DeploymentSchedule");
 
 		return "list-deployment";
 	}
@@ -90,7 +90,7 @@ public class DeploymentPlanController {
 		theDeploymentPlanModel.addAttribute("deploymentPlanDetail", theDeploymentPlan);
 		theDeploymentPlanModel.addAttribute("applications", applications);
 		theDeploymentPlanModel.addAttribute("listDefectFixDetail", listDefectFixDetail);
-		theDeploymentPlanModel.addAttribute("title", "deploymentPlan");
+		theDeploymentPlanModel.addAttribute("title", "PlanDeployment");
 
 		return "deploymentPlan-form";
 	}
@@ -124,6 +124,8 @@ public class DeploymentPlanController {
 			DeploymentPlan theDeploymentPlan = deploymentPlanService.getDeploymentPlan(deployment_Id);
 
 			 List<DefectFixDetail> listDeploymentDefects=new ArrayList<>();
+			 
+			 List<DefectFixDetail> listDefectFixDetail = defectFixDetailService.getDefectList();
 
 			List<String> objDefects = new ArrayList<>();
 
@@ -132,6 +134,8 @@ public class DeploymentPlanController {
 			for (DefectFixDetail deploymentDefect : theDeploymentPlan.getListDeploymentDefects()) {
 
 				objDefects.add(deploymentDefect.getDefect_Id().toString());
+				listDefectFixDetail.add(defectFixDetailService.getDefectFixDetail(deploymentDefect.getDefect_Id()));
+				
 			}
 			// }
 
@@ -139,12 +143,12 @@ public class DeploymentPlanController {
 
 			List<Application> applications = applicationService.getApplications();
 
-			List<DefectFixDetail> listDefectFixDetail = defectFixDetailService.getDefectList();
+			
 
 			theDeploymentPlanModel.addAttribute("deploymentPlanDetail", theDeploymentPlan);
 			theDeploymentPlanModel.addAttribute("applications", applications);
 			theDeploymentPlanModel.addAttribute("listDefectFixDetail", listDefectFixDetail);
-			theDeploymentPlanModel.addAttribute("title", "deploymentPlan");
+			theDeploymentPlanModel.addAttribute("title", "PlanDeployment");
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

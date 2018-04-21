@@ -82,6 +82,12 @@ $(document).ready(function() {
 								<th class="text-center">Delete</th>
 
 							</security:authorize>
+							<%-- Only show "Action" column for CMA --%>
+							<security:authorize access="hasAnyRole('QA','TSA')">
+
+								<th class="text-center">ViewDetail</th>
+
+							</security:authorize>
 						</tr>
 						<!-- loop over and print applications -->
 						<c:forEach var="tempDefectList" items="${theDefectFixList}">
@@ -116,6 +122,14 @@ $(document).ready(function() {
 											<a href="${deleteLink}"
 												onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 										</security:authorize></td>
+								</security:authorize>
+								
+								<security:authorize access="hasAnyRole('QA','TSA')">
+
+										<td>
+											<a href="${updateLink}">View Detail</a>										
+										</td>
+
 								</security:authorize>
 							</tr>
 						</c:forEach>

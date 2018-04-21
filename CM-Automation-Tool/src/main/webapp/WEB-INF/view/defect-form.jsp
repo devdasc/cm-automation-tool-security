@@ -26,6 +26,66 @@
 	src="<c:url value="/resources/jquery-ui/jquery-ui-1.8.10.custom.min.js" />"></script>	
 <script type="text/javascript"
 	src="<c:url value="https://code.jquery.com/jquery-3.3.1.min.js" />"></script>
+	
+<script>
+  $(document).ready(function(){
+	        $("#status").change(function(){
+	        	var previousStatus= $("#hiddenStatus").val();
+	        	
+	        	var newStatus=$(this).val();
+	        	
+	        	if(previousStatus>newStatus)
+	        	{
+	        		alert("Status is not valid");
+	        		$(this).val(previousStatus);
+	        	}     
+	        });
+	        
+	        $("#defectCreationDate").change(function(){
+	        	
+	        	var objDate = new Date();
+	        	var defectCreationDate = $("#defectCreationDate").val();
+	        	
+	        	var fixRecieveDate=$("#fixRecieveDate").val();
+	        	
+	        	if(fixRecieveDate!=null && fixRecieveDate!='' && defectCreationDate!=null && defectCreationDate!='' && defectCreationDate>fixRecieveDate)
+	        	{
+	        		alert("FixRecieveDate can not be earlier than DefectCreationDate");
+	        		$("#defectCreationDate").val("");
+	        	}     
+	        });
+	        
+ 			 $("#fixRecieveDate").change(function(){
+	        	
+	        	var objDate = new Date();
+	        	var defectCreationDate = $("#defectCreationDate").val();
+	        	
+	        	var fixRecieveDate=$("#fixRecieveDate").val();
+	        	
+	        	if(fixRecieveDate!=null && defectCreationDate!=null && fixRecieveDate!='' && defectCreationDate!='' && defectCreationDate>fixRecieveDate)
+	        	{
+	        		alert("FixRecieveDate can not be earlier than DefectCreationDate");
+	        		$("#fixRecieveDate").val("");
+	        	}     
+	        });
+ 			 
+ 			 
+ 			 $("#reviewDate").change(function(){
+	        	
+	        	var objDate = new Date();
+	        	var reviewDate = $("#reviewDate").val();
+	        	
+	        	var fixRecieveDate=$("#fixRecieveDate").val();
+	        	
+	        	if(fixRecieveDate!=null && reviewDate!=null && fixRecieveDate!='' && reviewDate!='' && fixRecieveDate>reviewDate)
+	        	{
+	        		alert("Review Date can not be earlier than Fix Recieve Date");
+	        		$("#reviewDate").val("");
+	        	}     
+	        });
+	    })
+	
+</script>
 
 <style>
 .error {
@@ -49,6 +109,7 @@
 	<form:form method="POST" action="saveDefectFixDetail" modelAttribute="theDefectFixDetail">
 						<!-- associate this data with Defect id -->
 						<form:hidden path="defect_Id" />	
+						
 		<table>
 				<tbody>
 					 
@@ -95,7 +156,7 @@
 							<label>Fix Received On :</label>							
 						</td>
 						<td>
-							<form:input type="date" path="fixRecieveDate" required="true"/>
+							<form:input type="date" path="fixRecieveDate"/>
 							<form:errors path="fixRecieveDate" cssClass="error" />
 						</td>
 					</tr>
@@ -167,7 +228,7 @@
 							<label>Review Date :</label>
 						</td>
 						<td colspan="3">							
-							<form:input type="date"  class="form-control" path="reviewDate" required="true"/>
+							<form:input type="date"  class="form-control" path="reviewDate"/>
 							<form:errors path="reviewDate" cssClass="error" />
 						</td>
 					</tr>
@@ -181,6 +242,7 @@
 								<form:errors path="description" cssClass="error" />
 						</td>					
 					</tr>
+					<security:authorize access="hasRole('CMA')">
 					<tr>
 						<td>
 							
@@ -189,6 +251,7 @@
 							<input type="submit" value="Save" />
 						</td>						
 					</tr>
+					</security:authorize>
 				</tbody>
 			</table>
 		</form:form>

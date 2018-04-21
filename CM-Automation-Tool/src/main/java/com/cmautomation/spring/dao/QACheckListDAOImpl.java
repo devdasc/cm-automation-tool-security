@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cmautomation.spring.entity.DeploymentCheckList;
 import com.cmautomation.spring.entity.QACheckList;
 import com.cmautomation.spring.entity.QACompositeKeyId;
 
@@ -28,10 +29,39 @@ public class QACheckListDAOImpl implements QACheckListDAO {
 
 		// execute query and get result list
 		List<QACheckList> qaCheckList = theQuery.getResultList();
+		
+		qaCheckList = assignViewStatus(qaCheckList);
 
 		return qaCheckList;
 
 	}
+	
+
+	//Assign view property for status
+		private List<QACheckList> assignViewStatus(List<QACheckList> qaCheckLists)
+		{
+			for(int i=0; i<qaCheckLists.size();i++)
+			{
+				qaCheckLists.set(i, assignViewStatus(qaCheckLists.get(i)));
+			}
+			
+			return qaCheckLists;
+		}
+		
+		//Assign view property for status
+		private QACheckList assignViewStatus(QACheckList qaCheckList)
+		{
+				if(qaCheckList.getTestStatus()==1)
+				{
+					qaCheckList.setViewStatus("PASS");
+				}
+				else if(qaCheckList.getTestStatus()==2)
+				{
+					qaCheckList.setViewStatus("FAIL");
+				}
+			
+			return qaCheckList;
+		}
 
 	@Override
 	public void saveQACheckList(QACheckList qaCheckList) {
@@ -48,6 +78,7 @@ public class QACheckListDAOImpl implements QACheckListDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 
 		QACheckList qaCheckList = currentSession.get(QACheckList.class, qaComp_Id);
+		qaCheckList = assignViewStatus(qaCheckList);
 
 		return qaCheckList;
 	}

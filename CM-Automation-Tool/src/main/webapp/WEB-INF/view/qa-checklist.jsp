@@ -51,6 +51,12 @@
 						<th>Update</th>
 						<th>Delete</th>
 					</security:authorize>
+					
+					<security:authorize access="hasAnyRole('CMA','TSA')">
+
+						<th class="text-center">ViewDetail</th>
+
+					</security:authorize>
 				</tr>
 
 				<!-- loop over and print applications -->
@@ -70,7 +76,7 @@
 						<td>${tempQAChecklist.deploymentPlan.title}</td>
 						<td>${tempQAChecklist.deploymentEnvironment.environmentName}</td>
 						<td>${tempQAChecklist.deploymentPlan.application.applicationName}</td>
-						<td>${tempQAChecklist.testStatus}</td>
+						<td>${tempQAChecklist.viewStatus}</td>
 
 						<security:authorize access="hasRole('QA')">
 
@@ -85,6 +91,14 @@
 										onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 								</security:authorize>
 							</td>
+						</security:authorize>
+						
+						<security:authorize access="hasAnyRole('CMA','TSA')">
+
+							<td>
+								<a href="${updateLink}">View Detail</a>										
+							</td>
+
 						</security:authorize>
 					</tr>
 				</c:forEach>

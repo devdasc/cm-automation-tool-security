@@ -43,6 +43,11 @@
 					<th>Update</th>
 					<th>Delete</th>
 				</security:authorize>
+				<security:authorize access="hasAnyRole('QA','TSA')">
+
+					<th class="text-center">ViewDetail</th>
+
+				</security:authorize>
 			</tr>
 			<!-- loop over and print applications -->
 			<c:forEach var="tempDeploymentPlan" items="${theDeploymentPlanList}">
@@ -84,9 +89,13 @@
 							</security:authorize></td>
 
 					</security:authorize>
+					<security:authorize access="hasAnyRole('QA','TSA')">
 
+						<td>
+							<a href="${updateLink}">View Detail</a>										
+						</td>
+					</security:authorize>
 				</tr>
-
 			</c:forEach>
 		</table>
 	</div>

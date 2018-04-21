@@ -162,6 +162,7 @@
 							<form:errors path="deployedBy" cssClass="error" />
 						</td>
 					</tr>
+					<security:authorize access="hasRole('TSA')">
 					<tr>
 						<td>
 						</td>
@@ -169,6 +170,7 @@
 							<input type="submit" value="Save" />
 						</td>						
 					</tr>
+					</security:authorize>
 				</tbody>
 			</table>
 		</form:form>

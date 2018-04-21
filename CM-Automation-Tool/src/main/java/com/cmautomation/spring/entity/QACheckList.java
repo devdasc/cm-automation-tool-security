@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -42,12 +43,12 @@ public class QACheckList implements Serializable{
 
 	
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.EAGER)
-	@JoinColumn(name="deployment_Id", updatable=false)
+	@JoinColumn(name="deployment_Id", updatable=true)
 	private DeploymentPlan deploymentPlan;	
 	
 		
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.EAGER)
-	@JoinColumn(name="environment_Id", updatable=false )
+	@JoinColumn(name="environment_Id", updatable=true )
 	private DeploymentEnvironment deploymentEnvironment;
 	
 	@NotNull(message="required")
@@ -88,6 +89,19 @@ public class QACheckList implements Serializable{
 		this.comment = comment;
 		this.testedBy = testedBy;
 	}
+	
+
+	
+	@Transient
+	private String viewStatus;
+	
+	public String  getViewStatus() {
+		return viewStatus;
+	}
+	public void setViewStatus(String viewStatus) {
+		this.viewStatus = viewStatus;
+	}
+	
 
 
 	public Integer getQachecklist_id() {

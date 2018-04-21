@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,7 +37,7 @@ public class DeploymentCheckList {
 	
 	
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.EAGER)
-	@JoinColumn(name="environment_Id",updatable=false)
+	@JoinColumn(name="environment_Id",updatable=true)
 	private DeploymentEnvironment deploymentEnvironment;
 	
 	@NotNull(message="required")
@@ -105,6 +106,18 @@ public class DeploymentCheckList {
 		this.otherDeploymentInfo = otherDeploymentInfo;
 		this.deployedBy = deployedBy;
 	}
+	
+	
+	@Transient
+	private String viewIsPackageDeployed;
+	
+	public String  getViewIsPackageDeployed() {
+		return viewIsPackageDeployed;
+	}
+	public void setViewIsPackageDeployed(String viewIsPackageDeployed) {
+		this.viewIsPackageDeployed = viewIsPackageDeployed;
+	}
+	
 
 	public Integer getDeploymentChecklist_Id() {
 		return deploymentChecklist_Id;

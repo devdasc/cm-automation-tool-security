@@ -52,6 +52,7 @@ public class DeploymentChecklistController {
 		List<DeploymentCheckList> theDeploymentCheckList = deploymentCheckListService.getDeploymentCheckList();
 
 		theDeploymentCheckListModel.addAttribute("theDeploymentCheckList", theDeploymentCheckList);
+		theDeploymentCheckListModel.addAttribute("title", "DeploymentCheckList");
 
 		return "deployment-checklist";
 	}
@@ -68,6 +69,7 @@ public class DeploymentChecklistController {
 		theDeploymentCheckListModel.addAttribute("theDeploymentCheckList", theDeploymentCheckList);
 		theDeploymentCheckListModel.addAttribute("deploymentPlan", deploymentPlan);
 		theDeploymentCheckListModel.addAttribute("deploymentEnvironmentList", deploymentEnvironmentList);
+		theDeploymentCheckListModel.addAttribute("title", "AddDeploymentCheckList");
 
 		return "deployment-checklist-form";
 	}
@@ -101,6 +103,7 @@ public class DeploymentChecklistController {
 		theDeploymentCheckListModel.addAttribute("theDeploymentCheckList", theDeploymentCheckList);
 		theDeploymentCheckListModel.addAttribute("deploymentPlan", deploymentPlan);
 		theDeploymentCheckListModel.addAttribute("deploymentEnvironmentList", deploymentEnvironmentList);
+		theDeploymentCheckListModel.addAttribute("title", "AddDeploymentCheckList");
 
 		return "deployment-checklist-form";
 	}

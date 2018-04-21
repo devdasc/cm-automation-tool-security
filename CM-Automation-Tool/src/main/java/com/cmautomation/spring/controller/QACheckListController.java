@@ -57,6 +57,7 @@ public class QACheckListController {
 		List<QACheckList> qaCheckList = qaCheckListservice.getQACheckList();
 
 		theQACheckListModel.addAttribute("qaCheckList", qaCheckList);
+		theQACheckListModel.addAttribute("title", "QACheckList");
 
 		return "qa-checklist";
 	}
@@ -75,6 +76,7 @@ public class QACheckListController {
 		theQACheckListModel.addAttribute("deploymentPlan", deploymentPlan);
 
 		theQACheckListModel.addAttribute("deploymentEnvironmentList", deploymentEnvironmentList);
+		theQACheckListModel.addAttribute("title", "AddQACheckList");
 
 		return "qaChecklist-form";
 	}
@@ -107,6 +109,7 @@ public class QACheckListController {
 		theQACheckListModel.addAttribute("theQACheckListDetail", qaCheckList);
 		theQACheckListModel.addAttribute("deploymentPlan", deploymentPlan);
 		theQACheckListModel.addAttribute("deploymentEnvironmentList", deploymentEnvironmentList);
+		theQACheckListModel.addAttribute("title", "AddQACheckList");
 
 		return "qaChecklist-form";
 

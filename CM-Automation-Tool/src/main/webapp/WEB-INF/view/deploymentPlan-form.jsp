@@ -27,6 +27,163 @@
 <script type="text/javascript"
 	src="<c:url value="https://code.jquery.com/jquery-3.3.1.min.js" />"></script>
 
+<script>
+  $(document).ready(function(){
+	     
+	        $("#planDate").change(function(){
+	        	
+	        	var objDate = new Date();
+	        	var planDate = $("#planDate").val();
+	        	
+	        	if(objDate>planDate)
+	        	{
+	        		alert("Plan date can not be earlier than current date");
+	        		$("#planDate").val("");
+	        	}     
+	        });
+	        
+ 			 $("#dev_DeploymentDate").change(function(){
+	        	
+	        	var objDate = new Date();
+	        	var planDate = $("#planDate").val();
+	        	var dev_DeploymentDate = $("#dev_DeploymentDate").val();
+
+	        	if(dev_DeploymentDate<planDate)
+	        	{
+	        		alert("DEV Deployment date can not be earlier than plan date");
+	        		$("#dev_DeploymentDate").val("");
+	        	}
+	        	else if(dev_DeploymentDate<objDate)
+	        	{
+	        		alert("DEV Deployment date can not be earlier than current date");
+	        		$("#dev_DeploymentDate").val("");
+	        	}
+	        	compareDate();
+	        	
+	        });
+ 			 
+ 			 $("#sdf_DeploymentDate").change(function(){
+ 	        	
+ 	        	var objDate = new Date();
+ 	        	var planDate = $("#planDate").val();
+ 	        	var sdf_DeploymentDate = $("#sdf_DeploymentDate").val();
+
+ 	        	if(sdf_DeploymentDate<planDate)
+ 	        	{
+ 	        		alert("SDF Deployment date can not be earlier than plan date");
+ 	        		$("#sdf_DeploymentDate").val("");
+ 	        	}
+ 	        	else if(sdf_DeploymentDate<objDate)
+ 	        	{
+ 	        		alert("SDF Deployment date can not be earlier than current date");
+ 	        		$("#sdf_DeploymentDate").val("");
+ 	        	}
+ 	        	compareDate();
+ 	        	
+ 	        });
+ 			 
+ 			 $("#ist1_DeploymentDate").change(function(){
+  	        	
+  	        	var objDate = new Date();
+  	        	var planDate = $("#planDate").val();
+  	        	var ist1_DeploymentDate = $("#ist1_DeploymentDate").val();
+
+  	        	if(ist1_DeploymentDate<planDate)
+  	        	{
+  	        		alert("IST1 Deployment date can not be earlier than plan date");
+  	        		$("#ist1_DeploymentDate").val("");
+  	        	}
+  	        	else if(ist1_DeploymentDate<objDate)
+  	        	{
+  	        		alert("IST1 Deployment date can not be earlier than current date");
+  	        		$("#ist1_DeploymentDate").val("");
+  	        	}
+  	        	compareDate();
+  	        });
+ 			 
+ 			 
+ 			 $("#ist2_DeploymentDate").change(function(){
+  	        	
+  	        	var objDate = new Date();
+  	        	var planDate = $("#planDate").val();
+  	        	var ist2_DeploymentDate = $("#ist2_DeploymentDate").val();
+
+  	        	if(ist2_DeploymentDate<planDate)
+  	        	{
+  	        		alert("IST2 Deployment date can not be earlier than plan date");
+  	        		$("#ist2_DeploymentDate").val("");
+  	        	}
+  	        	else if(ist2_DeploymentDate<objDate)
+  	        	{
+  	        		alert("IST2 Deployment date can not be earlier than current date");
+  	        		$("#ist2_DeploymentDate").val("");
+  	        	}  	  
+  	        	compareDate();
+  	        });
+ 			 
+ 			 
+ 			 $("#prod_DeploymentDate").change(function(){
+  	        	
+  	        	var objDate = new Date();
+  	        	var planDate = $("#planDate").val();
+  	        	var prod_DeploymentDate = $("#prod_DeploymentDate").val();
+
+  	        	if(prod_DeploymentDate<planDate)
+  	        	{
+  	        		alert("PROD Deployment date can not be earlier than plan date");
+  	        		$("#prod_DeploymentDate").val("");
+  	        	}
+  	        	else if(prod_DeploymentDate<objDate)
+  	        	{
+  	        		alert("PROD Deployment date can not be earlier than current date");
+  	        		$("#prod_DeploymentDate").val("");
+  	        	}  	 
+  	        	compareDate();
+  	        });
+  			 
+ 			 
+ 			 function compareDate()
+ 			 {
+ 				var objDate = new Date();
+	        	var planDate = $("#planDate").val();
+	        	var dev_DeploymentDate = $("#dev_DeploymentDate").val();
+
+	        	var sdf_DeploymentDate = $("#sdf_DeploymentDate").val();
+
+	        	var ist1_DeploymentDate = $("#ist1_DeploymentDate").val();
+
+	        	var ist2_DeploymentDate = $("#ist2_DeploymentDate").val();
+
+	        	var prod_DeploymentDate = $("#prod_DeploymentDate").val();
+	        	
+	        	if(dev_DeploymentDate!=null && sdf_DeploymentDate!=null && dev_DeploymentDate!='' && sdf_DeploymentDate!='' && (dev_DeploymentDate>sdf_DeploymentDate))
+	        	{
+	        		alert("SDF Deployment date can not be earlier than DEV deployment date");
+	        		$("#sdf_DeploymentDate").val("");
+	        		return;
+	        	}
+	        	else if(sdf_DeploymentDate!=null && ist1_DeploymentDate!=null && sdf_DeploymentDate!='' && ist1_DeploymentDate!='' && (sdf_DeploymentDate>ist1_DeploymentDate))
+	        	{
+	        		alert("IST1 Deployment date can not be earlier than SDF deployment date");
+	        		$("#ist1_DeploymentDate").val("");
+	        		return;
+	        	}  
+	        	else if(ist1_DeploymentDate!=null && ist2_DeploymentDate!=null && ist1_DeploymentDate!='' && ist2_DeploymentDate!='' && (ist1_DeploymentDate>ist2_DeploymentDate))
+	        	{
+	        		alert("IST2 Deployment date can not be earlier than IST1 deployment date");
+	        		$("#ist2_DeploymentDate").val("");
+	        		return;
+	        	}  
+	        	else if(prod_DeploymentDate!=null && ist2_DeploymentDate!=null && prod_DeploymentDate!='' && ist2_DeploymentDate!='' && (ist2_DeploymentDate>prod_DeploymentDate))
+	        	{
+	        		alert("PROD Deployment date can not be earlier than IST2 deployment date");
+	        		$("#prod_DeploymentDate").val("");
+	        		return;
+	        	}  
+ 			 }
+	    })
+	
+</script>
 
 <style>
 .error {
@@ -151,12 +308,14 @@
 							<form:errors path="comment" cssClass="error" />
 						</td>
 					</tr>
+					<security:authorize access="hasRole('CMA')">
 					<tr>
 						<td></td>
 						<td>
 							<input type="submit" value="Save" />
 						</td>						
 					</tr>
+					</security:authorize>
 				</tbody>
 			</table>
 		</form:form>				
