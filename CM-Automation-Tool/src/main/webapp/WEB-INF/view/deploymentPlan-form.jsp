@@ -10,7 +10,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Deployment Plan</title>
+<title>${title} </title>
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
 <link type="text/css" rel="stylesheet"
@@ -18,7 +18,16 @@
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/app.css">
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+<script type="text/javascript"
+	src="<c:url value="/resources/jquery/1.6/jquery-1.6.1.min.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/jquery-ui/jquery-ui-1.8.10.custom.min.js" />"></script>	
+<script type="text/javascript"
+	src="<c:url value="https://code.jquery.com/jquery-3.3.1.min.js" />"></script>
+
+
 <style>
 .error {
 	color: red
@@ -26,113 +35,133 @@
 </style>
 </head>
 
-
 <body>
-	<jsp:include page="/WEB-INF/view/header.jsp" />
-	<h2>Deployment Plan Page</h2>
+<jsp:include page="/WEB-INF/view/header.jsp" />
+<div class="content-page">
+	<div id="wrapper">
+		<div id="header">
+			<h2>Defect Fix Detail</h2>
+		</div>
+	</div>
 
-
-	<!-- Add a logout button -->
-
+	<!-- form---------------------------------------------------->
 	<div class="container">
-		<div class="row">
-			<div class=" col-md-12  table table-bordered">
-				<div class="centre">
-					<form:form method="POST" action="saveDeploymentPlan"
+	<form:form method="POST" action="saveDeploymentPlan"
 						modelAttribute="deploymentPlanDetail">
-						<form:hidden path="deployment_Id" />
-
-						<div class="col-md-12">
-							Deployment Title :
-							<form:input path="title" placeholder="Deployment Title"
+		<form:hidden path="deployment_Id" />
+		<table>
+				<tbody>					 
+					<tr>
+						<td>
+							<label>	Deployment Title :</label>
+						</td>
+						<td>
+							<form:input path="title"  class="form-control" placeholder="Deployment Title"
 								required="true" />
 							<form:errors path="title" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							Application :
-							<form:select path="application.application_Id">
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<label>Application :</label>
+						</td>
+						<td colspan="3">
+							<form:select  class="form-control" path="application.application_Id" id="applications">
 								<c:forEach var="tempApplication" items="${applications}">
 									<form:option value="${tempApplication.application_Id}">${tempApplication.applicationName}
                 					</form:option>
 								</c:forEach>
-							</form:select>
-						</div>
-						<br />
-						<div class="col-md-12">
-							Defects to Deploy :
-							<form:select path="defects" required="true">
+							</form:select>						
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Defects to Deploy :</label>
+						</td>
+						<td colspan="3">
+							<form:select  class="form-control" path="defects" required="true">
 								<form:options items="${listDefectFixDetail}"
 									itemValue="defect_Id" itemLabel="title" />
 							</form:select>
-						</div>
-						<br />
-						<div class="col-md-12">
-							Plan Date :
-							<form:input type="date" path="planDate" placeholder="yyyy-mm-dd"
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Plan Date :</label>
+						</td>
+						<td>
+							<form:input type="date"   class="form-control" path="planDate" placeholder="yyyy-mm-dd"
 								required="true" />
 							<form:errors path="planDate" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							Dev Deployment Date :
-							<form:input type="date" path="dev_DeploymentDate"
+						</td>
+						<td>
+							<label>Dev Deployment Date :</label>
+						</td>
+						<td>
+							<form:input type="date"  class="form-control" path="dev_DeploymentDate"
 								placeholder="yyyy-mm-dd" required="true" />
 							<form:errors path="dev_DeploymentDate" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							SDF Deployment Date :
-							<form:input type="date" path="sdf_DeploymentDate"
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>SDF Deployment Date :</label>
+						</td>
+						<td>
+							<form:input type="date"  class="form-control" path="sdf_DeploymentDate"
 								placeholder="yyyy-mm-dd" required="true" />
 							<form:errors path="sdf_DeploymentDate" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							IST1 Deployment Date :
-							<form:input type="date" path="ist1_DeploymentDate"
+						</td>
+						<td>
+							<label>IST1 Deployment Date :</label>
+						</td>
+						<td>
+							<form:input type="date"  class="form-control" path="ist1_DeploymentDate"
 								placeholder="yyyy-mm-dd" required="true" />
 							<form:errors path="ist1_DeploymentDate" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							IST2 Deployment Date :
-							<form:input type="date" path="ist2_DeploymentDate"
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>IST2 Deployment Date :</label>
+						</td>
+						<td>
+							<form:input type="date"  class="form-control" path="ist2_DeploymentDate"
 								placeholder="yyyy-mm-dd" required="true" />
 							<form:errors path="ist2_DeploymentDate" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							PROD Deployment Date :
-							<form:input type="date" path="prod_DeploymentDate"
+						</td>
+						<td>
+							<label>PROD Deployment Date :</label>
+						</td>
+						<td>
+							<form:input type="date"  class="form-control" path="prod_DeploymentDate"
 								placeholder="yyyy-mm-dd" required="true" />
 							<form:errors path="prod_DeploymentDate" cssClass="error" />
-						</div>
-						<br />
-						<div class="col-md-12">
-							Comment :
-							<form:textarea path="comment" class="form-control" rows="4"
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Comment :</label>
+						</td>
+						<td colspan="3">
+							<form:textarea path="comment" class="form-control" rows="3"
 								cols="50" required="true" />
 							<form:errors path="comment" cssClass="error" />
-						</div>
-
-						<br />
-						<div class="col-md-offset-3">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
 							<input type="submit" value="Save" />
-
-						</div>
-					</form:form>
-				</div>
-			</div>
-		</div>
-		<div>
-			<form:form action="${pageContext.request.contextPath}/logout"
-				method="POST">
-				<input type="submit" value="Logout" class="add-button" />
-
-			</form:form>
-		</div>
-	</div>
-
-</body>
-</html>
+						</td>						
+					</tr>
+				</tbody>
+			</table>
+		</form:form>				
+	</div>		
+</div>
+<div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
+</div>

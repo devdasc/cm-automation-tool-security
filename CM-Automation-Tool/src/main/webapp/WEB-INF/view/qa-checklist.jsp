@@ -8,18 +8,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>QA CheckList</title>
-</head>
-<body>
-<jsp:include page="/WEB-INF/view/header.jsp" />
+<title>${title}</title>
 
-	<h2>QA Checklist</h2>
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+</head>
+
+<body>
+<jsp:include page="/WEB-INF/view/header.jsp" />	
+	<!-- table to show application list -->
+<div class="content-page">
+	<div id="wrapper">
+		<div id="header">
+			<h2>QA Checklist</h2>
+		</div>
+	</div>
 	<!-- table to show application list -->
 	<div id="container">
-		<div id="content">
-			<!--  add our html table here --------------------------------->
+		<div class=" col-md-12 table table-bordered">
+			<!-- <div class="left">	<h3 style="margin-top: 10px;">Menu</h3>	</div> -->
+
+			<div class="row">
+				<!--  add our html table here --------------------------------->
 				<div class="col-md-12">
-					<table class="table table-bordered table-striped table-hover">
+				<div>&nbsp;</div>
+				<table class="table table-bordered table-striped table-hover">
 				<tr>
 					<th>Deployment Name</th>
 					<th>Environment Name</th>
@@ -28,12 +48,9 @@
 
 					<%-- Only show "Action" column for managers or admin --%>
 					<security:authorize access="hasRole('QA')">
-
 						<th>Update</th>
 						<th>Delete</th>
-
 					</security:authorize>
-
 				</tr>
 
 				<!-- loop over and print applications -->
@@ -47,10 +64,8 @@
 
 					<!-- construct an "delete" link with application id -->
 					<c:url var="deleteLink" value="/qa/checkList/delete">						
-						<c:param name="qaChecklistId" value="${tempQAChecklist.qachecklist_id}" />
-						
+						<c:param name="qaChecklistId" value="${tempQAChecklist.qachecklist_id}" />						
 					</c:url>
-
 					<tr>
 						<td>${tempQAChecklist.deploymentPlan.title}</td>
 						<td>${tempQAChecklist.deploymentEnvironment.environmentName}</td>
@@ -70,30 +85,15 @@
 										onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 								</security:authorize>
 							</td>
-
 						</security:authorize>
-
 					</tr>
-
 				</c:forEach>
-
 			</table>
-
 		</div><!-- content -->
-
 	</div><!-- container -->
-	<p></p>
-	
-	
-	
-	<!-- Add a logout button -->
-	<form:form action="${pageContext.request.contextPath}/logout"
-		method="POST">
-
-		<input type="submit" value="Logout" class="add-button" />
-
-	</form:form>
-	
-
-</body>
-</html>
+	</div>
+	</div>
+	</div>
+<div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
+</div>

@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: dev
+=======
+Built-By: Farhana
+>>>>>>> fe29560cae748ccd2122d3d7e0344c62af634820
 Build-Jdk: 1.8.0_161
 Created-By: Maven Integration for Eclipse
 
