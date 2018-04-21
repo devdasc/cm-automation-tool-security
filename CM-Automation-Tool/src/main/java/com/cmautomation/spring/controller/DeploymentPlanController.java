@@ -1,7 +1,11 @@
 package com.cmautomation.spring.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cmautomation.spring.entity.Application;
 import com.cmautomation.spring.entity.DefectFixDetail;
@@ -61,6 +67,16 @@ public class DeploymentPlanController {
 
 		return "list-deployment";
 	}
+	
+	 
+	@RequestMapping(value = "/getApps", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Application> getApps() {
+		List<Application> applications = applicationService.getApplications();
+		return applications;
+	}
+	
+
 
 	@GetMapping("/addForm")
 	public String showPlanAddForm(Model theDeploymentPlanModel) {

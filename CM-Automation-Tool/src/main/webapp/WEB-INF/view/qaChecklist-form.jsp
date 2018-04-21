@@ -6,95 +6,119 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Create QA CheckList</title>
+<title>${title} </title>
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+
 <style>
 .error {
 	color: red
 }
 </style>
 </head>
-<body>
-	<jsp:include page="/WEB-INF/view/header.jsp" />
-	<h2>QA CheckList Form</h2>
 
+<body>
+<jsp:include page="/WEB-INF/view/header.jsp" />
+<div id="wrapper">
+		<div id="header">
+			<h2>QA CheckList Form</h2>
+		</div>
+	</div>
+<div class="content-page">	
 	<!-- form---------------------------------------------------->
 	<div class="container">
-		<div class="row">
-			<div class=" col-md-12  table table-bordered">
-
-				<div class="centre">
-					
-					<form:form method="POST" action="saveQACheckList"
+	<div class="container">
+			<form:form method="POST" action="saveQACheckList"
 						modelAttribute="theQACheckListDetail">
 						<!-- associate this data with Defect id -->
-						<form:hidden path="qachecklist_id" />
-
-						<div class="col-md-12">
-							Deployment Name:
-							<form:select path="deploymentPlan.deployment_Id">
+		<table>
+				<tbody>					 
+					<tr>
+						<td>
+							<label>	Deployment Name:</label>
+						</td>
+						<td>
+							<form:select  class="form-control" path="deploymentPlan.deployment_Id">
 								<c:forEach var="tempDeploymentPlan" items="${deploymentPlan}">
 									<form:option value="${tempDeploymentPlan.deployment_Id}">${tempDeploymentPlan.title}</form:option>
 								</c:forEach>
 							</form:select>
-						</div>
-						<br />
-						<div class="col-md-12">
-							Environment :
-							<form:select path="deploymentEnvironment.environment_Id">
+						</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<label>Environment :</label>
+						</td>
+						<td>
+							<form:select  class="form-control" path="deploymentEnvironment.environment_Id">
 								<c:forEach var="tempEnvironment"
 									items="${deploymentEnvironmentList}">
 									<form:option value="${tempEnvironment.environment_Id}">${tempEnvironment.environmentName}</form:option>
 								</c:forEach>
 							</form:select>
-						</div>
-						<br />
-						<div class="col-md-12">
-							Test Date :
-							<form:input type="date" path="testDate" required="true" />
+						</td>
+						<td>
+							<label>Test Date :</label>
+						</td>
+						<td>
+							<form:input  class="form-control" type="date" path="testDate" required="true" />
 							<form:errors path="testDate" cssClass="error" />
-						</div>
-						<br>
-						<div class="col-md-12">
-							Status :
-							<form:select path="testStatus">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Status :</label>
+						</td>
+						<td>
+							<form:select  class="form-control" path="testStatus">
 								<form:option value="1">Pass</form:option>
 								<form:option value="2">Fail</form:option>
 							</form:select>
-						</div>
-						<br>
-						<div class="col-md-12">
-							Comment : <br />
-							<form:textarea class="form-control" rows="4" cols="30"
+						</td>
+						<td>
+							<label>Tested by:</label>
+						</td>
+						<td>
+							<form:input path="testedBy"  class="form-control" type="text" required="true" />
+							<form:errors path="testedBy" cssClass="error" />
+						</td>
+						
+					</tr>
+					<tr>
+						<td>
+							<label>Comment :</label>
+						</td>
+						<td colspan="3">
+							<form:textarea class="form-control" rows="3" cols="30"
 								path="comment" required="true" />
 							<form:errors path="comment" cssClass="error" />
-
-						</div>
-						<br>
-						<div class="col-md-12">
-							Tested by:
-							<form:input path="testedBy" type="text" required="true" />
-							<form:errors path="testedBy" cssClass="error" />
-						</div>
-						<br>
-						<div class="col-md-offset-3">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
 							<input type="submit" value="Save" />
-
-						</div>
+						</td>						
+					</tr>
+				</tbody>
+			</table>
 					</form:form>
-				</div>
-				<!-- centre -->
 			</div>
+				<!-- centre -->
+		</div>
 			<!-- row -->
-		</div>
-		</div>
-		<!-- container -->
-		<!--  end of form ----------------------------------------------------->
-		<p></p>
-		<form:form action="${pageContext.request.contextPath}/logout"
-			method="POST">
-			<input type="submit" value="Logout" class="add-button" />
-		</form:form>
+</div>		
 </body>
 </html>

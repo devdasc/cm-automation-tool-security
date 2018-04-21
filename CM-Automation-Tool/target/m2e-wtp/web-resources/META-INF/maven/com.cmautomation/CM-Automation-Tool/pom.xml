@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 
 	<name>CM-Automation-Tool</name>
-
+	
 	<properties>
 		<springframework.version>5.0.3.RELEASE</springframework.version>
 		<springsecurity.version>5.0.1.RELEASE</springsecurity.version>
@@ -19,6 +19,7 @@
 
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<annotation-driven />
 	</properties>
 	<dependencies>
 
@@ -155,8 +156,14 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.9.Final</version>
 		</dependency>
+			<!-- end of validation dependencies -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.5</version>
+		</dependency>
 
-		<!-- end of validation dependencies -->
+	
 
 	</dependencies>
 

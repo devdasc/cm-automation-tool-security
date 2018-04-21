@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Deployment List</title>
+<title>${title}</title>
 
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
@@ -16,18 +16,24 @@
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/app.css">
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
+
 <body>
-
-	<jsp:include page="/WEB-INF/view/header.jsp" />
-	<h2>Deployment List</h2>
-
+<jsp:include page="/WEB-INF/view/header.jsp" />	
+	<!-- table to show application list -->
+<div class="content-page">
+	<div id="wrapper">
+		<div id="header">
+			<h2>Deployment Plan List</h2>
+		</div>
+	</div>	
 	<div class="col-md-12">
+	<div>&nbsp;</div>
 		<table class="table table-bordered table-striped table-hover">
-			<tr>
-				<th>Deployment Id</th>
+			<tr>				
 				<th>Deployment Title</th>
 				<th>Application Name</th>
 				<th>Defects</th>
@@ -55,7 +61,7 @@
 				</c:url>
 
 				<tr>
-					<td>${tempDeploymentPlan.deployment_Id}</td>
+					
 					<td>${tempDeploymentPlan.title}</td>
 					<td>${tempDeploymentPlan.application.applicationName}</td>
 					<td><ul>
@@ -84,6 +90,7 @@
 			</c:forEach>
 		</table>
 	</div>
-
-</body>
-</html>
+	</div>
+<div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
+</div>

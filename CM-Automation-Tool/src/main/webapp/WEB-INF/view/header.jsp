@@ -13,7 +13,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+  
+  <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+	<style> .error{color:red} </style>
+	
+	<title>Insert title here</title>
 </head>
 <body>
 
@@ -52,7 +57,7 @@
       			</li>
       			<li>
       			<security:authorize access="hasRole('TSA')">
-      			<a href="${pageContext.request.contextPath}/tsa/checkList/deployChecklistAddForm">Plan Deployment CheckList</a>
+      			<a href="${pageContext.request.contextPath}/tsa/checkList/deployChecklistAddForm">Add Deployment CheckList</a>
       			</security:authorize>
       			</li>
       			<li>
@@ -60,7 +65,7 @@
       			</li>
       			<li>
       			<security:authorize access="hasRole('QA')">  
-      			<a href="${pageContext.request.contextPath}/qa/checkList/QACheckListAddForm">Add CheckList</a>
+      			<a href="${pageContext.request.contextPath}/qa/checkList/QACheckListAddForm">Add QA CheckList</a>
       			</security:authorize> 
       			</li>			
       	  	</ul>
@@ -79,6 +84,7 @@
     </ul>    
     <ul class="nav navbar-nav navbar-right">
 		<li><a href="#"><span class="glyphicon glyphicon-user"></span><security:authentication property="principal.username" /></a></li>
+		<li><a href="#"><span class="glyphicon glyphicon-certificate"></span><security:authentication property="principal.authorities" /></a></li>
 	    <li><form:form action="${pageContext.request.contextPath}/logout" method="POST" id="logout">
 					<input type="hidden" value="Logout" /></form:form>
 				<a href="#" onclick="document.getElementById('logout').submit();">Logout</a>				
@@ -86,6 +92,6 @@
     </ul>
   </div>
 </nav>
-  
 </body>
 </html>
+  

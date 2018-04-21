@@ -27,8 +27,64 @@ public class DefectFixDetailDAOImpl implements DefectFixDetailDAO {
 
 		// execute query and get result list
 		List<DefectFixDetail> defectFixDetailList = theQuery.getResultList();
+		
+		defectFixDetailList = assignViewStatus(defectFixDetailList);
 
 		return defectFixDetailList;
+	}
+	
+	//Assign view property for status
+	private List<DefectFixDetail> assignViewStatus(List<DefectFixDetail> defects)
+	{
+		for(int i=0; i<defects.size();i++)
+		{
+			defects.set(i, assignViewStatus(defects.get(i)));
+		}
+		
+		return defects;
+	}
+	
+	//Assign view property for status
+	private DefectFixDetail assignViewStatus(DefectFixDetail defect)
+	{
+			if(defect.getStatus()==1)
+			{
+				defect.setViewStatus("Waiting For Fix");
+			}
+			else if(defect.getStatus()==2)
+			{
+				defect.setViewStatus("Fix Received");
+			}
+			else if(defect.getStatus()==3)
+			{
+				defect.setViewStatus("Deployed in SDF");
+			}
+			else if(defect.getStatus()==4)
+			{
+				defect.setViewStatus("Deployed in IST1");
+			}
+			else if(defect.getStatus()==5)
+			{
+				defect.setViewStatus("Deployed in IST2");
+			}
+			else if(defect.getStatus()==6)
+			{
+				defect.setViewStatus("Deployed in PROD");
+			}
+			else if(defect.getStatus()==7)
+			{
+				defect.setViewStatus("Deployed in Training");
+			}
+			else if(defect.getStatus()==8)
+			{
+				defect.setViewStatus("Deployed in DR");
+			}
+			else if(defect.getStatus()==9)
+			{
+				defect.setViewStatus("Closed");
+			}
+		
+		return defect;
 	}
 
 	@Override

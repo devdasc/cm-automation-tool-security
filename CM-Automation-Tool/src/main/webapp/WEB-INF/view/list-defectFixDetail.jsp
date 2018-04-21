@@ -6,14 +6,11 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Defect Fix Detail</title>
-<!-- <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css"> -->
-
-<!--  <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/add-style.css">-->
+<title>Deployment Plan</title>
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
 <link type="text/css" rel="stylesheet"
@@ -21,14 +18,13 @@
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/app.css">
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 	
-	
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-  
-  <script>
+
+ <script>
 $(document).ready(function() {
 	$(function() {
 	$("#theSearchName").focus();
@@ -36,22 +32,33 @@ $(document).ready(function() {
 });
 </script>
 
+<style>
+.error {
+	color: red
+}
+</style>
 </head>
 <body>
-
 <jsp:include page="/WEB-INF/view/header.jsp" />
 
+<div class="content-page">
+	<div id="wrapper">
+		<div id="header">
+			<h2>List of Defects</h2>
+		</div>
+	</div>
 
-
-	<!-- table to show Defect list -->
+	<!-- form---------------------------------------------------->
 	<div class="container">
-	
+		
 		<div class=" col-md-12 table table-bordered">
-			<!-- <div class="left">
-				<h3 style="margin-top: 10px;">Menu</h3>
-			</div>-->
+		
 			<!-- button for search -->
-			<div  class=" col-md-12 table table-bordered">
+			<div  class=" col-md-12 table ">
+			
+			<div>
+			&nbsp;
+			</div>			
 				<form:form action="search" method="POST" id="search">
 					<input type="text" name="theSearchName" id="theSearchName"  placeholder="search"/>
 					<input type="submit" value="Search" class="add-button" />
@@ -66,6 +73,8 @@ $(document).ready(function() {
 							<th class="text-center">Defect Name</th>
 							<th class="text-center">Application</th>
 							<th class="text-center">Vendor</th>
+							<th class="text-center">Current Status</th>
+							
 							<%-- Only show "Action" column for CMA --%>
 							<security:authorize access="hasRole('CMA')">
 
@@ -92,6 +101,7 @@ $(document).ready(function() {
 								<td class="text-center">${tempDefectList.title}</td>
 								<td class="text-center">${tempDefectList.application.applicationName}</td>
 								<td class="text-center">${tempDefectList.vendor.vendorName}</td>
+								<td class="text-center">${tempDefectList.viewStatus}</td>
 								
 								<security:authorize access="hasRole('CMA')">
 
@@ -106,13 +116,9 @@ $(document).ready(function() {
 											<a href="${deleteLink}"
 												onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 										</security:authorize></td>
-
 								</security:authorize>
-
 							</tr>
-
 						</c:forEach>
-
 					</table>
 					</div>
 						<!-- col-md-12 -->
@@ -123,12 +129,7 @@ $(document).ready(function() {
 				<!-- row -->
 
 			</div>
-			<!-- container -->
-			<p></p><p></p>
-			<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-				<input type="submit" value="Logout" class="add-button" />
-			</form:form>
-
-			<!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
-</body>
-</html>
+		</div>
+<div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
+</div>

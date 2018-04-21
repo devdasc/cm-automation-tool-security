@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>"${title}"</title>
+<title>${title}</title>
 
 		  <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
@@ -17,19 +17,20 @@
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/app.css">
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
 <jsp:include page="/WEB-INF/view/header.jsp" />
-	<h2>Vendor List</h2>
-	
+<div class="content-page">
+	<div id="wrapper">
+		<div id="header">
+			<h2>Vendor List</h2>
+		</div>
+	</div>	
 	<!-- table to show application list -->
 	<div id="container">
-
-		<div id="content">
-			
+		<div id="content">			
 			<security:authorize access="hasRole('ADMIN')">
-
 				<!--new button: Add Application ----------------------->						
 				<input type="button" value="Add vendor"
 					onclick="window.location.href='vendorAddForm'; return false;"
@@ -89,17 +90,8 @@
 		</div><!-- content -->
 
 	</div><!-- container -->
-	<p></p>
-		
-	<!-- Add a logout button -->
-	<form:form action="${pageContext.request.contextPath}/logout" 
-			   method="POST">
-	
-		<input type="submit" value="Logout" class="add-button" />
-	
-	</form:form>
 	</div>
-	
-
-</body>
-</html>
+	</div>
+<div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
+</div>

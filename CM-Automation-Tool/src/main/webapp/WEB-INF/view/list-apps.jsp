@@ -8,26 +8,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>CM Automation systems home page</title>
+<title>${title}</title>
 
-		  <link type="text/css" rel="stylesheet"
+<link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/app.css">
-</head>
-<body>
-<jsp:include page="/WEB-INF/view/header.jsp" />
-	<h2>CM Automation systems home page</h2>
-	
-	<!-- table to show application list -->
-	<div id="container">
 
-		<div id="content">
-			
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+</head>
+
+<body>
+<jsp:include page="/WEB-INF/view/header.jsp" />	
+	<!-- table to show application list -->
+<div class="content-page">
+	<div id="wrapper">
+		<div id="header">
+			<h2>Applications</h2>
+		</div>
+	</div>
+	
+	<div id="container">
 			<security:authorize access="hasRole('ADMIN')">
 
 				<!--new button: Add Application ----------------------->						
@@ -37,7 +41,7 @@
 			</security:authorize>
 			<!--  add our html table here --------------------------------->
 				<div class="col-md-12">
-					<table class="table table-bordered table-striped table-hover">
+			<table class="table table-bordered table-striped table-hover">
 				<tr>
 					
 					<th>Application Name</th>
@@ -52,7 +56,6 @@
 					</security:authorize>
 
 				</tr>
-
 				<!-- loop over and print applications -->
 				<c:forEach var="tempApplication" items="${applications}">
 
@@ -83,29 +86,13 @@
 										onclick="if (!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
 								</security:authorize>
 							</td>
-
 						</security:authorize>
-
 					</tr>
-
 				</c:forEach>
-
 			</table>
-
 		</div><!-- content -->
-
-	</div><!-- container -->
-	<p></p>
-		
-	<!-- Add a logout button -->
-	<form:form action="${pageContext.request.contextPath}/logout" 
-			   method="POST">
-	
-		<input type="submit" value="Logout" class="add-button" />
-	
-	</form:form>
 	</div>
-	
-
-</body>
-</html>
+</div>
+<div>
+<jsp:include page="/WEB-INF/view/footer.jsp" />
+</div>
