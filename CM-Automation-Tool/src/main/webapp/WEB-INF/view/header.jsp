@@ -79,6 +79,7 @@
     </ul>    
     <ul class="nav navbar-nav navbar-right">
 		<li><a href="#"><span class="glyphicon glyphicon-user"></span><security:authentication property="principal.username" /></a></li>
+		<li><a href="#"><security:authentication property="principal.authorities" /></a></li>
 	    <li><form:form action="${pageContext.request.contextPath}/logout" method="POST" id="logout">
 					<input type="hidden" value="Logout" /></form:form>
 				<a href="#" onclick="document.getElementById('logout').submit();">Logout</a>				

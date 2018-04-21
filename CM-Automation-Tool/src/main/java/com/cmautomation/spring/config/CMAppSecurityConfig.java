@@ -28,7 +28,8 @@ public class CMAppSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		
-		.antMatchers("/").access("hasRole('USER')")
+		//.antMatchers("/").access("hasRole('USER')")
+		.antMatchers("/").hasAnyRole("CMA","QA","TSA","ADMIN")// to excludse 'user' role
 		.antMatchers("/cma/**").hasAnyRole("CMA","QA","TSA")
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/vendor/**").hasRole("ADMIN")

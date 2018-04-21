@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,6 +37,7 @@ public class DeploymentPlan {
 	@NotNull(message="required")
 	@Column(name="planDate")
 	@Temporal(TemporalType.DATE)
+	//@FutureOrPresent
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date planDate;
 	

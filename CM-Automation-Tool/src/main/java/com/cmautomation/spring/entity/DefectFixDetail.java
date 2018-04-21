@@ -23,6 +23,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 //>>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
@@ -74,6 +75,7 @@ public class DefectFixDetail {
 	@NotNull(message="required")
 	@Column(name="fixRecieveDate")
 	@Temporal(TemporalType.DATE)
+	@FutureOrPresent
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fixRecieveDate;
 	
