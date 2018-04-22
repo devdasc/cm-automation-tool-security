@@ -90,7 +90,11 @@
     </ul>    
     <ul class="nav navbar-nav navbar-right">
 		<li><a href="#"><span class="glyphicon glyphicon-user"></span><security:authentication property="principal.username" /></a></li>
+<<<<<<< HEAD
+		<li><a href="#"><security:authentication property="principal.authorities" /></a></li>
+=======
 		<li><a href="#"><span class="glyphicon glyphicon-certificate"></span><security:authentication property="principal.authorities" /></a></li>
+>>>>>>> fe29560cae748ccd2122d3d7e0344c62af634820
 	    <li><form:form action="${pageContext.request.contextPath}/logout" method="POST" id="logout">
 					<input type="hidden" value="Logout" /></form:form>
 				<a href="#" onclick="document.getElementById('logout').submit();">Logout</a>				

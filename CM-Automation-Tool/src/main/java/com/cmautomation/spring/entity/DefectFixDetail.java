@@ -7,12 +7,10 @@ import java.util.Date;
 import java.util.List;
 
 //=======
-//<<<<<<< HEAD
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-//>>>>>>> e660ebc5d0930df05408e2f2bc519126dc2e8e43
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -62,6 +60,7 @@ public class DefectFixDetail {
 	
 	@Column(name="fixRecieveDate")
 	@Temporal(TemporalType.DATE)
+	@FutureOrPresent
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fixRecieveDate;
 	
@@ -103,6 +102,13 @@ public class DefectFixDetail {
 	private List<DeploymentPlan> listDeploymentPlan;
 	
 	
+	public DefectFixDetail() {
+		
+	}
+	
+	
+	
+
 	@Transient
 	private String viewStatus;
 	
@@ -112,12 +118,6 @@ public class DefectFixDetail {
 	public void setViewStatus(String viewStatus) {
 		this.viewStatus = viewStatus;
 	}
-	
-	
-	public DefectFixDetail() {
-		
-	}
-	
 	
 	public Integer getDefect_Id() {
 		return defect_Id;
