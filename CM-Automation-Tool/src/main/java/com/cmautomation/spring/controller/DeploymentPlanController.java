@@ -134,7 +134,7 @@ public class DeploymentPlanController {
 			for (DefectFixDetail deploymentDefect : theDeploymentPlan.getListDeploymentDefects()) {
 
 				objDefects.add(deploymentDefect.getDefect_Id().toString());
-				listDefectFixDetail.add(defectFixDetailService.getDefectFixDetail(deploymentDefect.getDefect_Id()));
+				//listDefectFixDetail.add(defectFixDetailService.getDefectFixDetail(deploymentDefect.getDefect_Id()));
 				
 			}
 			// }

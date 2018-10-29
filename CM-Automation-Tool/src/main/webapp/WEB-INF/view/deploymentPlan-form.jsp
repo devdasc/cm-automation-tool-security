@@ -197,7 +197,7 @@
 <div class="content-page">
 	<div id="wrapper">
 		<div id="header">
-			<h2>Defect Fix Detail</h2>
+			<h2>Deployment Plan</h2>
 		</div>
 	</div>
 
